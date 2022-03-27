@@ -14,6 +14,7 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import { exec } from 'child_process';
 
 export default class AppUpdater {
   constructor() {
@@ -57,6 +58,10 @@ const installExtensions = async () => {
 };
 
 const createWindow = async () => {
+  const { exec } = require('child_process');
+  console.log('STARTS JSCPD');
+  exec('npm run jscpd');
+  console.log('END OF JSCPD');
   if (isDevelopment) {
     await installExtensions();
   }

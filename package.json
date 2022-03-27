@@ -204,6 +204,10 @@
       "./.erb/scripts/check-build-exists.ts"
     ]
   },
+  "browser": {
+    "child_process": false,
+    "crypto": false
+  },
   "browserslist": [],
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

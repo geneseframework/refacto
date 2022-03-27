@@ -20,6 +20,7 @@ node_modules
 # OSX
 .DS_Store
 
+reports
 release
 release/app/dist
 release/build
