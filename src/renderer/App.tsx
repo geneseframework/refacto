@@ -1,39 +1,17 @@
-import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
+import { MemoryRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+import { Dashboard } from '../pages/dashboard/Dashboard';
 
 const Hello = () => {
+  console.log('STARTS JSCPD 2');
+  const electron = window.electron;
+  electron.ipcRenderer.sendSync('jscpd');
+  console.log('END OF JSCPD 2');
   return (
     <div>
-      <div className="Hello">
-        <img width="200px" alt="icon" src={icon} />
-      </div>
       <h1>Refacto</h1>
       <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Start
-          </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              🙏
-            </span>
-            Donate
-          </button>
-        </a>
+        <Dashboard />
       </div>
     </div>
   );

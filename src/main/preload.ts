@@ -1,7 +1,14 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
+const { exec } = require('child_process');
+
 contextBridge.exposeInMainWorld('electron', {
   ipcRenderer: {
+    sendSync(channel: string, ...args): any {
+      console.log('channel', channel);
+      exec('npm run jscpd');
+      console.log('jscpd launched');
+    },
     myPing() {
       ipcRenderer.send('ipc-example', 'ping');
     },
