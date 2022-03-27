@@ -5,12 +5,7 @@ import { Dashboard } from '../pages/dashboard/Dashboard';
 const Hello = () => {
   console.log('STARTS JSCPD 2');
   const electron = window.electron;
-  electron.ipcRenderer.sendSync('message', 'zzz');
-  // const content = JSON.parse(
-  //   fs.readFileSync('~/Documents/perso-gilles-fabre/refacto/README.md')
-  // );
-  // console.log('content', content);
-  // exec('npm run jscpd');
+  electron.ipcRenderer.sendSync('jscpd');
   console.log('END OF JSCPD 2');
   return (
     <div>

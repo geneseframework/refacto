@@ -1,17 +1,13 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
-const fs = require('fs');
+const { exec } = require('child_process');
 
 contextBridge.exposeInMainWorld('electron', {
   ipcRenderer: {
     sendSync(channel: string, ...args): any {
-      console.log('SENSYNC channel', channel);
-      console.log('SENSYNC args', args);
-      const content = fs.readFileSync(
-        '/Users/utilisateur/Documents/perso-gilles-fabre/refacto/src/zzz.js',
-        'utf-8'
-      );
-      console.log('content', content);
+      console.log('channel', channel);
+      exec('npm run jscpd');
+      console.log('jscpd launched');
     },
     myPing() {
       ipcRenderer.send('ipc-example', 'ping');
