@@ -1,24 +1,4 @@
 import { contextBridge, ipcRenderer } from 'electron';
-// const { exec } = require('child_process');
-// const fs = require('fs');
-// Expose protected methods that allow the renderer process to use
-// the ipcRenderer without exposing the entire object
-// contextBridge.exposeInMainWorld('api', {
-//   send: (channel, data) => {
-//     // whitelist channels
-//     let validChannels = ['toMain'];
-//     if (validChannels.includes(channel)) {
-//       ipcRenderer.send(channel, data);
-//     }
-//   },
-//   receive: (channel, func) => {
-//     let validChannels = ['fromMain'];
-//     if (validChannels.includes(channel)) {
-//       // Deliberately strip event as it includes `sender`
-//       ipcRenderer.on(channel, (event, ...args) => func(...args));
-//     }
-//   },
-// });
 
 contextBridge.exposeInMainWorld('electron', {
   store: {
@@ -30,18 +10,6 @@ contextBridge.exposeInMainWorld('electron', {
     },
   },
   ipcRenderer: {
-    invoke(channel: string, ...args): any {
-      console.log('channel', channel);
-      // exec('npm run jscpd').on('exit', () => {
-      //   const content = fs.readFileSync(
-      //     '/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/index.html',
-      //     'utf-8'
-      //   );
-      //   console.log('File content : ', content);
-      //   return content;
-      // });
-      return 'coming from backend !';
-    },
     myPing() {
       ipcRenderer.send('ipc-example', 'ping');
     },
