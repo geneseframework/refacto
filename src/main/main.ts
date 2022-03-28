@@ -14,7 +14,9 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
-import { exec } from 'child_process';
+import Store from 'electron-store';
+
+const store = new Store();
 
 export default class AppUpdater {
   constructor() {
@@ -76,6 +78,7 @@ const createWindow = async () => {
     height: 728,
     icon: getAssetPath('icon.png'),
     webPreferences: {
+      contextIsolation: true,
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
@@ -136,3 +139,11 @@ app
     });
   })
   .catch(console.log);
+
+ipcMain.on('electron-store-get', async (event, val) => {
+  event.returnValue = store.get(val) + ' cool !';
+});
+
+ipcMain.on('electron-store-set', async (event, key, val) => {
+  store.set(key, val);
+});
