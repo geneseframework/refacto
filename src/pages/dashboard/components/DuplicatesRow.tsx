@@ -6,7 +6,7 @@ export const DuplicatesRow: React.FC<DuplicatesRowProps> = (props) => {
     const h = useDuplicatesRow(props);
     return (
         <div>
-            <div>{h.fileType}</div>
+            <div>{h.fileFormat}</div>
             <div>{h.percentageText}</div>
         </div>
     )

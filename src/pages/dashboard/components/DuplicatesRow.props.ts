@@ -1,6 +1,8 @@
+import { JscpdStatsFileFormat } from '../../../features/jscpd/interfaces/JscpdStatsFileFormat.interface';
+import { FileFormat } from '../../../features/jscpd/types/FileFormat.type';
+
 export interface DuplicatesRowProps {
-    duplicatedLines: number;
-    fileType: string,
+    fileFormat: FileFormat;
     index: number;
-    totalDuplicatedLines: number;
+    statsFileFormat: JscpdStatsFileFormat;
 }
