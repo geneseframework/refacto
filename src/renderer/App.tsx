@@ -14,9 +14,8 @@ declare global {
 }
 
 const Hello = () => {
-  window.electron.store.set('zzz', 'aaa');
+  window.electron.store.set('zzz', 'value to set');
   const response = window.electron.store.get('zzz');
-  console.log('response', response);
   return (
     <div>
       <h1>Refacto</h1>

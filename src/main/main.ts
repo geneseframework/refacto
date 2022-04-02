@@ -140,10 +140,10 @@ app
   })
   .catch(console.log);
 
-ipcMain.on('electron-store-get', async (event, val) => {
+ipcMain.on('get', async (event, val) => {
   event.returnValue = store.get(val) + ' cool !';
 });
 
-ipcMain.on('electron-store-set', async (event, key, val) => {
+ipcMain.on('set', async (event, key, val) => {
   store.set(key, val);
 });

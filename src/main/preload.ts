@@ -2,11 +2,11 @@ import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('electron', {
   store: {
-    get(val) {
-      return ipcRenderer.sendSync('electron-store-get', val);
+    get(val: any) {
+      return ipcRenderer.sendSync('get', val);
     },
-    set(property, val) {
-      ipcRenderer.send('electron-store-set', property, val);
+    set(property: string, val: any) {
+      ipcRenderer.send('set', property, val);
     },
   },
   ipcRenderer: {
