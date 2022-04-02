@@ -7,6 +7,7 @@ declare global {
     electron: {
       store: {
         get: (key: string) => any;
+        jscpd: () => any;
         set: (key: string, val: any) => void;
       };
     };
@@ -16,12 +17,14 @@ declare global {
 const Hello = () => {
   window.electron.store.set('zzz', 'value to set');
   const response = window.electron.store.get('zzz');
+  const jscpd = window.electron.store.jscpd();
+  console.log('jscpd end', jscpd)
   return (
     <div>
       <h1>Refacto</h1>
       <div>Content : {response?.toString()}</div>
       <div className="Hello">
-        <Dashboard />
+        <Dashboard jscpd={jscpd} />
       </div>
     </div>
   );
