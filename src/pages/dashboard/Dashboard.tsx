@@ -1,33 +1,18 @@
 import React from 'react';
-import { percentage } from '../../utils/numbers.utils';
-import { JscpdReport } from '../../features/jscpd/interfaces/JscpdReport.interface';
-import { JscpdStatsFileFormat } from '../../features/jscpd/interfaces/JscpdStatsFileFormat.interface';
-import { DuplicatesRow } from './components/DuplicatesRow';
-import { FileFormat } from '../../features/jscpd/types/FileFormat.type';
+import { DashboardJscpd } from './jscpd/DashboardJscpd';
 
 export const Dashboard: React.FC = () => {
-    const jscpdReport: JscpdReport = window.electron.store.jscpd();
-    console.log('DASHBOARD JSCPD', jscpdReport)
-    const totalLines: number = jscpdReport.statistics.total.lines;
-    const totalDuplicatedLines: number = jscpdReport.statistics.total.duplicatedLines;
-    const duplicatedLinesPercentage: number = percentage(totalDuplicatedLines, totalLines);
-    const duplicatedLines: string = `Lines : ${totalDuplicatedLines} / ${totalLines} (${duplicatedLinesPercentage} %)`;
-    const fileFormatRows: [fileFormat: string, stats: JscpdStatsFileFormat][] = Object.entries(jscpdReport.statistics.formats);
-    const mapDuplicates = (row: [fileFormat: string, statsFileFormat: JscpdStatsFileFormat], index: number) => {
-        const [fileFormat, statsFileFormat] = row;
-        return (
-            <DuplicatesRow statsFileFormat={statsFileFormat} fileFormat={fileFormat as FileFormat} index={index}/>
-        );
-    }
     return (
         <div>
-            <div>Duplicated code</div>
-            <div>{duplicatedLines}</div>
+            <div><h1>Refacto</h1></div>
             <div>
                 <div>
-                    <div>Type</div>
-                    <div>Duplicated lines</div>
-                    <div>{fileFormatRows.map(mapDuplicates)}</div>
+                    <div><h2>Cognitive complexity</h2></div>
+                    <div>
+                        <div><h2>Code coverage</h2></div>
+                        <div><h2>Code smells</h2></div>
+                        <div><DashboardJscpd /></div>
+                    </div>
                 </div>
             </div>
         </div>
