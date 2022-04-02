@@ -1,5 +1,7 @@
 import { contextBridge, ipcRenderer } from 'electron';
 import { execSync } from 'child_process';
+import * as fs from 'fs';
+
 
 contextBridge.exposeInMainWorld('electron', {
     store: {
@@ -8,12 +10,9 @@ contextBridge.exposeInMainWorld('electron', {
         },
         jscpd() {
             console.log('LAUNCH JSCPD');
-            const jscpdJson = require('../../reports/jscpd/html/jscpd-report.json');
-            console.log('JSCPD JSON', jscpdJson)
-            // execSync('npm run jscpdReport');
-            // const cp = JSON.parse(jscpdJson);
-            // console.log('CP = ', cp)
-            return jscpdJson;
+            const jscpdJson = fs.readFileSync('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json', 'utf8');
+            console.log('JSCPD JSON parse', JSON.parse(jscpdJson))
+            return JSON.parse(jscpdJson);
         },
         run(script: string) {
             console.log('RUN SCRIPT', script)

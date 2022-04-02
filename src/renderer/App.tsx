@@ -8,6 +8,7 @@ declare global {
             store: {
                 get: (key: string) => any;
                 jscpd: () => any;
+                run: (script: string) => any;
                 set: (key: string, val: any) => void;
             };
         };

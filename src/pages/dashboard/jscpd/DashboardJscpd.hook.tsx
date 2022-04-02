@@ -5,6 +5,8 @@ import { DashboardJscpdRow } from './components/DashboardJscpdRow';
 import { FileFormat } from '../../../features/jscpd/types/FileFormat.type';
 
 export const useDashboardJscpd = () => {
+    window.electron.store.run('jscpd');
+    console.log('END OF EXEC JSCPD')
     const jscpdReport: JscpdReport = window.electron.store.jscpd();
     console.log('DASHBOARD JSCPD', jscpdReport)
     const totalLines: number = jscpdReport.statistics.total.lines;
@@ -15,7 +17,7 @@ export const useDashboardJscpd = () => {
     const mapDuplicates = (row: [fileFormat: string, statsFileFormat: JscpdStatsFileFormat], index: number) => {
         const [fileFormat, statsFileFormat] = row;
         return (
-            <DashboardJscpdRow statsFileFormat={statsFileFormat} fileFormat={fileFormat as FileFormat} index={index}/>
+            <DashboardJscpdRow statsFileFormat={statsFileFormat} fileFormat={fileFormat as FileFormat} index={index} key={`duplicatesRow-${index}`}/>
         );
     }
     return {
