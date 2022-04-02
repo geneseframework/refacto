@@ -1,0 +1,16 @@
+
+.header {
+    height: 80px;
+    width: 100%;
+}
+
+.stats {
+    display: flex;
+    flex-direction: row;
+}
+
+.stats > div {
+    padding: 20px;
+}
+
+

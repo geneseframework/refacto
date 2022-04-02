@@ -1,0 +1,32 @@
+.mainContainer {
+    padding: 20px;
+}
+
+.totalContainer {
+    padding: 20px;
+    /*font-weight: bold;*/
+}
+
+.arrayContainer {
+    padding: 20px;
+    .arrayHeader {
+        display: flex;
+        font-weight: bold;
+        flex-direction: row;
+
+            padding-bottom: 10px;
+    }
+    .content {
+        padding-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .fileFormat {
+        width: 100px;
+    }
+
+    .stats {
+        flex: 3;
+    }
+}

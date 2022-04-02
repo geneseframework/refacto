@@ -1,7 +1,7 @@
-import { DuplicatesRowProps } from './DuplicatesRow.props';
+import { DashboardJscpdRowProps } from './DashboardJscpdRow.props';
 import { percentage } from '../../../../utils/numbers.utils';
 
-export const useDuplicatesRow = (props: DuplicatesRowProps) => {
+export const useDashboardJscpdRow = (props: DashboardJscpdRowProps) => {
     const { duplicatedLines, lines } = props.statsFileFormat.total;
     const duplicatedLinesPercentage = percentage(duplicatedLines, lines);
     const percentageText: string = `${duplicatedLines} / ${lines} (${duplicatedLinesPercentage} %)`;
