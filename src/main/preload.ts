@@ -10,7 +10,7 @@ contextBridge.exposeInMainWorld('electron', {
             console.log('LAUNCH JSCPD');
             const jscpdJson = require('../../reports/jscpd/html/jscpd-report.json');
             console.log('JSCPD JSON', jscpdJson)
-            // execSync('npm run jscpd');
+            // execSync('npm run jscpdReport');
             // const cp = JSON.parse(jscpdJson);
             // console.log('CP = ', cp)
             return jscpdJson;

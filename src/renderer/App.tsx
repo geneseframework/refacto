@@ -18,13 +18,13 @@ const Hello = () => {
   window.electron.store.set('zzz', 'value to set');
   const response = window.electron.store.get('zzz');
   const jscpd = window.electron.store.jscpd();
-  console.log('jscpd end', jscpd)
+  console.log('jscpdReport end', jscpd)
   return (
     <div>
       <h1>Refacto</h1>
       <div>Content : {response?.toString()}</div>
       <div className="Hello">
-        <Dashboard jscpd={jscpd} />
+        <Dashboard jscpdReport={jscpd} />
       </div>
     </div>
   );

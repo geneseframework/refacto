@@ -1,39 +1,19 @@
 import React from 'react';
 import { DashboardProps } from './Dashboard.props';
+import { percentage } from '../../utils/numbers.utils';
 
 export const Dashboard: React.FC<DashboardProps> = (props) => {
-    const {jscpd} = props;
-    console.log('DASHBOARD JSCPD', jscpd)
-    let z = 'erze';
-    for (let i = 0; i < 10; i++) {
-        z = z + 'ezrez';
-        z = z + 'ggfgd';
-        z = z + 'ezrez';
-        z = z + 'ggfgd';
-        z = z + 'ezrez';
-        z = z + 'ggfgd';
-        z = z + 'ezrez';
-        z = z + 'ggfgd';
-        z = z + 'ezrez';
-        z = z + 'ggfgd';
-    }
-    for (let i = 0; i < 10; i++) {
-        z = z + 'ezrez';
-        z = z + 'ggfgd';
-        z = z + 'ezrez';
-        z = z + 'ggfgd';
-        z = z + 'ezrez';
-        z = z + 'ggfgd';
-        z = z + 'ezrez';
-        z = z + 'ggfgd';
-        z = z + 'ezrez';
-        z = z + 'ggfgd';
-    }
+    const { jscpdReport } = props;
+    console.log('DASHBOARD JSCPD', jscpdReport)
+    const totalLines: number = jscpdReport.statistics.total.lines;
+    const totalDuplicatedLines: number = jscpdReport.statistics.total.duplicatedLines;
+    const duplicatedLinesPercentage: number = percentage(totalDuplicatedLines, totalLines);
+    const duplicatedLines: string = `Lines : ${totalDuplicatedLines} / ${totalLines} (${duplicatedLinesPercentage} %)`;
 
     return (
         <div>
-            <div>Refacto DASHBOARD</div>
-            <div>{JSON.stringify(jscpd)}</div>
+            <div>Duplicated code</div>
+            <div>{duplicatedLines}</div>
         </div>
     );
 };
