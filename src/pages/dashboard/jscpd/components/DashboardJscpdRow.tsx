@@ -6,7 +6,7 @@ import './DashboardJscpdRow.scss';
 export const DashboardJscpdRow: React.FC<DashboardJscpdRowProps> = (props) => {
     const h = useDashboardJscpdRow(props);
     return (
-        <div className='row'>
+        <div className='row' key={`duplicatesRow-${h.index}`}>
             <div className='fileFormat'>{h.fileFormat}</div>
             <div className='stats'>{h.percentageText}</div>
         </div>

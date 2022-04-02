@@ -3,8 +3,8 @@ import { execSync } from 'child_process';
 
 contextBridge.exposeInMainWorld('electron', {
     store: {
-        get(val: any) {
-            return ipcRenderer.sendSync('get', val);
+        get(property: string) {
+            return ipcRenderer.sendSync('get', property);
         },
         jscpd() {
             console.log('LAUNCH JSCPD');
@@ -14,7 +14,11 @@ contextBridge.exposeInMainWorld('electron', {
             // const cp = JSON.parse(jscpdJson);
             // console.log('CP = ', cp)
             return jscpdJson;
-            // return cp;
+        },
+        run(script: string) {
+            console.log('RUN SCRIPT', script)
+            execSync(`npm run ${script}`);
+            console.log('END OF SCRIPT', script)
         },
         set(property: string, val: any) {
             ipcRenderer.send('set', property, val);
