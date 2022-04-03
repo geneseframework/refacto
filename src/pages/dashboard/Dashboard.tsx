@@ -4,12 +4,14 @@ import './Dashboard.scss'
 import { NavBar } from '../../components/NavBar/NavBar';
 
 export const Dashboard: React.FC = () => {
+    console.log('DASHBOARDDDDDD');
+    window.electron.store.removeBrowserViews();
     return (
         <div className='dashboardMainContainer'>
             <NavBar />
             <div className='stats'>
-                <div><h2>Cognitive complexity</h2></div>
-                <div>
+                <div className='leftContainer'><h2>Cognitive complexity</h2></div>
+                <div className='rightContainer'>
                     <div>
                         <h2>Code coverage</h2>
                     </div>

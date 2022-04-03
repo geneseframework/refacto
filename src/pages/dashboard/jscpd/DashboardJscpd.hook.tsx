@@ -6,9 +6,7 @@ import { FileFormat } from '../../../features/jscpd/types/FileFormat.type';
 
 export const useDashboardJscpd = () => {
     window.electron.store.run('jscpd');
-    console.log('END OF EXEC JSCPD')
     const jscpdReport: JscpdReport = window.electron.store.jscpd();
-    console.log('DASHBOARD JSCPD', jscpdReport)
     const totalLines: number = jscpdReport.statistics.total.lines;
     const totalDuplicatedLines: number = jscpdReport.statistics.total.duplicatedLines;
     const duplicatedLinesPercentage: number = percentage(totalDuplicatedLines, totalLines);

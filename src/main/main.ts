@@ -17,7 +17,7 @@ import { resolveHtmlPath } from './util';
 import Store from 'electron-store';
 
 export const CONFIG = {
-    headerHeight: 50,
+    headerHeight: 40,
     height: 768,
     width: 1366,
 }
@@ -152,17 +152,27 @@ ipcMain.on('get', async (event, val) => {
 
 ipcMain.on('set', async (event, key, val) => {
     store.set(key, val);
+});
 
+ipcMain.on('displayCodeCoverageWebview', async () => {
     const view = new BrowserView();
     mainWindow!.setBrowserView(view);
     // view.setBounds({ x: 0, y: CONFIG.headerHeight, width: 1000, height: CONFIG.height - CONFIG.headerHeight });
     view.setBounds({ x: 0, y: CONFIG.headerHeight, width: CONFIG.width, height: CONFIG.height - CONFIG.headerHeight });
-    view.setBackgroundColor('#ffffff');
-    view.setAutoResize({
-        width: true,
-        height: true,
-        horizontal: true,
-        vertical: true,
-    });
-    view.webContents.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html')
+    await view.webContents.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html')
+});
+
+ipcMain.on('displayCodeDuplicationWebview', async () => {
+    const view = new BrowserView();
+    mainWindow!.setBrowserView(view);
+    // view.setBounds({ x: 0, y: CONFIG.headerHeight, width: 1000, height: CONFIG.height - CONFIG.headerHeight });
+    view.setBounds({ x: 0, y: CONFIG.headerHeight, width: CONFIG.width, height: CONFIG.height - CONFIG.headerHeight });
+    await view.webContents.loadFile('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/index.html')
+});
+
+ipcMain.on('removeBrowserViews', async () => {
+    const views = mainWindow?.getBrowserViews() ?? [];
+    for (const view of views) {
+        mainWindow?.removeBrowserView(view);
+    }
 });
