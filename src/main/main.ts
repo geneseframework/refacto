@@ -85,8 +85,8 @@ const createWindow = async () => {
         },
     });
 
-    mainWindow.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html');
-    // mainWindow.loadURL(resolveHtmlPath('index.html'));
+    // mainWindow.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html');
+    mainWindow.loadURL(resolveHtmlPath('index.html'));
 
     // const view = new BrowserView()
     // mainWindow.setBrowserView(view)

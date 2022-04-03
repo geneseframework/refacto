@@ -1,6 +1,7 @@
 import { MemoryRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Dashboard } from '../pages/dashboard/Dashboard';
+import { CodeCoverage } from '../pages/code-coverage/CodeCoverage';
 
 declare global {
     interface Window {
@@ -32,6 +33,7 @@ export default function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Hello />} />
+                <Route path="/code-coverage" element={<CodeCoverage />} />
             </Routes>
         </Router>
     );
