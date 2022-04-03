@@ -11,6 +11,9 @@ contextBridge.exposeInMainWorld('electron', {
         displayCodeDuplicationWebview() {
             ipcRenderer.send('displayCodeDuplicationWebview');
         },
+        displayComplexityWebview() {
+            ipcRenderer.send('displayComplexityWebview');
+        },
         get(property: string) {
             return ipcRenderer.sendSync('get', property);
         },

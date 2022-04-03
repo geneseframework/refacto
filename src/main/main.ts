@@ -159,7 +159,13 @@ ipcMain.on('displayCodeCoverageWebview', async () => {
     mainWindow!.setBrowserView(view);
     // view.setBounds({ x: 0, y: CONFIG.headerHeight, width: 1000, height: CONFIG.height - CONFIG.headerHeight });
     view.setBounds({ x: 0, y: CONFIG.headerHeight, width: CONFIG.width, height: CONFIG.height - CONFIG.headerHeight });
-    await view.webContents.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html')
+    view.setAutoResize({
+        width: true,
+        height: true,
+        horizontal: true,
+        vertical: true,
+    });
+    await view.webContents.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html');
 });
 
 ipcMain.on('displayCodeDuplicationWebview', async () => {
@@ -167,7 +173,26 @@ ipcMain.on('displayCodeDuplicationWebview', async () => {
     mainWindow!.setBrowserView(view);
     // view.setBounds({ x: 0, y: CONFIG.headerHeight, width: 1000, height: CONFIG.height - CONFIG.headerHeight });
     view.setBounds({ x: 0, y: CONFIG.headerHeight, width: CONFIG.width, height: CONFIG.height - CONFIG.headerHeight });
-    await view.webContents.loadFile('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/index.html')
+    view.setAutoResize({
+        width: true,
+        height: true,
+        horizontal: true,
+        vertical: true,
+    });    await view.webContents.loadFile('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/index.html');
+});
+
+ipcMain.on('displayComplexityWebview', async () => {
+    const view = new BrowserView();
+    mainWindow!.setBrowserView(view);
+    // view.setBounds({ x: 0, y: CONFIG.headerHeight, width: 1000, height: CONFIG.height - CONFIG.headerHeight });
+    view.setBounds({ x: 0, y: CONFIG.headerHeight, width: CONFIG.width, height: CONFIG.height - CONFIG.headerHeight });
+    view.setAutoResize({
+        width: true,
+        height: true,
+        horizontal: true,
+        vertical: true,
+    });
+    await view.webContents.loadFile('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/genese/complexity/reports/folder-report.html');
 });
 
 ipcMain.on('removeBrowserViews', async () => {
