@@ -16,6 +16,11 @@ import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import Store from 'electron-store';
 
+const CONFIG = {
+    headerHeight: 50,
+    height: 768,
+    width: 1366,
+}
 const store = new Store();
 
 export default class AppUpdater {
@@ -74,8 +79,8 @@ const createWindow = async () => {
 
     mainWindow = new BrowserWindow({
         show: false,
-        width: 1366,
-        height: 768,
+        width: CONFIG.width,
+        height: CONFIG.height,
         icon: getAssetPath('icon.png'),
         webPreferences: {
             contextIsolation: true,
@@ -87,12 +92,6 @@ const createWindow = async () => {
 
     // mainWindow.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html');
     mainWindow.loadURL(resolveHtmlPath('index.html'));
-
-    // const view = new BrowserView()
-    // mainWindow.setBrowserView(view)
-    // view.setBounds({ x: 0, y: 0, width: 500, height: 300 })
-    // view.webContents.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html')
-
     mainWindow.on('ready-to-show', () => {
         if (!mainWindow) {
             throw new Error('"mainWindow" is not defined');
@@ -113,6 +112,7 @@ const createWindow = async () => {
 
     // Open urls in the user's browser
     mainWindow.webContents.setWindowOpenHandler((edata) => {
+        console.log('OPEN NEW WINDOW', edata)
         shell.openExternal(edata.url);
         return { action: 'deny' };
     });
@@ -152,4 +152,31 @@ ipcMain.on('get', async (event, val) => {
 
 ipcMain.on('set', async (event, key, val) => {
     store.set(key, val);
+
+    const view = new BrowserView();
+    mainWindow!.setBrowserView(view);
+    // const mainWindowBounds = mainWindow.getBounds();
+    // const mainWindowContentBounds = mainWindow.getContentBounds();
+    // const mainWindowGetContentSize = mainWindow.getContentSize();
+    // const mainWindowGetSize = mainWindow.getSize();
+    // console.log('mainWindowBounds', mainWindowBounds)
+    // console.log('mainWindowContentBounds', mainWindowContentBounds)
+    // console.log('mainWindowGetContentSize', mainWindowGetContentSize)
+    // console.log('mainWindowGetSize', mainWindowGetSize)
+    view.setBounds({ x: 0, y: CONFIG.headerHeight, width: 500, height: CONFIG.height - CONFIG.headerHeight });
+    // view.setBounds({ x: 0, y: CONFIG.headerHeight, width: CONFIG.width, height: CONFIG.height - CONFIG.headerHeight });
+    view.setBackgroundColor('#ffffff');
+    view.setAutoResize({
+        width: true,
+        height: true,
+        horizontal: true,
+        vertical: true,
+    });
+    const viewBounds = view.getBounds();
+    console.log('viewBounds', viewBounds)
+    const canGoBack = view.webContents.canGoBack();
+    console.log('canGoBack', canGoBack)
+    view.webContents.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html')
+
+    // mainWindow!.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html');
 });

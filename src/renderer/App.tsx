@@ -16,23 +16,11 @@ declare global {
     }
 }
 
-const Hello = () => {
-    // window.electron.store.set('zzz', 'value to set');
-    // const response = window.electron.store.get('zzz');
-    return (
-        <div>
-            <div className="Hello">
-                <Dashboard />
-            </div>
-        </div>
-    );
-};
-
 export default function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Hello />} />
+                <Route path="/" element={<Dashboard />} />
                 <Route path="/code-coverage" element={<CodeCoverage />} />
             </Routes>
         </Router>

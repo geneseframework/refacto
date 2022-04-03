@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export const Dashboard: React.FC = () => {
     return (
-        <div>
+        <div className='dashboardMainContainer'>
             <div className='header'><h1>Refacto</h1></div>
             <div className='stats'>
                 <div><h2>Cognitive complexity</h2></div>
