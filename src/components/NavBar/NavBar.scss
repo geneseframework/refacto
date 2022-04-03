@@ -1,0 +1,20 @@
+
+.mainNavBarContainer {
+    height: 50px;
+    background-color: #eeeeee;
+    font-size: large;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 1px solid #718096;
+}
+
+.tab {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    border-right: 1px solid #718096;
+}

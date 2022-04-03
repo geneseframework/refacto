@@ -6,7 +6,7 @@ export const DashboardJscpd: React.FC = () => {
     const h = useDashboardJscpd();
 
     return (
-        <div className='mainContainer'>
+        <div className='mainDashboardJscpdContainer'>
             <div><h2>Duplicated code</h2></div>
             <div className='totalContainer'>{h.duplicatedLines}</div>
             <div className='arrayContainer'>

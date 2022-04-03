@@ -16,7 +16,7 @@ import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import Store from 'electron-store';
 
-const CONFIG = {
+export const CONFIG = {
     headerHeight: 50,
     height: 768,
     width: 1366,

@@ -2,11 +2,13 @@ import React from 'react';
 import { DashboardJscpd } from './jscpd/DashboardJscpd';
 import './Dashboard.scss'
 import { Link } from 'react-router-dom';
+import { NavBar } from '../../components/NavBar/NavBar';
 
 export const Dashboard: React.FC = () => {
     return (
         <div className='dashboardMainContainer'>
-            <div className='header'><h1>Refacto</h1></div>
+            <NavBar />
+            {/*<div className='header'><h1>Refacto</h1></div>*/}
             <div className='stats'>
                 <div><h2>Cognitive complexity</h2></div>
                 <div>
