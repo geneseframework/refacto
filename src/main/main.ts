@@ -85,12 +85,13 @@ const createWindow = async () => {
         },
     });
 
-    mainWindow.loadURL(resolveHtmlPath('index.html'));
+    mainWindow.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html');
+    // mainWindow.loadURL(resolveHtmlPath('index.html'));
 
-    const view = new BrowserView()
-    mainWindow.setBrowserView(view)
-    view.setBounds({ x: 0, y: 0, width: 300, height: 300 })
-    view.webContents.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html')
+    // const view = new BrowserView()
+    // mainWindow.setBrowserView(view)
+    // view.setBounds({ x: 0, y: 0, width: 500, height: 300 })
+    // view.webContents.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html')
 
     mainWindow.on('ready-to-show', () => {
         if (!mainWindow) {
