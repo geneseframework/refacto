@@ -6,6 +6,7 @@ body {
     position: relative;
     color: white;
     height: 100vh;
+    margin: 0;
     background: linear-gradient(
         200.96deg,
         #fedc2a -29.09%,
@@ -17,6 +18,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#root {
+    display: flex;
+    flex: 1;
+    height: 100%;
 }
 
 button {
@@ -52,13 +59,4 @@ a {
 a:hover {
     opacity: 1;
     text-decoration: none;
-}
-
-.Hello {
-    display: flex;
-    /*background-color: #1a202c;*/
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-    /*width: 800px;*/
 }

@@ -11,13 +11,11 @@ contextBridge.exposeInMainWorld('electron', {
         jscpd() {
             console.log('LAUNCH JSCPD');
             const jscpdJson = fs.readFileSync('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json', 'utf8');
-            console.log('JSCPD JSON parse', JSON.parse(jscpdJson))
+            console.log('JSCPD report', JSON.parse(jscpdJson))
             return JSON.parse(jscpdJson);
         },
         run(script: string) {
-            console.log('RUN SCRIPT', script)
             execSync(`npm run ${script}`);
-            console.log('END OF SCRIPT', script)
         },
         set(property: string, val: any) {
             ipcRenderer.send('set', property, val);
