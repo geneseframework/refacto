@@ -5,14 +5,25 @@ import * as fs from 'fs';
 
 contextBridge.exposeInMainWorld('electron', {
     store: {
+        displayCodeCoverageWebview() {
+            ipcRenderer.send('displayCodeCoverageWebview');
+        },
+        displayCodeDuplicationWebview() {
+            ipcRenderer.send('displayCodeDuplicationWebview');
+        },
+        displayComplexityWebview() {
+            ipcRenderer.send('displayComplexityWebview');
+        },
         get(property: string) {
             return ipcRenderer.sendSync('get', property);
         },
         jscpd() {
-            console.log('LAUNCH JSCPD');
             const jscpdJson = fs.readFileSync('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json', 'utf8');
             console.log('JSCPD report', JSON.parse(jscpdJson))
             return JSON.parse(jscpdJson);
+        },
+        removeBrowserViews() {
+            ipcRenderer.send('removeBrowserViews');
         },
         run(script: string) {
             execSync(`npm run ${script}`);

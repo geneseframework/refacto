@@ -20,6 +20,8 @@ node_modules
 # OSX
 .DS_Store
 
+ast.json
+genese
 reports
 release
 release/app/dist

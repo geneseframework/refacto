@@ -1,13 +1,14 @@
 import React from 'react';
 import './CodeCoverage.scss';
-import { Link } from 'react-router-dom';
+import { NavBar } from '../../components/NavBar/NavBar';
 
 export const CodeCoverage: React.FC = () => {
-    window.electron.store.set('zzz', 'value to set');
+    console.log('COVERAGEEEE')
+    window.electron.store.displayCodeCoverageWebview();
+
     return (
         <div className='mainCoverageContainer'>
-            <Link to='/'>Go back</Link>
-            <div><h1>Code coverage</h1></div>
+            <NavBar />
         </div>
     );
 }

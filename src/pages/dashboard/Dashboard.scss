@@ -1,21 +1,31 @@
 .dashboardMainContainer {
-    flex: 1;
     height: 100%;
     width: 100%;
-}
-
-.header {
-    height: 80px;
-    width: 100%;
+    background-color: #718096;
 }
 
 .stats {
     display: flex;
     flex-direction: row;
+    height: 100%;
 }
 
 .stats > div {
     padding: 20px;
+}
+
+.leftContainer {
+    flex: 2;
+    background-color: #5a67d8;
+    height: 100%;
+}
+
+.rightContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #48bb78;
+    height: 100%;
 }
 
 
