@@ -1,4 +1,4 @@
-import { percentage } from '../../../utils/numbers.utils';
+import { percentage } from '../../../shared/utils/numbers.utils';
 import { JscpdReport } from '../../../features/jscpd/interfaces/JscpdReport.interface';
 import { JscpdStatsFileFormat } from '../../../features/jscpd/interfaces/JscpdStatsFileFormat.interface';
 import { DashboardJscpdRow } from './components/DashboardJscpdRow';

@@ -1,5 +1,5 @@
 import { DashboardJscpdRowProps } from './DashboardJscpdRow.props';
-import { percentage } from '../../../../utils/numbers.utils';
+import { percentage } from '../../../../shared/utils/numbers.utils';
 
 export const useDashboardJscpdRow = (props: DashboardJscpdRowProps) => {
     const { duplicatedLines, lines } = props.statsFileFormat.total;

@@ -9,12 +9,13 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, BrowserView, shell, ipcMain } from 'electron';
+import { app, BrowserView, BrowserWindow, ipcMain, Rectangle, shell } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
-import { resolveHtmlPath } from './util';
+import { createBrowserView, removeBrowserViews, resolveHtmlPath } from './main.utils';
 import Store from 'electron-store';
+import { Route } from '../shared/enums/route.enum';
 
 export const CONFIG = {
     headerHeight: 40,
@@ -31,7 +32,11 @@ export default class AppUpdater {
     }
 }
 
-let mainWindow: BrowserWindow | null = null;
+let mainWindow: BrowserWindow | undefined = undefined;
+let codeCoverageView: BrowserView | undefined = undefined;
+let codeDuplicationView: BrowserView | undefined = undefined;
+let complexityView: BrowserView | undefined = undefined;
+let currentView: BrowserView | undefined = undefined;
 
 ipcMain.on('ipc-example', async (event, arg) => {
     const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
@@ -107,6 +112,10 @@ const createWindow = async () => {
         mainWindow = null;
     });
 
+    codeCoverageView = await createBrowserView('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html');
+    codeDuplicationView = await createBrowserView('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/index.html');
+    complexityView = await createBrowserView('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/genese/complexity/reports/folder-report.html');
+
     const menuBuilder = new MenuBuilder(mainWindow);
     menuBuilder.buildMenu();
 
@@ -154,50 +163,35 @@ ipcMain.on('set', async (event, key, val) => {
     store.set(key, val);
 });
 
-ipcMain.on('displayCodeCoverageWebview', async () => {
-    const view = new BrowserView();
-    mainWindow!.setBrowserView(view);
-    // view.setBounds({ x: 0, y: CONFIG.headerHeight, width: 1000, height: CONFIG.height - CONFIG.headerHeight });
-    view.setBounds({ x: 0, y: CONFIG.headerHeight, width: CONFIG.width, height: CONFIG.height - CONFIG.headerHeight });
-    view.setAutoResize({
-        width: true,
-        height: true,
-        horizontal: true,
-        vertical: true,
-    });
-    await view.webContents.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html');
-});
-
-ipcMain.on('displayCodeDuplicationWebview', async () => {
-    const view = new BrowserView();
-    mainWindow!.setBrowserView(view);
-    // view.setBounds({ x: 0, y: CONFIG.headerHeight, width: 1000, height: CONFIG.height - CONFIG.headerHeight });
-    view.setBounds({ x: 0, y: CONFIG.headerHeight, width: CONFIG.width, height: CONFIG.height - CONFIG.headerHeight });
-    view.setAutoResize({
-        width: true,
-        height: true,
-        horizontal: true,
-        vertical: true,
-    });    await view.webContents.loadFile('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/index.html');
-});
-
-ipcMain.on('displayComplexityWebview', async () => {
-    const view = new BrowserView();
-    mainWindow!.setBrowserView(view);
-    // view.setBounds({ x: 0, y: CONFIG.headerHeight, width: 1000, height: CONFIG.height - CONFIG.headerHeight });
-    view.setBounds({ x: 0, y: CONFIG.headerHeight, width: CONFIG.width, height: CONFIG.height - CONFIG.headerHeight });
-    view.setAutoResize({
-        width: true,
-        height: true,
-        horizontal: true,
-        vertical: true,
-    });
-    await view.webContents.loadFile('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/genese/complexity/reports/folder-report.html');
-});
-
-ipcMain.on('removeBrowserViews', async () => {
-    const views = mainWindow?.getBrowserViews() ?? [];
-    for (const view of views) {
-        mainWindow?.removeBrowserView(view);
+ipcMain.on('setBrowserView', async (event, route: Route) => {
+    console.log('route', route)
+    switch (route) {
+        case Route.CODE_COVERAGE:
+            currentView = codeCoverageView;
+            break;
+        case Route.CODE_DUPLICATION:
+            currentView = codeDuplicationView;
+            break;
+        case Route.COMPLEXITY:
+            currentView = complexityView;
+            break;
+        case Route.DASHBOARD:
+            currentView = undefined;
+            break;
+    }
+    if (!currentView) {
+        removeBrowserViews(mainWindow!);
+    } else {
+        mainWindow!.setBrowserView(currentView);
+        const rectangle: Rectangle = mainWindow!.getContentBounds();
+        rectangle.x = 0;
+        rectangle.y = CONFIG.headerHeight;
+        currentView!.setBounds(rectangle);
+        currentView!.setAutoResize({
+            width: true,
+            height: true,
+            horizontal: true,
+            vertical: true,
+        });
     }
 });

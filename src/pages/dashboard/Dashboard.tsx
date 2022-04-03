@@ -2,10 +2,10 @@ import React from 'react';
 import { DashboardJscpd } from './jscpd/DashboardJscpd';
 import './Dashboard.scss'
 import { NavBar } from '../../components/NavBar/NavBar';
+import { Route } from '../../shared/enums/route.enum';
 
 export const Dashboard: React.FC = () => {
-    console.log('DASHBOARDDDDDD');
-    window.electron.store.removeBrowserViews();
+    window.electron.store.setBrowserView(Route.DASHBOARD);
     return (
         <div className='dashboardMainContainer'>
             <NavBar />
