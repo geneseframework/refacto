@@ -5,14 +5,8 @@ import * as fs from 'fs';
 
 contextBridge.exposeInMainWorld('electron', {
     store: {
-        displayCodeCoverageWebview() {
-            ipcRenderer.send('displayCodeCoverageWebview');
-        },
-        displayCodeDuplicationWebview() {
-            ipcRenderer.send('displayCodeDuplicationWebview');
-        },
-        displayComplexityWebview() {
-            ipcRenderer.send('displayComplexityWebview');
+        setBrowserView(route: string) {
+            ipcRenderer.send('setBrowserView', route);
         },
         get(property: string) {
             return ipcRenderer.sendSync('get', property);

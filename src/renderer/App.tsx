@@ -11,6 +11,7 @@ declare global {
             store: {
                 get: (key: string) => any;
                 jscpd: () => any;
+                setBrowserView: (route: string) => any;
                 displayCodeCoverageWebview: () => any;
                 displayCodeDuplicationWebview: () => any;
                 displayComplexityWebview: () => any;
