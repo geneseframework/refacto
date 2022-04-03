@@ -87,10 +87,10 @@ const createWindow = async () => {
             preload: app.isPackaged
                 ? path.join(__dirname, 'preload.js')
                 : path.join(__dirname, '../../.erb/dll/preload.js'),
+            nodeIntegrationInSubFrames: true,
         },
     });
 
-    // mainWindow.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html');
     mainWindow.loadURL(resolveHtmlPath('index.html'));
     mainWindow.on('ready-to-show', () => {
         if (!mainWindow) {
@@ -155,16 +155,8 @@ ipcMain.on('set', async (event, key, val) => {
 
     const view = new BrowserView();
     mainWindow!.setBrowserView(view);
-    // const mainWindowBounds = mainWindow.getBounds();
-    // const mainWindowContentBounds = mainWindow.getContentBounds();
-    // const mainWindowGetContentSize = mainWindow.getContentSize();
-    // const mainWindowGetSize = mainWindow.getSize();
-    // console.log('mainWindowBounds', mainWindowBounds)
-    // console.log('mainWindowContentBounds', mainWindowContentBounds)
-    // console.log('mainWindowGetContentSize', mainWindowGetContentSize)
-    // console.log('mainWindowGetSize', mainWindowGetSize)
-    view.setBounds({ x: 0, y: CONFIG.headerHeight, width: 500, height: CONFIG.height - CONFIG.headerHeight });
-    // view.setBounds({ x: 0, y: CONFIG.headerHeight, width: CONFIG.width, height: CONFIG.height - CONFIG.headerHeight });
+    // view.setBounds({ x: 0, y: CONFIG.headerHeight, width: 1000, height: CONFIG.height - CONFIG.headerHeight });
+    view.setBounds({ x: 0, y: CONFIG.headerHeight, width: CONFIG.width, height: CONFIG.height - CONFIG.headerHeight });
     view.setBackgroundColor('#ffffff');
     view.setAutoResize({
         width: true,
@@ -172,11 +164,5 @@ ipcMain.on('set', async (event, key, val) => {
         horizontal: true,
         vertical: true,
     });
-    const viewBounds = view.getBounds();
-    console.log('viewBounds', viewBounds)
-    const canGoBack = view.webContents.canGoBack();
-    console.log('canGoBack', canGoBack)
     view.webContents.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html')
-
-    // mainWindow!.loadFile('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html');
 });
