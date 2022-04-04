@@ -12,9 +12,6 @@ declare global {
                 get: (key: string) => any;
                 jscpd: () => any;
                 setBrowserView: (route: string) => any;
-                displayCodeCoverageWebview: () => any;
-                displayCodeDuplicationWebview: () => any;
-                displayComplexityWebview: () => any;
                 removeBrowserViews: () => any;
                 run: (script: string) => any;
                 set: (key: string, val: any) => void;
