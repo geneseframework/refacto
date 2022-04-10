@@ -22,6 +22,8 @@ declare global {
     }
 }
 
+export const store = window.electron.store;
+
 export default function App() {
     return (
         <Router>

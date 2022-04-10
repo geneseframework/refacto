@@ -1,8 +1,8 @@
 import React from 'react';
 import './NavBar.scss';
 import { Link } from 'react-router-dom';
-import { navBarStyle } from './NavBar.style';
 import { useNavBar } from './NavBar.hook';
+import { Route } from '../../shared/enums/route.enum';
 
 export const NavBar: React.FC = () => {
     const h = useNavBar();
@@ -11,13 +11,13 @@ export const NavBar: React.FC = () => {
             <div className='left'>
                 <span className='refacto'>Refacto</span></div>
             <div className='center'>
-                <div className='tab'><Link to="/" style={navBarStyle.link}>Dashboard</Link></div>
-                <div className='tab'><Link to="/complexity" style={navBarStyle.link}>Complexity</Link></div>
-                <div className='tab'><Link to="/code-coverage" style={navBarStyle.link}>Code coverage</Link></div>
-                <div className='tab'><Link to="/code-duplication" style={navBarStyle.link}>Code duplication</Link></div>
+                <div className='tab'><Link to="/" style={h.linkStyle(Route.DASHBOARD)}>Dashboard</Link></div>
+                <div className='tab'><Link to="/complexity" style={h.linkStyle(Route.COMPLEXITY)}>Complexity</Link></div>
+                <div className='tab'><Link to="/code-coverage" style={h.linkStyle(Route.CODE_COVERAGE)}>Coverage</Link></div>
+                <div className='tab'><Link to="/code-duplication" style={h.linkStyle(Route.CODE_DUPLICATION)}>Duplication</Link></div>
             </div>
             <div className='right'>
-                <Link to="/settings" style={navBarStyle.link}>Settings</Link>
+                <Link to="/settings" style={h.linkStyle(Route.SETTINGS)}>Settings</Link>
             </div>
         </div>
     );
