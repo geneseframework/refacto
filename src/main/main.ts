@@ -17,6 +17,7 @@ import { createBrowserView, removeBrowserViews, resolveHtmlPath } from './main.u
 import Store from 'electron-store';
 import { Route } from '../shared/enums/route.enum';
 import { Project } from '../shared/classes/project';
+import { isEmpty } from '../shared/utils/arrays.utils';
 
 export const CONFIG = {
     headerHeight: 40,
@@ -24,11 +25,14 @@ export const CONFIG = {
     width: 1366,
 }
 const store = new Store();
-const projects: Project[] = [];
-const project = new Project('Bleu Libellule', '/Users/utilisateur/Documents/projects/bleu-libellule');
-projects.push(project);
-store.set('project', project);
-store.set('projects', projects);
+const projects: Project[] = store.get('projects') as Project[] ?? [];
+if (isEmpty(projects)) {
+    const project = new Project('Bleu Libellule', '/Users/utilisateur/Documents/projects/bleu-libellule');
+    projects.push(project);
+    console.log('NO INITIAL PROJECT => new project : ', project)
+    store.set('project', project);
+    store.set('projects', projects);
+}
 
 export default class AppUpdater {
     constructor() {

@@ -29,7 +29,9 @@ export const Dashboard: React.FC = () => {
                         <h2>Code coverage</h2>
                     </div>
                     <div><h2>Code smells</h2></div>
-                    <div><DashboardJscpd duplicationStats={project?.stats?.duplication} /></div>
+                    <div>
+                        {project && <DashboardJscpd duplicationStats={project?.stats?.duplication} />}
+                    </div>
                 </div>
             </div>
         </div>

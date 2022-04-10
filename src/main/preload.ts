@@ -25,6 +25,7 @@ contextBridge.exposeInMainWorld('electron', {
         set(property: string, val: any) {
             ipcRenderer.send('set', property, val);
         },
+        // update(property: string)
     },
     ipcRenderer: {
         myPing() {

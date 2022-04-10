@@ -1,9 +1,7 @@
 import { isPositive, percentage } from '../../../shared/utils/numbers.utils';
 import { JscpdReport } from '../../../features/jscpd/interfaces/JscpdReport.interface';
-import { JscpdStatsFileFormat } from '../../../features/jscpd/interfaces/JscpdStatsFileFormat.interface';
 import { DashboardJscpdRow } from './components/DashboardJscpdRow';
-import { FileFormat } from '../../../features/jscpd/types/FileFormat.type';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DuplicationStats } from '../../../shared/classes/duplication-stats';
 import { Project } from '../../../shared/classes/project';
 import { DashboardJscpdProps } from './DashboardJscpd';
@@ -23,24 +21,27 @@ export const useDashboardJscpd = (props: DashboardJscpdProps) => {
         console.log('HAS NOT DUPL STATS')
     }
     useEffect(() => {
-        console.log('report ?', window.electron.store.get('report'))
+        let stats = duplicationStats ?? new DuplicationStats();
         if (!duplicationStats) {
             window.electron.store.run('jscpd');
             const jscpdReport: JscpdReport = window.electron.store.jscpd();
             console.log('jscpdReport', jscpdReport)
-            const stats = new DuplicationStats();
             stats.init(jscpdReport);
             console.log('stats', stats)
-            const percents: number | undefined = percentage(stats.header.duplicates, stats.header.total);
-            setDuplicatedLinesPercentage(percents ? percents.toString() : '');
-            setDuplicatedLines(`Duplicated lines : ${stats.header.total} / ${stats.header.duplicates} (${percents} %)`);
             console.log('duplicatedLinesPercentage', duplicatedLinesPercentage)
-            setRows(stats.types);
-
+            const project: Project = window.electron.store.get('project') ?? {};
+            project.stats.duplication = new DuplicationStats(stats.header, stats.types);
+            console.log('project ?', project)
+            window.electron.store.set('project', project)
+            const updated = window.electron.store.get('project')
+            console.log('updated', updated)
         }
+        const percents: number | undefined = percentage(stats.header.duplicates, stats.header.total);
+        setDuplicatedLinesPercentage(percents ? percents.toString() : '');
+        setRows(stats.types);
+        setDuplicatedLines(`Duplicated lines : ${stats.header.total} / ${stats.header.duplicates} (${percents} %)`);
     }, [duplicationStats])
     const mapDuplicates = (row: DuplicationStatsItem, index: number) => {
-    // const mapDuplicates = (duplicationStatsItem: DuplicationStatsItem, index: number) => {
         return (
             <DashboardJscpdRow row={row} key={index} />
         );
