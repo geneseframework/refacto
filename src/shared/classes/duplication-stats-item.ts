@@ -1,4 +1,4 @@
-export class StatsDuplicationItem {
+export class DuplicationStatsItem {
     duplicates?: number;
     name: string;
     total?: number;

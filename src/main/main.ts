@@ -27,7 +27,6 @@ const store = new Store();
 const projects: Project[] = [];
 const project = new Project('Bleu Libellule', '/Users/utilisateur/Documents/projects/bleu-libellule');
 projects.push(project);
-console.log('project', project)
 store.set('project', project);
 store.set('projects', projects);
 

@@ -1,9 +1,9 @@
-import { StatsDuplication } from './stats-duplication';
+import { DuplicationStats } from './duplication-stats';
 
 export class Stats {
-    duplication?: StatsDuplication;
+    duplication?: DuplicationStats;
 
-    constructor(duplication = new StatsDuplication()) {
+    constructor(duplication?: DuplicationStats) {
         this.duplication = duplication;
     }
 }

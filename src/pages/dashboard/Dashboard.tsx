@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { DashboardJscpd } from './jscpd/DashboardJscpd';
 import './Dashboard.scss'
 import { NavBar } from '../../components/NavBar/NavBar';
 import { Route } from '../../shared/enums/route.enum';
+import { Project } from '../../shared/classes/project';
 
 export const Dashboard: React.FC = () => {
     window.electron.store.setBrowserView(Route.DASHBOARD);
     const projectName: string = window.electron.store.get('project').name;
-    // console.log('project', JSON.stringify(window.electron.store.get('project')))
+    const [project, setProject] = useState<Project | undefined>();
+    useEffect(() => {
+        if (!project) {
+            const project: Project = window.electron.store.get('project');
+            console.log('project', project)
+            setProject(project)
+        }
+    }, [project, setProject])
     return (
         <div className='dashboardMainContainer'>
             <NavBar />
@@ -21,7 +29,7 @@ export const Dashboard: React.FC = () => {
                         <h2>Code coverage</h2>
                     </div>
                     <div><h2>Code smells</h2></div>
-                    <div><DashboardJscpd /></div>
+                    <div><DashboardJscpd duplicationStats={project?.stats?.duplication} /></div>
                 </div>
             </div>
         </div>
