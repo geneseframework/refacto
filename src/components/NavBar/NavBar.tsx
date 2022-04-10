@@ -6,7 +6,8 @@ import { navBarStyle } from './NavBar.style';
 export const NavBar: React.FC = () => {
     return (
         <div className='mainNavBarContainer'>
-            <div className='left'>Refacto</div>
+            <div className='left'>
+                <span className='refacto'>Refacto</span></div>
             <div className='center'>
                 <div className='tab'><Link to="/" style={navBarStyle.link}>Dashboard</Link></div>
                 <div className='tab'><Link to="/complexity" style={navBarStyle.link}>Complexity</Link></div>
