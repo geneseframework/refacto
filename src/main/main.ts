@@ -25,6 +25,7 @@ export const CONFIG = {
     width: 1366,
 }
 const store = new Store();
+store.delete('projects');
 const projects: Project[] = store.get('projects') as Project[] ?? [];
 if (isEmpty(projects)) {
     const project = new Project('Bleu Libellule', '/Users/utilisateur/Documents/projects/bleu-libellule');
@@ -32,6 +33,7 @@ if (isEmpty(projects)) {
     console.log('NO INITIAL PROJECT => new project : ', project)
     store.set('project', project);
     store.set('projects', projects);
+    console.log('PROJECT', store.get('project'))
 }
 
 export default class AppUpdater {

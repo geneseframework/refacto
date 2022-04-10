@@ -14,10 +14,12 @@ export class DuplicationStats {
 
     init(jscpdReport: JscpdReport): void {
         const stats: JscpdStats = jscpdReport.statistics;
-        this.header.total = stats.total.lines;
-        this.header.duplicates = stats.total.duplicatedLines;
-        for (let key in stats.formats) {
-            this.types.push(new DuplicationStatsItem(key, stats.formats[key as FileFormat].total.duplicatedLines, stats.formats[key as FileFormat].total.lines))
+        if (stats) {
+            this.header.total = stats.total.lines;
+            this.header.duplicates = stats.total.duplicatedLines;
+            for (let key in stats.formats) {
+                this.types.push(new DuplicationStatsItem(key, stats.formats[key as FileFormat].total.duplicatedLines, stats.formats[key as FileFormat].total.lines))
+            }
         }
     }
 }

@@ -4,16 +4,17 @@ import { Dashboard } from '../pages/dashboard/Dashboard';
 import { CodeCoverage } from '../pages/code-coverage/CodeCoverage';
 import { CodeDuplication } from '../pages/code-duplication/CodeDuplication';
 import { Complexity } from '../pages/complexity/Complexity';
+import { JscpdReport } from '../features/jscpd/interfaces/JscpdReport.interface';
 
 declare global {
     interface Window {
         electron: {
             store: {
                 get: (key: string) => any;
-                jscpd: () => any;
+                getJscpdReport: () => JscpdReport | undefined;
                 setBrowserView: (route: string) => any;
                 removeBrowserViews: () => any;
-                run: (script: string) => any;
+                runJscpd: () => any;
                 set: (key: string, val: any) => void;
             };
         };

@@ -16,18 +16,26 @@ export const useDashboardJscpd = (props: DashboardJscpdProps) => {
     useEffect(() => {
         let stats = duplicationStats ?? new DuplicationStats();
         if (!duplicationStats) {
-            window.electron.store.run('jscpd');
-            const jscpdReport: JscpdReport = window.electron.store.jscpd();
-            stats.init(jscpdReport);
-            const project: Project = window.electron.store.get('project') ?? {};
-            project.stats.duplication = new DuplicationStats(stats.header, stats.types);
-            console.log('project ?', project)
-            window.electron.store.set('project', project)
+            // window.electron.store.runJscpd();
+            const jscpdReport: JscpdReport | undefined = window.electron.store.getJscpdReport();
+            if (jscpdReport) {
+                stats.init(jscpdReport);
+                const project: Project = window.electron.store.get('project') ?? {};
+                project.stats.duplication = new DuplicationStats(stats.header, stats.types);
+                console.log('project ?', project)
+                window.electron.store.set('project', project)
+            } else {
+                console.log('No duplication report');
+            }
         }
         const percents: number | undefined = percentage(stats.header.duplicates, stats.header.total);
         setDuplicatedLinesPercentage(percents ? percents.toString() : '');
         setRows(stats.types);
-        setDuplicatedLines(`Duplicated lines : ${stats.header.duplicates} / ${stats.header.total} (${percents} %)`);
+        let duplicatedLinesText = `Duplicated lines : ${stats.header.duplicates} / ${stats.header.total}`;
+        if (percents) {
+            duplicatedLinesText = `${duplicatedLinesText} (${percents} %)`;
+        }
+        setDuplicatedLines(duplicatedLinesText);
     }, [duplicationStats])
 
     const mapDuplicates = (row: DuplicationStatsItem, index: number) => {

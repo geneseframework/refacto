@@ -11,16 +11,26 @@ contextBridge.exposeInMainWorld('electron', {
         get(property: string) {
             return ipcRenderer.sendSync('get', property);
         },
-        jscpd() {
-            const jscpdJson = fs.readFileSync('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json', 'utf8');
-            console.log('JSCPD report', JSON.parse(jscpdJson))
-            return JSON.parse(jscpdJson);
+        getJscpdReport() {
+            let jscpdReport = undefined;
+            const pathReport = '/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json';
+            if (fs.existsSync(pathReport)) {
+                const jscpdJson = fs.readFileSync(pathReport, 'utf8');
+                jscpdReport = JSON.parse(jscpdJson);
+            }
+            console.log('JSCPD report', jscpdReport)
+            return jscpdReport;
         },
         removeBrowserViews() {
             ipcRenderer.send('removeBrowserViews');
         },
-        run(script: string) {
-            execSync(`npm run ${script}`);
+        runJscpd() {
+            const path = '/Users/utilisateur/Documents/perso-gilles-fabre/front-end-assessment-v1/src';
+            const cmd = `jscpd ${path} -o reports/jscpd`;
+            console.log('cmd', cmd)
+            // execSync(cmd);
+            execSync(`npm run jscpd`);
+            // execSync(`npm run ${script}`);
         },
         set(property: string, val: any) {
             ipcRenderer.send('set', property, val);
