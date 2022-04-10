@@ -7,7 +7,7 @@ import { Route } from '../../shared/enums/route.enum';
 export const Dashboard: React.FC = () => {
     window.electron.store.setBrowserView(Route.DASHBOARD);
     const projectName: string = window.electron.store.get('project').name;
-    console.log('project', JSON.stringify(window.electron.store.get('project')))
+    // console.log('project', JSON.stringify(window.electron.store.get('project')))
     return (
         <div className='dashboardMainContainer'>
             <NavBar />
