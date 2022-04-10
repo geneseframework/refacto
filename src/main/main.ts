@@ -27,8 +27,8 @@ const store = new Store();
 const projects: Project[] = [];
 const project = new Project('Bleu Libellule', '/Users/utilisateur/Documents/projects/bleu-libellule');
 projects.push(project);
-store.set('project', project);
-store.set('projects', projects);
+// store.set('project', project);
+// store.set('projects', projects);
 
 export default class AppUpdater {
     constructor() {
