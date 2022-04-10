@@ -6,11 +6,16 @@ import { Route } from '../../shared/enums/route.enum';
 
 export const Dashboard: React.FC = () => {
     window.electron.store.setBrowserView(Route.DASHBOARD);
+    const projectName: string = window.electron.store.get('project').name;
+    console.log('project', JSON.stringify(window.electron.store.get('project')))
     return (
         <div className='dashboardMainContainer'>
             <NavBar />
             <div className='stats'>
-                <div className='leftContainer'><h2>Cognitive complexity</h2></div>
+                <div className='leftContainer'>
+                    <p>{`Project : ${projectName}`}</p>
+                    <h2>Cognitive complexity</h2>
+                </div>
                 <div className='rightContainer'>
                     <div>
                         <h2>Code coverage</h2>
