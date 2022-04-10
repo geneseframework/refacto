@@ -2,9 +2,15 @@
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
+
+$backgroundColor: #242526;
+$primaryColor: #333;
+$secondaryColor: #97e1ff;
+
+
 body {
     position: relative;
-    color: #333;
+    color: $primaryColor;
     height: 1366px;
     margin: 0;
     background-color: white;

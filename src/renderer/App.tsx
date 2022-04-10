@@ -1,10 +1,11 @@
 import { MemoryRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import { Dashboard } from '../pages/dashboard/Dashboard';
 import { CodeCoverage } from '../pages/code-coverage/CodeCoverage';
 import { CodeDuplication } from '../pages/code-duplication/CodeDuplication';
 import { Complexity } from '../pages/complexity/Complexity';
 import { JscpdReport } from '../features/jscpd/interfaces/JscpdReport.interface';
+import { Settings } from '../pages/settings/Settings';
 
 declare global {
     interface Window {
@@ -29,6 +30,7 @@ export default function App() {
                 <Route path="/complexity" element={<Complexity />} />
                 <Route path="/code-coverage" element={<CodeCoverage />} />
                 <Route path="/code-duplication" element={<CodeDuplication />} />
+                <Route path="/settings" element={<Settings />} />
             </Routes>
         </Router>
     );
