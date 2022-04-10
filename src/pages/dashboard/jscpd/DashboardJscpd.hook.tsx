@@ -16,7 +16,7 @@ export const useDashboardJscpd = (props: DashboardJscpdProps) => {
     useEffect(() => {
         let stats = duplicationStats ?? new DuplicationStats();
         if (!duplicationStats) {
-            // window.electron.store.runJscpd();
+            window.electron.store.runJscpd();
             const jscpdReport: JscpdReport | undefined = window.electron.store.getJscpdReport();
             if (jscpdReport) {
                 stats.init(jscpdReport);
