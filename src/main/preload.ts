@@ -1,7 +1,12 @@
 import { contextBridge, ipcRenderer } from 'electron';
 import { execSync } from 'child_process';
 import * as fs from 'fs';
-import { PATHS } from './main';
+const blPath = '/Users/utilisateur/Documents/projects/bleu-libellule';
+const testPath = '/Users/utilisateur/Documents/perso-gilles-fabre/front-end-assessment-v1/src';
+export const PATHS_PRELOAD_PROCESS = {
+    folderToAnalyze: testPath,
+    root: '/Users/utilisateur/Documents/perso-gilles-fabre/refacto',
+}
 
 
 contextBridge.exposeInMainWorld('electron', {
@@ -29,7 +34,7 @@ contextBridge.exposeInMainWorld('electron', {
             ipcRenderer.send('removeBrowserViews');
         },
         runJscpd() {
-            const cmd = `npm run jscpd ${PATHS.folderToAnalyze} -o reports/jscpd`;
+            const cmd = `npm run jscpd ${PATHS_PRELOAD_PROCESS.folderToAnalyze} -o reports/jscpd`;
             console.log('cmd', cmd)
             execSync(cmd);
         },

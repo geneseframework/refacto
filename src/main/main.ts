@@ -26,7 +26,7 @@ export const CONFIG = {
 }
 const blPath = '/Users/utilisateur/Documents/projects/bleu-libellule';
 const testPath = '/Users/utilisateur/Documents/perso-gilles-fabre/front-end-assessment-v1/src';
-export const PATHS = {
+export const PATHS_MAIN_PROCESS = {
     folderToAnalyze: testPath,
     root: '/Users/utilisateur/Documents/perso-gilles-fabre/refacto',
 }
@@ -34,7 +34,7 @@ const store = new Store();
 store.delete('projects');
 const projects: Project[] = store.get('projects') as Project[] ?? [];
 if (isEmpty(projects)) {
-    const project = new Project('Bleu Libellule', PATHS.folderToAnalyze);
+    const project = new Project('Bleu Libellule', PATHS_MAIN_PROCESS.folderToAnalyze);
     projects.push(project);
     console.log('NO INITIAL PROJECT => new project : ', project)
     store.set('project', project);
