@@ -1,6 +1,12 @@
 import { contextBridge, ipcRenderer } from 'electron';
 import { execSync } from 'child_process';
 import * as fs from 'fs';
+const blPath = '/Users/utilisateur/Documents/projects/bleu-libellule';
+const testPath = '/Users/utilisateur/Documents/perso-gilles-fabre/front-end-assessment-v1/src';
+export const PATHS_PRELOAD_PROCESS = {
+    folderToAnalyze: testPath,
+    root: '/Users/utilisateur/Documents/perso-gilles-fabre/refacto',
+}
 
 
 contextBridge.exposeInMainWorld('electron', {
@@ -16,8 +22,21 @@ contextBridge.exposeInMainWorld('electron', {
             console.log('JSCPD report', JSON.parse(jscpdJson))
             return JSON.parse(jscpdJson);
         },
+        getJscpdReport() {
+            let jscpdReport = undefined;
+            const pathReport = '/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json';
+            if (fs.existsSync(pathReport)) {
+                jscpdReport = JSON.parse(fs.readFileSync(pathReport, 'utf8'));
+            }
+            return jscpdReport;
+        },
         removeBrowserViews() {
             ipcRenderer.send('removeBrowserViews');
+        },
+        runJscpd() {
+            const cmd = `npm run jscpd ${PATHS_PRELOAD_PROCESS.folderToAnalyze} -o reports/jscpd`;
+            console.log('cmd', cmd)
+            execSync(cmd);
         },
         run(script: string) {
             execSync(`npm run ${script}`);
