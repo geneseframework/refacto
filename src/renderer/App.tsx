@@ -33,7 +33,7 @@ export default function App() {
                 <Route path="/complexity" element={<Complexity />} />
                 <Route path="/code-coverage" element={<CodeCoverage />} />
                 <Route path="/code-duplication" element={<CodeDuplication />} />
-                {/*<Route path="/settings" element={<Settings />} />*/}
+                <Route path="/settings" element={<Settings />} />
             </Routes>
         </Router>
     );
