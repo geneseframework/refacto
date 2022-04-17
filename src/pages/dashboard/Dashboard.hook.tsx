@@ -4,7 +4,7 @@ import { Project } from '../../shared/classes/project';
 import { store } from '../../renderer/App';
 
 export const useDashboard = () => {
-    store.setBrowserView(RoutesEnum.DASHBOARD);
+    store.setBrowserView(RoutesEnum.dashboard);
     const projectName: string = window.electron.store.get('project').name;
     const [project, setProject] = useState<Project | undefined>();
     useEffect(() => {

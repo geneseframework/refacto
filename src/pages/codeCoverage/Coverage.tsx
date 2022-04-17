@@ -1,10 +1,10 @@
 import React from 'react';
-import './CodeCoverage.scss';
+import './Coverage.scss';
 import { NavBar } from '../../shared/components/NavBar/NavBar';
 import { RoutesEnum } from '../../shared/enums/route.enum';
 
-export const CodeCoverage: React.FC = () => {
-    window.electron.store.setBrowserView(RoutesEnum.CODE_COVERAGE);
+export const Coverage: React.FC = () => {
+    window.electron.store.setBrowserView(RoutesEnum.coverage);
 
     return (
         <div className='mainCoverageContainer'>

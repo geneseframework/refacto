@@ -4,7 +4,7 @@ import { NavBar } from '../../shared/components/NavBar/NavBar';
 import { RoutesEnum } from '../../shared/enums/route.enum';
 
 export const Complexity: React.FC = () => {
-    window.electron.store.setBrowserView(RoutesEnum.COMPLEXITY);
+    window.electron.store.setBrowserView(RoutesEnum.complexity);
 
     return (
         <div className='mainComplexityContainer'>
