@@ -8,9 +8,9 @@ export const Dashboard: React.FC = () => {
     const h = useDashboard();
 
     return (
-        <div className='dashboardMainContainer'>
+        <div className='bodyContainer'>
             <NavBar />
-            <div className='stats'>
+            <div className='mainContainer'>
                 <div className='leftContainer'>
                     <p>{`Project : ${h.projectName}`}</p>
                     <h2>Cognitive complexity</h2>
