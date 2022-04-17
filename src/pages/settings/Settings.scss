@@ -1,17 +1,19 @@
+@import "../../renderer/App";
 
 .settings {
     .leftContainer {
         flex: 2;
-        background-color: #5a67d8;
+        background-color: $lightGrey;
         flex-direction: column;
         height: 100%;
+        border-right: 1px solid ;
     }
 
     .rightContainer {
         flex: 8;
         display: flex;
         flex-direction: column;
-        background-color: #48bb78;
+        //background-color: #48bb78;
         height: 100%;
     }
 }

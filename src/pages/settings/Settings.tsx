@@ -2,7 +2,7 @@ import React from 'react';
 import { useSettings } from './Settings.hook';
 import './Settings.scss';
 import { NavBar } from '../../shared/components/NavBar/NavBar';
-import { FormControl, Select } from '@mui/material';
+import { FormControl, Input, InputLabel, Select, TextField } from '@mui/material';
 import { SettingsProjectItem } from './components/SettingsProjectItem';
 
 export const Settings: React.FC = () => {
@@ -28,6 +28,7 @@ export const Settings: React.FC = () => {
                 </div>
                 <div className='rightContainer'>
                     <div>Project</div>
+                    <TextField id={'name'} label={'The project name'} variant={'filled'} />
                 </div>
             </div>
         </div>
