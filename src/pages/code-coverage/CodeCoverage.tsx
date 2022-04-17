@@ -1,6 +1,6 @@
 import React from 'react';
 import './CodeCoverage.scss';
-import { NavBar } from '../../components/NavBar/NavBar';
+import { NavBar } from '../../shared/components/NavBar/NavBar';
 import { Route } from '../../shared/enums/route.enum';
 
 export const CodeCoverage: React.FC = () => {
