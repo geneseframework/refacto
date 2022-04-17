@@ -1,23 +1,41 @@
-@import "../../shared/styles/MainContainer";
+@import "../../renderer/App";
 
 //.dashboardMainContainer {
 //    height: 100%;
 //    width: 100%;
 //    background-color: #718096;
 //}
+.dashboard {
+    //height: 100%;
+    //width: 100%;
+    //background-color: #718096;
+    //.bodyContainer {
+    //    height: 100%;
+    //    width: 100%;
+    //    background-color: #718096;
+    //}
+    //.mainContainer {
+    //    display: flex;
+    //    flex-direction: row;
+    //    height: 100%;
+    //}
+    //
+    //.mainContainer > div {
+    //    padding: 20px;
+    //}
+    .leftContainer {
+        flex: 2;
+        background-color: #5a67d8;
+        height: 100%;
+    }
 
-.leftContainer {
-    flex: 2;
-    background-color: #5a67d8;
-    height: 100%;
-}
-
-.rightContainer {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    background-color: #48bb78;
-    height: 100%;
+    .rightContainer {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background-color: #48bb78;
+        height: 100%;
+    }
 }
 
 

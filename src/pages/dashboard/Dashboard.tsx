@@ -1,7 +1,7 @@
 import React from 'react';
 import { DashboardJscpd } from './jscpd/DashboardJscpd';
 import './Dashboard.scss'
-import { NavBar } from '../../components/NavBar/NavBar';
+import { NavBar } from '../../shared/components/NavBar/NavBar';
 import { useDashboard } from './Dashboard.hook';
 
 export const Dashboard: React.FC = () => {
@@ -10,7 +10,7 @@ export const Dashboard: React.FC = () => {
     return (
         <div className='bodyContainer'>
             <NavBar />
-            <div className='mainContainer'>
+            <div className='mainContainer dashboard'>
                 <div className='leftContainer'>
                     <p>{`Project : ${h.projectName}`}</p>
                     <h2>Cognitive complexity</h2>

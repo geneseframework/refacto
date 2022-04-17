@@ -15,7 +15,7 @@ import log from 'electron-log';
 import MenuBuilder from './menu';
 import { createBrowserView, removeBrowserViews, resolveHtmlPath } from './main.utils';
 import Store from 'electron-store';
-import { Route } from '../shared/enums/route.enum';
+import { RoutesEnum } from '../shared/enums/route.enum';
 import { Project } from '../shared/classes/project';
 import { isEmpty } from '../shared/utils/arrays.utils';
 
@@ -36,10 +36,8 @@ const projects: Project[] = store.get('projects') as Project[] ?? [];
 if (isEmpty(projects)) {
     const project = new Project('Bleu Libellule', PATHS_MAIN_PROCESS.folderToAnalyze);
     projects.push(project);
-    console.log('NO INITIAL PROJECT => new project : ', project)
     store.set('project', project);
     store.set('projects', projects);
-    console.log('PROJECT', store.get('project'))
 }
 
 export default class AppUpdater {
@@ -181,19 +179,19 @@ ipcMain.on('set', async (event, key, val) => {
     store.set(key, val);
 });
 
-ipcMain.on('setBrowserView', async (event, route: Route) => {
+ipcMain.on('setBrowserView', async (event, route: RoutesEnum) => {
     console.log('route', route)
     switch (route) {
-        case Route.CODE_COVERAGE:
+        case RoutesEnum.coverage:
             currentView = codeCoverageView;
             break;
-        case Route.CODE_DUPLICATION:
+        case RoutesEnum.duplication:
             currentView = codeDuplicationView;
             break;
-        case Route.COMPLEXITY:
+        case RoutesEnum.complexity:
             currentView = complexityView;
             break;
-        case Route.DASHBOARD:
+        case RoutesEnum.dashboard:
             currentView = undefined;
             break;
     }

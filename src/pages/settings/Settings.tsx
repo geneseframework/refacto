@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSettings } from './Settings.hook';
-import { NavBar } from '../../components/NavBar/NavBar';
+import { NavBar } from '../../shared/components/NavBar/NavBar';
 import './Settings.scss';
 
 export const Settings: React.FC = () => {
     const h = useSettings();
     return (
-        <div className='mainCoverageContainer'>
+        <div className='bodyContainer settings'>
             <NavBar />
             <div className='mainContainer'>
                 <div className='leftContainer'>

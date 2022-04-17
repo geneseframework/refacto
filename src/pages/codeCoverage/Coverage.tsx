@@ -1,13 +1,13 @@
 import React from 'react';
-import './Complexity.scss';
+import './Coverage.scss';
 import { NavBar } from '../../shared/components/NavBar/NavBar';
 import { RoutesEnum } from '../../shared/enums/route.enum';
 
-export const Complexity: React.FC = () => {
-    window.electron.store.setBrowserView(RoutesEnum.complexity);
+export const Coverage: React.FC = () => {
+    window.electron.store.setBrowserView(RoutesEnum.coverage);
 
     return (
-        <div className='mainComplexityContainer'>
+        <div className='mainCoverageContainer'>
             <NavBar />
         </div>
     );
