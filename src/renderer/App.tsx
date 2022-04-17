@@ -30,7 +30,7 @@ export default function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Settings />} />
-                {/*<Route path="/" element={<Dashboard />} />*/}
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/complexity" element={<Complexity />} />
                 <Route path="/code-coverage" element={<CodeCoverage />} />
                 <Route path="/code-duplication" element={<CodeDuplication />} />

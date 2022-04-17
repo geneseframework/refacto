@@ -8,7 +8,7 @@ export const Dashboard: React.FC = () => {
     const h = useDashboard();
 
     return (
-        <div className='dashboardMainContainer'>
+        <div className='bodyContainer'>
             <NavBar />
             <div className='mainContainer'>
                 <div className='leftContainer'>
