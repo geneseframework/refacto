@@ -1,10 +1,10 @@
-import { Route } from '../../shared/enums/route.enum';
+import { RoutesEnum } from '../../shared/enums/route.enum';
 import { useEffect, useState } from 'react';
 import { Project } from '../../shared/classes/project';
 import { store } from '../../renderer/App';
 
 export const useDashboard = () => {
-    store.setBrowserView(Route.DASHBOARD);
+    store.setBrowserView(RoutesEnum.DASHBOARD);
     const projectName: string = window.electron.store.get('project').name;
     const [project, setProject] = useState<Project | undefined>();
     useEffect(() => {

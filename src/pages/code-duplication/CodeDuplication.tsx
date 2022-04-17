@@ -1,10 +1,10 @@
 import React from 'react';
 import './CodeDuplication.scss';
 import { NavBar } from '../../shared/components/NavBar/NavBar';
-import { Route } from '../../shared/enums/route.enum';
+import { RoutesEnum } from '../../shared/enums/route.enum';
 
 export const CodeDuplication: React.FC = () => {
-    window.electron.store.setBrowserView(Route.CODE_DUPLICATION);
+    window.electron.store.setBrowserView(RoutesEnum.CODE_DUPLICATION);
 
     return (
         <div className='mainDuplicationContainer'>
