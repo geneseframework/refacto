@@ -10,7 +10,7 @@ export const Dashboard: React.FC = () => {
     return (
         <div className='dashboardMainContainer'>
             <NavBar />
-            <div className='stats'>
+            <div className='mainContainer'>
                 <div className='leftContainer'>
                     <p>{`Project : ${h.projectName}`}</p>
                     <h2>Cognitive complexity</h2>

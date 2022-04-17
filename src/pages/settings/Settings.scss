@@ -1,23 +1,16 @@
 @import "../../shared/styles/MainContainer";
 
-.dashboardMainContainer {
-    height: 100%;
-    width: 100%;
-    background-color: #718096;
-}
-
 .leftContainer {
     flex: 2;
     background-color: #5a67d8;
+    flex-direction: column;
     height: 100%;
 }
 
 .rightContainer {
-    flex: 1;
+    flex: 8;
     display: flex;
     flex-direction: column;
     background-color: #48bb78;
     height: 100%;
 }
-
-
