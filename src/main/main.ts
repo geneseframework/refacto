@@ -36,10 +36,8 @@ const projects: Project[] = store.get('projects') as Project[] ?? [];
 if (isEmpty(projects)) {
     const project = new Project('Bleu Libellule', PATHS_MAIN_PROCESS.folderToAnalyze);
     projects.push(project);
-    console.log('NO INITIAL PROJECT => new project : ', project)
     store.set('project', project);
     store.set('projects', projects);
-    console.log('PROJECT', store.get('project'))
 }
 
 export default class AppUpdater {
