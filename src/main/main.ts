@@ -31,7 +31,7 @@ export const PATHS_MAIN_PROCESS = {
     root: '/Users/utilisateur/Documents/perso-gilles-fabre/refacto',
 }
 const store = new Store();
-store.delete('projects');
+// store.delete('projects');
 const projects: Project[] = store.get('projects') as Project[] ?? [];
 if (isEmpty(projects)) {
     const project = new Project('Bleu Libellule', PATHS_MAIN_PROCESS.folderToAnalyze);

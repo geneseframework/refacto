@@ -3,9 +3,11 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import { store } from '../../../../renderer/App';
-import { projectAlreadyExists } from '../../../../shared/utils/projects.util';
+import { projectAlreadyExists, updateProjectInProjects } from '../../../../shared/utils/projects.util';
+import { SettingsRightProps } from './SettingsRight';
 
-export const useSettingsRight = () => {
+export const useSettingsRight = (props: SettingsRightProps) => {
+    const { handleUpdateProjects, projects } = props;
     const project: Project = store.get('project');
     const clonedProject = { ...project };
     const [initialValues] = useState({ name: project?.name, path: project?.path });
@@ -24,9 +26,13 @@ export const useSettingsRight = () => {
         project.name = formik.values.name;
         project.path = formik.values.path;
         store.set('project', project);
+        let updatedProjects: Project[] = [...projects];
         if (isNewProject && !projectAlreadyExists(project.name)) {
-            store.set('projects', [...store.get('projects'), project])
+            updatedProjects.push(project);
+        } else {
+            updateProjectInProjects(project, updatedProjects);
         }
+        handleUpdateProjects(updatedProjects);
         setIsNewProject(false);
     }
 
