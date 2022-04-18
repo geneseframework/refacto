@@ -11,6 +11,6 @@ export interface SettingsLeftProjectItemProps {
 export const SettingsLeftProjectItem: React.FC<SettingsLeftProjectItemProps> = (props) => {
     const h = useSettingsLeftProjectItem(props);
     return (
-        <MenuItem key={`projectItem-${h.index}`} value={10}>{h.project?.name}</MenuItem>
+        <MenuItem value={10}>{h.project?.name}</MenuItem>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../Settings.scss';
+import './SettingsLeft.scss';
 import { FormControl, Select } from '@mui/material';
 import { useSettingsLeft } from './SettingsLeft.hook';
 import { SettingsLeftProjectItem } from './components/SettingsLeftProjectItem';
@@ -13,9 +13,10 @@ export const SettingsLeft: React.FC = () => {
                 <Select
                     id="demo-simple-select"
                     onChange={() => {}}
+                    sx={{ backgroundColor: 'white'}}
                 >
                     {h.projects.map((p, index) => (
-                            <SettingsLeftProjectItem project={p} index={index} />
+                            <SettingsLeftProjectItem project={p} index={index} key={`projectItem-${index}`} />
                         )
                     )}
                 </Select>

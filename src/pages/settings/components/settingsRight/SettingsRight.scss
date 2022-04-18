@@ -16,10 +16,15 @@
             display: flex;
             flex-direction: row;
             flex: 10;
+            padding-bottom: 20px;
         }
 
         .flex7 {
             flex: 6;
+        }
+
+        .divSubmit {
+            padding-left: 10px;
         }
     }
 }
