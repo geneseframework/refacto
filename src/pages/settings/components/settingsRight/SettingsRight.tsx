@@ -2,7 +2,6 @@ import React from 'react';
 import './SettingsRight.scss';
 import { Button, TextField } from '@mui/material';
 import { useSettingsRight } from './SettingsRight.hook';
-import { Project } from '../../../../shared/classes/project';
 
 
 export const SettingsRight: React.FC = () => {

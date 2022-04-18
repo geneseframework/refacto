@@ -1,15 +1,14 @@
 import { Project } from '../../../../shared/classes/project';
 import * as Yup from 'yup';
-import { FormikState, FormikValues, useFormik } from 'formik';
+import { FormikValues, useFormik } from 'formik';
 import { useState } from 'react';
+import { store } from '../../../../renderer/App';
+import { projectAlreadyExists } from '../../../../shared/utils/projects.util';
 
 export const useSettingsRight = () => {
     const project: Project = window.electron.store.get('project');
     const clonedProject = { ...project };
     const [initialValues] = useState({ name: project?.name, path: project?.path });
-    // const initialValues = { name: '', path: '' }
-    // const initialValues = new Project(project?.name, project?.path);
-    // const [initialValues, setInitialValues] = useState<Project>(new Project(project?.name, project?.path));
     const [isNewProject, setIsNewProject] = useState<boolean>(!!project);
     const validationSchema = Yup.object({
         name: Yup.string().required('The name is required'),
@@ -17,13 +16,18 @@ export const useSettingsRight = () => {
     });
 
     const onCancel = () => {
-        console.log('CLEAR values', clonedProject)
         formik.resetForm({values: { name: clonedProject.name, path: clonedProject.path }});
         setIsNewProject(!!clonedProject)
     }
 
     const onSubmit = (values: FormikValues) => {
-        console.log('submit values', values)
+        project.name = formik.values.name;
+        project.path = formik.values.path;
+        store.set('project', project);
+        if (isNewProject && !projectAlreadyExists(project.name)) {
+            const projects: Project[] = store.get('projects');
+            store.set('projects', [...projects, project])
+        }
         setIsNewProject(false);
     }
 
