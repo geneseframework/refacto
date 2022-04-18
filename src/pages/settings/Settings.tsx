@@ -12,7 +12,7 @@ export const Settings: React.FC = () => {
             <NavBar />
             <div className='mainContainer'>
                 <SettingsLeft projects={h.projects} handleUpdateProjects={h.handleUpdateProjects} />
-                <SettingsRight projects={h.projects} handleUpdateProjects={h.handleUpdateProjects} />
+                <SettingsRight projects={h.projects} handleUpdateProjects={h.handleUpdateProjects} currentProject={h.currentProject} />
             </div>
         </div>
     );

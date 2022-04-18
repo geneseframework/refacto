@@ -7,11 +7,10 @@ import { projectAlreadyExists, updateProjectInProjects } from '../../../../share
 import { SettingsRightProps } from './SettingsRight';
 
 export const useSettingsRight = (props: SettingsRightProps) => {
-    const { handleUpdateProjects, projects } = props;
-    const project: Project = store.get('project');
-    const clonedProject = { ...project };
-    const [initialValues] = useState({ name: project?.name, path: project?.path });
-    const [isNewProject, setIsNewProject] = useState<boolean>(!!project);
+    const { handleUpdateProjects, currentProject, projects } = props;
+    const clonedProject = { ...currentProject };
+    const [initialValues] = useState({ name: currentProject?.name, path: currentProject?.path });
+    const [isNewProject, setIsNewProject] = useState<boolean>(!!currentProject);
     const validationSchema = Yup.object({
         name: Yup.string().required('The name is required'),
         path: Yup.string().required('The path of the folder to analyze is required'),
@@ -23,16 +22,15 @@ export const useSettingsRight = (props: SettingsRightProps) => {
     }
 
     const onSubmit = () => {
-        project.name = formik.values.name;
-        project.path = formik.values.path;
-        store.set('project', project);
+        currentProject.name = formik.values.name;
+        currentProject.path = formik.values.path;
         let updatedProjects: Project[] = [...projects];
-        if (isNewProject && !projectAlreadyExists(project.name)) {
-            updatedProjects.push(project);
+        if (isNewProject && !projectAlreadyExists(currentProject.name)) {
+            updatedProjects.push(currentProject);
         } else {
-            updateProjectInProjects(project, updatedProjects);
+            updateProjectInProjects(clonedProject, updatedProjects);
         }
-        handleUpdateProjects(updatedProjects);
+        handleUpdateProjects(currentProject, updatedProjects);
         setIsNewProject(false);
     }
 
