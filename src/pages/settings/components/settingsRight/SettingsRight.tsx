@@ -6,7 +6,6 @@ import { useSettingsRight } from './SettingsRight.hook';
 
 export const SettingsRight: React.FC = () => {
     const h = useSettingsRight();
-    console.log('h.project', h.name)
     return (
         <div className='rightContainer'>
             <>

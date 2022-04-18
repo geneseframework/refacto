@@ -3,8 +3,7 @@ import * as Yup from 'yup';
 import { FormikValues, useFormik } from 'formik';
 
 export const useSettingsRight = () => {
-    const project = undefined;
-    // const project: Project = window.electron.store.get('project');
+    const project: Project = window.electron.store.get('project');
 
     const validationSchema = Yup.object({
         name: Yup.string().required('The name is required'),
