@@ -18,11 +18,13 @@ export const SettingsRight: React.FC = () => {
             >
                 <div className="formRow">
                     <TextField
+                        sx={{ flex: 4}}
                         required
                         id="name"
                         label="Project name"
                         size="small"
                     />
+                    <div className="flex7"/>
                 </div>
             </Box>
         </div>
