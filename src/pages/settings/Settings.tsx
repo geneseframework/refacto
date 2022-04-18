@@ -1,20 +1,16 @@
 import React from 'react';
-import { useSettings } from './Settings.hook';
-import { NavBar } from '../../shared/components/NavBar/NavBar';
 import './Settings.scss';
+import { NavBar } from '../../shared/components/NavBar/NavBar';
+import { SettingsLeft } from './components/settingsLeft/SettingsLeft';
+import { SettingsRight } from './components/settingsRight/SettingsRight';
 
 export const Settings: React.FC = () => {
-    const h = useSettings();
     return (
         <div className='bodyContainer settings'>
             <NavBar />
             <div className='mainContainer'>
-                <div className='leftContainer'>
-                    <h2>Projects</h2>
-                </div>
-                <div className='rightContainer'>
-                    <div>Project</div>
-                </div>
+                <SettingsLeft />
+                <SettingsRight />
             </div>
         </div>
     );
