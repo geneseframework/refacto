@@ -2,14 +2,9 @@ import React from 'react';
 import './SettingsRight.scss';
 import { Box, Button, TextField } from '@mui/material';
 import { useSettingsRight } from './SettingsRight.hook';
-import { Project } from '../../../../shared/classes/project';
 
-export interface SettingsRightProps {
-    project: Project | undefined;
-}
-
-export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
-    const h = useSettingsRight(props);
+export const SettingsRight: React.FC = () => {
+    const h = useSettingsRight();
     console.log('h.project', h.name)
     return (
         <div className='rightContainer'>
