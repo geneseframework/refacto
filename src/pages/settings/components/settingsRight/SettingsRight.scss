@@ -1,0 +1,19 @@
+@import "../../../../renderer/App";
+
+.settings {
+
+    .rightContainer {
+        flex: 8;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .title {
+            padding-bottom: 20px;
+        }
+
+        .formRow {
+
+        }
+    }
+}
