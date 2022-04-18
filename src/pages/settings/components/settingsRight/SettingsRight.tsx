@@ -13,7 +13,7 @@ export const SettingsRight: React.FC = () => {
                 <div className='title'>Project</div>
                 <form onSubmit={h.formik.handleSubmit}>
                     <div className="divNewProject">
-                        <Button variant="contained" onClick={h.handleNewProject}>New project</Button>
+                        <Button variant="contained" onClick={h.handleClickOnNewProject}>New project</Button>
                     </div>
                     <div className="formRow">
                         <TextField
@@ -45,7 +45,7 @@ export const SettingsRight: React.FC = () => {
                     </div>
                     <div className="divSubmit">
                         <Button disabled={!h.formik.isValid} variant="contained" type="submit" sx={{ marginRight: 5}}>Submit</Button>
-                        <Button disabled={!h.formik.dirty} variant="contained" color="inherit" onClick={() => h.formik.resetForm()}>Cancel</Button>
+                        <Button disabled={!(h.formik.dirty || h.isNewProject)} variant="contained" color="inherit" onClick={h.onCancel}>Cancel</Button>
                     </div>
                 </form>
             </>
