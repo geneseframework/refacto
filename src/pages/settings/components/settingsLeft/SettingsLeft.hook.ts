@@ -1,11 +1,7 @@
-import { store } from '../../../../renderer/App';
-import { RoutesEnum } from '../../../../shared/enums/route.enum';
-import { Project } from '../../../../shared/classes/project';
+import { SettingsLeftProps } from './SettingsLeft';
 
-export const useSettingsLeft = () => {
-    store.set('route', RoutesEnum.settings);
-    const projects: Project[] = window.electron.store.get('projects')
+export const useSettingsLeft = (props: SettingsLeftProps) => {
     return {
-        projects,
+        ...props,
     }
 }

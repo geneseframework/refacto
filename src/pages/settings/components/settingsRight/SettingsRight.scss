@@ -11,6 +11,11 @@
             padding-bottom: 20px;
         }
 
+        .divNewProject {
+            display: flex;
+            justify-content: end;
+        }
+
         .formRow {
             display: flex;
             flex-direction: row;
@@ -23,7 +28,7 @@
         }
 
         .divSubmit {
-            padding-left: 10px;
+            //padding-left: 10px;
         }
     }
 }
