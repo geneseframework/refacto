@@ -8,7 +8,6 @@ export const useSettingsLeft = (props: SettingsLeftProps) => {
     };
 
     const handleClickOnItem = (project: Project) => {
-        console.log('LEFT', project);
         changeProjectFormValues(project);
     };
 

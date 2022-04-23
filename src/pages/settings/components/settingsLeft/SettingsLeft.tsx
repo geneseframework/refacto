@@ -24,7 +24,6 @@ export const SettingsLeft: React.FC<SettingsLeftProps> = (props) => {
                 </div>
                 <Select
                     id="demo-simple-select"
-                    onChange={() => {}}
                     sx={{ backgroundColor: 'white' }}
                 >
                     {h.projects.map((p, index) => (

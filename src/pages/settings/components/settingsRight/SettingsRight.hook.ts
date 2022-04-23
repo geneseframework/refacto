@@ -8,7 +8,6 @@ export const useSettingsRight = (props: SettingsRightProps) => {
     const { handleUpdateProjects, projects, projectFormValues } = props;
     const [initialValues, setInitialValues] =
         useState<Project>(projectFormValues);
-    console.log('RENDER RIGHT', projectFormValues);
     // const [formValues, setFormValues] = useState<Project>(new Project());
     const clonedProject = { ...projectFormValues };
     // const [projectFormValues] = useState({
@@ -62,7 +61,6 @@ export const useSettingsRight = (props: SettingsRightProps) => {
         formik.setValues({ name: '', path: '' });
     };
 
-    console.log('RENDER RIGHT initialValues', initialValues);
     const formik = useFormik({
         initialValues,
         validationSchema,

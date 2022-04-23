@@ -15,7 +15,6 @@ export const useSettings = () => {
     };
 
     const changeProjectFormValues = (otherProject: Project) => {
-        console.log('SETTINGS', otherProject);
         setProjectFormValues({ ...otherProject });
     };
 
