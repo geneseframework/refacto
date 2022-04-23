@@ -8,12 +8,19 @@ import { useSettings } from './Settings.hook';
 export const Settings: React.FC = () => {
     const h = useSettings();
     return (
-        <div className='bodyContainer settings'>
+        <div className="bodyContainer settings">
             <NavBar />
-            <div className='mainContainer'>
-                <SettingsLeft projects={h.projects} handleUpdateProjects={h.handleUpdateProjects} />
-                <SettingsRight projects={h.projects} handleUpdateProjects={h.handleUpdateProjects} currentProject={h.currentProject} />
+            <div className="mainContainer">
+                <SettingsLeft
+                    projects={h.projects}
+                    handleClickOnNewProject={h.handleUpdateProjects}
+                />
+                <SettingsRight
+                    projects={h.projects}
+                    handleUpdateProjects={h.handleUpdateProjects}
+                    currentProject={h.currentProject}
+                />
             </div>
         </div>
     );
-}
+};

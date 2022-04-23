@@ -4,7 +4,11 @@ module.exports = {
         es2021: true,
         jest: true,
     },
-    extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:prettier/recommended'],
+    extends: [
+        'eslint:recommended',
+        'plugin:react/recommended',
+        'plugin:prettier/recommended',
+    ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -14,5 +18,8 @@ module.exports = {
         sourceType: 'module',
     },
     plugins: ['react', '@typescript-eslint'],
-    rules: {},
+    rules: {
+        curly: 0,
+        'react/react-in-jsx-scope': 'off',
+    },
 };

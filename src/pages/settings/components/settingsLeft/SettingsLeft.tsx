@@ -3,11 +3,11 @@ import './SettingsLeft.scss';
 import { FormControl, Select } from '@mui/material';
 import { useSettingsLeft } from './SettingsLeft.hook';
 import { SettingsLeftProjectItem } from './components/SettingsLeftProjectItem';
-import { Project } from '../../../../shared/classes/project';
 import { Add } from '@mui/icons-material';
+import { Project } from '../../../../shared/interfaces/project.interface';
 
 export interface SettingsLeftProps {
-    handleUpdateProjects: (projects: Project[]) => void;
+    handleClickOnNewProject: () => void;
     projects: Project[];
 }
 
@@ -18,7 +18,7 @@ export const SettingsLeft: React.FC<SettingsLeftProps> = (props) => {
             <FormControl fullWidth size="small">
                 <div className="projectTitleContainer">
                     <div className="projectTitle">Projects</div>
-                    <div className="projectPlusIcon">
+                    <div className="projectPlusIcon" onClick={h.addProject}>
                         <Add />
                     </div>
                 </div>
