@@ -13,12 +13,12 @@ export const Settings: React.FC = () => {
             <div className="mainContainer">
                 <SettingsLeft
                     projects={h.projects}
-                    handleClickOnNewProject={h.handleUpdateProjects}
+                    changeProjectFormValues={h.changeProjectFormValues}
                 />
                 <SettingsRight
                     projects={h.projects}
                     handleUpdateProjects={h.handleUpdateProjects}
-                    currentProject={h.currentProject}
+                    projectFormValues={h.projectFormValues}
                 />
             </div>
         </div>

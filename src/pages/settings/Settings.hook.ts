@@ -6,12 +6,17 @@ import { Project } from '../../shared/interfaces/project.interface';
 export const useSettings = () => {
     store.set('route', RoutesEnum.settings);
     const [projects, setProjects] = useState<Project[]>(store.get('projects'));
-    const [currentProject, setCurrentProject] = useState<Project | undefined>(
+    const [projectFormValues, setProjectFormValues] = useState<Project>(
         store.get('project')
     );
 
     const handleNewProject = () => {
-        setCurrentProject(undefined);
+        setProjectFormValues({ name: '', path: '' });
+    };
+
+    const changeProjectFormValues = (otherProject: Project) => {
+        console.log('SETTINGS', otherProject);
+        setProjectFormValues({ ...otherProject });
     };
 
     const handleUpdateProjects = (
@@ -21,13 +26,14 @@ export const useSettings = () => {
         store.set('project', updatedCurrentProject);
         store.set('projects', updatedProjects);
         setProjects(updatedProjects);
-        setCurrentProject(updatedCurrentProject);
+        setProjectFormValues(updatedCurrentProject);
     };
 
     return {
-        currentProject,
+        changeProjectFormValues,
         handleNewProject,
         handleUpdateProjects,
+        projectFormValues,
         projects,
     };
 };

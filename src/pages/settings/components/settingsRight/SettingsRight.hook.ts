@@ -1,23 +1,23 @@
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SettingsRightProps } from './SettingsRight';
 import { Project } from '../../../../shared/interfaces/project.interface';
 
 export const useSettingsRight = (props: SettingsRightProps) => {
-    const { handleUpdateProjects, projects, selectedProject } = props;
-    const [initialValues, setInitialValues] = useState<Project>(
-        selectedProject ?? { name: '', path: '' }
-    );
+    const { handleUpdateProjects, projects, projectFormValues } = props;
+    const [initialValues, setInitialValues] =
+        useState<Project>(projectFormValues);
+    console.log('RENDER RIGHT', projectFormValues);
     // const [formValues, setFormValues] = useState<Project>(new Project());
-    const clonedProject = { ...selectedProject };
-    // const [initialValues] = useState({
-    //     name: selectedProject?.name,
-    //     path: selectedProject?.path,
+    const clonedProject = { ...projectFormValues };
+    // const [projectFormValues] = useState({
+    //     name: projectFormValues?.name,
+    //     path: projectFormValues?.path,
     // });
 
     const [isNewProject, setIsNewProject] = useState<boolean>(
-        !!selectedProject
+        !!projectFormValues
     );
     const validationSchema = Yup.object({
         name: Yup.string().required('The name is required'),
@@ -26,10 +26,14 @@ export const useSettingsRight = (props: SettingsRightProps) => {
         ),
     });
 
-    // useEffect(() => {
-    //     const project: Project = selectedProject ?? new Project();
-    //     setInitialValues(project);
-    // }, [setInitialValues, selectedProject]);
+    useEffect(() => {
+        formik.resetForm({
+            values: {
+                name: projectFormValues.name,
+                path: projectFormValues.path,
+            },
+        });
+    }, [setInitialValues, projectFormValues]);
 
     const onCancel = () => {
         formik.resetForm({
@@ -58,6 +62,7 @@ export const useSettingsRight = (props: SettingsRightProps) => {
         formik.setValues({ name: '', path: '' });
     };
 
+    console.log('RENDER RIGHT initialValues', initialValues);
     const formik = useFormik({
         initialValues,
         validationSchema,

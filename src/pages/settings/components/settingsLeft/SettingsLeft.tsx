@@ -7,7 +7,7 @@ import { Add } from '@mui/icons-material';
 import { Project } from '../../../../shared/interfaces/project.interface';
 
 export interface SettingsLeftProps {
-    handleClickOnNewProject: () => void;
+    changeProjectFormValues: (project: Project) => void;
     projects: Project[];
 }
 
@@ -32,6 +32,7 @@ export const SettingsLeft: React.FC<SettingsLeftProps> = (props) => {
                             project={p}
                             index={index}
                             key={`projectItem-${index}`}
+                            changeProjectFormValues={h.handleClickOnItem}
                         />
                     ))}
                 </Select>
