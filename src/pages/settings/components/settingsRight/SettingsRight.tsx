@@ -3,6 +3,7 @@ import './SettingsRight.scss';
 import { Button, TextField } from '@mui/material';
 import { useSettingsRight } from './SettingsRight.hook';
 import { Project } from '../../../../shared/interfaces/project.interface';
+import { Delete } from '@mui/icons-material';
 
 export interface SettingsRightProps {
     currentProject: Project | undefined;
@@ -20,16 +21,13 @@ export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
     return (
         <div className="rightContainer">
             <>
-                <div className="title">{h.formik.values.name}</div>
-                <form onSubmit={h.formik.handleSubmit}>
-                    <div className="divNewProject">
-                        <Button
-                            variant="contained"
-                            onClick={h.handleClickOnNewProject}
-                        >
-                            New project
-                        </Button>
+                <div className="header">
+                    <div className="title">{h.formik.values.name}</div>
+                    <div className="deleteIcon">
+                        <Delete onClick={h.handleClickOnDelete} />
                     </div>
+                </div>
+                <form onSubmit={h.formik.handleSubmit}>
                     <div className="formRow">
                         <TextField
                             sx={{ flex: 4 }}

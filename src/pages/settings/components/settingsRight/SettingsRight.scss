@@ -1,3 +1,4 @@
+@import "../../../../renderer/App";
 
 .settings {
 
@@ -7,15 +8,21 @@
         flex-direction: column;
         height: 100%;
 
-        .title {
-            padding-bottom: 20px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .divNewProject {
+        .header {
             display: flex;
-            justify-content: end;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-bottom: 20px;
+
+            .title {
+                font-size: 20px;
+                font-weight: bold;
+                color: $primaryColor;
+            }
+
+            .deleteIcon {
+                color: $grey;
+            }
         }
 
         .formRow {

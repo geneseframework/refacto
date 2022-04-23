@@ -38,6 +38,8 @@ export const useSettingsRight = (props: SettingsRightProps) => {
         // setIsNewProject(!!clonedProject);
     };
 
+    const handleClickOnDelete = () => {};
+
     const onSubmit = () => {
         // currentProject.name = formik.values.name;
         // currentProject.path = formik.values.path;
@@ -65,6 +67,7 @@ export const useSettingsRight = (props: SettingsRightProps) => {
 
     return {
         formik,
+        handleClickOnDelete,
         handleClickOnNewProject,
         initialValues,
         isNewProject,
