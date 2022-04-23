@@ -7,6 +7,7 @@ import { Add } from '@mui/icons-material';
 import { Project } from '../../../../shared/interfaces/project.interface';
 
 export interface SettingsLeftProps {
+    addProject: () => void;
     changeProjectFormValues: (project: Project) => void;
     projects: Project[];
 }
@@ -18,7 +19,7 @@ export const SettingsLeft: React.FC<SettingsLeftProps> = (props) => {
             <FormControl fullWidth size="small">
                 <div className="projectTitleContainer">
                     <div className="projectTitle">Projects</div>
-                    <div className="projectPlusIcon" onClick={h.addProject}>
+                    <div className="projectPlusIcon" onClick={h.clickOnPlus}>
                         <Add />
                     </div>
                 </div>

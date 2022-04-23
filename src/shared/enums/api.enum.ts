@@ -1,3 +1,5 @@
 export enum API {
-    SETTINGS_FORM_PROJECT = 'settingsFormProject',
+    PROJECT = 'project',
+    PROJECTS = 'projects',
+    ROUTE = 'route',
 }

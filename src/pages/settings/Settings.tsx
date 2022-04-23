@@ -12,12 +12,14 @@ export const Settings: React.FC = () => {
             <NavBar />
             <div className="mainContainer">
                 <SettingsLeft
+                    addProject={h.handleCreateProject}
                     projects={h.projects}
                     changeProjectFormValues={h.changeProjectFormValues}
                 />
                 <SettingsRight
                     projects={h.projects}
                     handleUpdateProjects={h.handleUpdateProjects}
+                    isNewProject={h.isNewProject}
                     projectFormValues={h.projectFormValues}
                 />
             </div>

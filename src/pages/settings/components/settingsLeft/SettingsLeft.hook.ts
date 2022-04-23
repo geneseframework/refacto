@@ -2,9 +2,10 @@ import { SettingsLeftProps } from './SettingsLeft';
 import { Project } from '../../../../shared/interfaces/project.interface';
 
 export const useSettingsLeft = (props: SettingsLeftProps) => {
-    const { changeProjectFormValues } = props;
-    const addProject = () => {
+    const { changeProjectFormValues, addProject } = props;
+    const clickOnPlus = () => {
         changeProjectFormValues({ name: '', path: '' });
+        addProject();
     };
 
     const handleClickOnItem = (project: Project) => {
@@ -13,7 +14,7 @@ export const useSettingsLeft = (props: SettingsLeftProps) => {
 
     return {
         ...props,
-        addProject,
+        clickOnPlus,
         handleClickOnItem,
     };
 };

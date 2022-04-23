@@ -6,11 +6,12 @@ import { Project } from '../../../../shared/interfaces/project.interface';
 import { Delete } from '@mui/icons-material';
 
 export interface SettingsRightProps {
-    projectFormValues: Project;
     handleUpdateProjects: (
         updatedCurrentProject: Project,
         updatedProjects: Project[]
     ) => void;
+    isNewProject: boolean;
+    projectFormValues: Project;
     projects: Project[];
 }
 
@@ -23,7 +24,7 @@ export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
                 <div className="header">
                     <div className="title">{h.formik.values.name}</div>
                     <div className="deleteIcon">
-                        {h.isNewProject && (
+                        {!h.isNewProject && (
                             <Delete onClick={h.handleClickOnDelete} />
                         )}
                     </div>
