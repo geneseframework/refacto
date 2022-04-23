@@ -6,6 +6,18 @@
         background-color: $lightGrey;
         flex-direction: column;
         height: 100%;
-        border-right: 1px solid ;
+        border-right: 1px solid;
+
+        .projectTitleContainer {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+
+            .projectPlusIcon:hover {
+                cursor: pointer;
+            }
+        }
     }
 }

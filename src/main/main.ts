@@ -1,4 +1,4 @@
-/* eslint global-require: off, no-console: off, promise/always-return: off */
+/* eslint-disable no-undef */
 
 /**
  * This module executes inside of electron's main process. You can start
@@ -9,32 +9,47 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserView, BrowserWindow, ipcMain, Rectangle, shell } from 'electron';
+import {
+    app,
+    BrowserView,
+    BrowserWindow,
+    ipcMain,
+    Rectangle,
+    shell,
+} from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
-import { createBrowserView, removeBrowserViews, resolveHtmlPath } from './main.utils';
+import {
+    createBrowserView,
+    removeBrowserViews,
+    resolveHtmlPath,
+} from './main.utils';
 import Store from 'electron-store';
 import { RoutesEnum } from '../shared/enums/route.enum';
-import { Project } from '../shared/classes/project';
 import { isEmpty } from '../shared/utils/arrays.utils';
+import { Project } from '../shared/interfaces/project.interface';
 
 export const CONFIG = {
     headerHeight: 40,
     height: 768,
     width: 1366,
-}
+};
 const blPath = '/Users/utilisateur/Documents/projects/bleu-libellule';
-const testPath = '/Users/utilisateur/Documents/perso-gilles-fabre/front-end-assessment-v1/src';
+const testPath =
+    '/Users/utilisateur/Documents/perso-gilles-fabre/front-end-assessment-v1/src';
 export const PATHS_MAIN_PROCESS = {
     folderToAnalyze: testPath,
     root: '/Users/utilisateur/Documents/perso-gilles-fabre/refacto',
-}
+};
 const store = new Store();
 // store.delete('projects');
-const projects: Project[] = store.get('projects') as Project[] ?? [];
+const projects: Project[] = (store.get('projects') as Project[]) ?? [];
 if (isEmpty(projects)) {
-    const project = new Project('Bleu Libellule', PATHS_MAIN_PROCESS.folderToAnalyze);
+    const project = {
+        name: 'Bleu Libellule',
+        path: PATHS_MAIN_PROCESS.folderToAnalyze,
+    };
     projects.push(project);
     store.set('project', project);
     store.set('projects', projects);
@@ -128,16 +143,22 @@ const createWindow = async () => {
         mainWindow = null;
     });
 
-    codeCoverageView = await createBrowserView('/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html');
-    codeDuplicationView = await createBrowserView('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/index.html');
-    complexityView = await createBrowserView('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/genese/complexity/reports/folder-report.html');
+    codeCoverageView = await createBrowserView(
+        '/Users/utilisateur/Documents/projets/bleu-libellule/reports/jest/lcov-report/index.html'
+    );
+    codeDuplicationView = await createBrowserView(
+        '/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/index.html'
+    );
+    complexityView = await createBrowserView(
+        '/Users/utilisateur/Documents/perso-gilles-fabre/refacto/genese/complexity/reports/folder-report.html'
+    );
 
     const menuBuilder = new MenuBuilder(mainWindow);
     menuBuilder.buildMenu();
 
     // Open urls in the user's browser
     mainWindow.webContents.setWindowOpenHandler((edata) => {
-        console.log('OPEN NEW WINDOW', edata)
+        console.log('OPEN NEW WINDOW', edata);
         shell.openExternal(edata.url);
         return { action: 'deny' };
     });
@@ -159,8 +180,7 @@ app.on('window-all-closed', () => {
     }
 });
 
-app
-    .whenReady()
+app.whenReady()
     .then(() => {
         createWindow();
         app.on('activate', () => {
@@ -180,7 +200,7 @@ ipcMain.on('set', async (event, key, val) => {
 });
 
 ipcMain.on('setBrowserView', async (event, route: RoutesEnum) => {
-    console.log('route', route)
+    console.log('route', route);
     switch (route) {
         case RoutesEnum.coverage:
             currentView = codeCoverageView;
