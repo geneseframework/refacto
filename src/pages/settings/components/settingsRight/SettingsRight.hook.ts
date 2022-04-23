@@ -5,21 +5,11 @@ import { SettingsRightProps } from './SettingsRight';
 import { Project } from '../../../../shared/interfaces/project.interface';
 
 export const useSettingsRight = (props: SettingsRightProps) => {
-    const { handleUpdateProjects, projects, projectFormValues, isNewProject } =
-        props;
+    const { onDelete, projectFormValues, isNewProject } = props;
     const [initialValues, setInitialValues] =
         useState<Project>(projectFormValues);
-    // const [formValues, setFormValues] = useState<Project>(new Project());
     const clonedProject = { ...projectFormValues };
     console.log('RENDER RIGHT', isNewProject);
-    // const [projectFormValues] = useState({
-    //     name: projectFormValues?.name,
-    //     path: projectFormValues?.path,
-    // });
-
-    // const [isNewProject, setIsNewProject] = useState<boolean>(
-    //     !!projectFormValues
-    // );
     const validationSchema = Yup.object({
         name: Yup.string().required('The name is required'),
         path: Yup.string().required(
@@ -43,8 +33,6 @@ export const useSettingsRight = (props: SettingsRightProps) => {
         // setIsNewProject(!!clonedProject);
     };
 
-    const handleClickOnDelete = () => {};
-
     const onSubmit = () => {
         // currentProject.name = formik.values.name;
         // currentProject.path = formik.values.path;
@@ -58,9 +46,9 @@ export const useSettingsRight = (props: SettingsRightProps) => {
         // setIsNewProject(false);
     };
 
-    const handleClickOnNewProject = () => {
-        // setIsNewProject(true);
+    const handleClickOnDelete = () => {
         formik.setValues({ name: '', path: '' });
+        onDelete();
     };
 
     const formik = useFormik({
@@ -74,7 +62,6 @@ export const useSettingsRight = (props: SettingsRightProps) => {
         ...props,
         formik,
         handleClickOnDelete,
-        handleClickOnNewProject,
         initialValues,
         onCancel,
     };

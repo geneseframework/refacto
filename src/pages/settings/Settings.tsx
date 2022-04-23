@@ -17,7 +17,7 @@ export const Settings: React.FC = () => {
                     changeProjectFormValues={h.changeProjectFormValues}
                 />
                 <SettingsRight
-                    projects={h.projects}
+                    onDelete={h.handleOnDelete}
                     handleUpdateProjects={h.handleUpdateProjects}
                     isNewProject={h.isNewProject}
                     projectFormValues={h.projectFormValues}

@@ -17,7 +17,6 @@ export const useSettings = () => {
 
     const handleCreateProject = () => {
         setIsNewProject(true);
-        console.log('NEWWW', isNewProject);
         setProjectFormValues({ name: '', path: '' });
     };
 
@@ -30,15 +29,30 @@ export const useSettings = () => {
         updatedCurrentProject: Project,
         updatedProjects: Project[]
     ): void => {
-        store.set('project', updatedCurrentProject);
-        store.set('projects', updatedProjects);
+        store.set(API.PROJECT, updatedCurrentProject);
+        store.set(API.PROJECTS, updatedProjects);
         setProjects(updatedProjects);
         setProjectFormValues(updatedCurrentProject);
+    };
+
+    const handleOnDelete = () => {
+        setIsNewProject(true);
+        let projectsToUpdate: Project[] = [...projects];
+        const indexOfProjectToRemove: number = projectsToUpdate.findIndex(
+            (p) => p.name === currentProject.name
+        );
+        if (indexOfProjectToRemove > -1) {
+            projectsToUpdate.splice(indexOfProjectToRemove, 1);
+        }
+        console.log('DEL project');
+        store.set(API.PROJECT, undefined);
+        store.set(API.PROJECTS, projectsToUpdate);
     };
 
     return {
         changeProjectFormValues,
         handleCreateProject,
+        handleOnDelete,
         handleUpdateProjects,
         isNewProject,
         projectFormValues,

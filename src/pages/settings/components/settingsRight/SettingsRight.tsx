@@ -11,8 +11,8 @@ export interface SettingsRightProps {
         updatedProjects: Project[]
     ) => void;
     isNewProject: boolean;
+    onDelete: () => void;
     projectFormValues: Project;
-    projects: Project[];
 }
 
 export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
