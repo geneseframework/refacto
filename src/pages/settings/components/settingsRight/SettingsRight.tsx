@@ -15,7 +15,7 @@ export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
     return (
         <div className='rightContainer'>
             <>
-                <div className='title'>Project</div>
+                <div className='title'>{h.formik.values.name}</div>
                 <form onSubmit={h.formik.handleSubmit}>
                     <div className="divNewProject">
                         <Button variant="contained" onClick={h.handleClickOnNewProject}>New project</Button>
