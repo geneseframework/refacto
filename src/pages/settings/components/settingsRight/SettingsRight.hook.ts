@@ -21,6 +21,7 @@ export const useSettingsRight = (props: SettingsRightProps) => {
             values: {
                 name: projectFormValues.name,
                 pathFolderToAnalyse: projectFormValues.pathFolderToAnalyse,
+                pathReports: projectFormValues.pathReports,
                 pathRoot: projectFormValues.pathRoot,
             },
         });
@@ -30,21 +31,13 @@ export const useSettingsRight = (props: SettingsRightProps) => {
 
     const clonedProject: Project = { ...projectFormValues };
     const submitButtonText: string = isNewProject ? 'ADD' : 'UPDATE';
-    // const validationSchema = Yup.object({
-    //     name: Yup.string().required('The name of the project is required'),
-    //     pathRoot: Yup.string().required(
-    //         'The path of the root of the project is required'
-    //     ),
-    //     pathFolderToAnalyse: Yup.string().required(
-    //         'The path of the folder to analyze is required (relative to the root of the project). Ex: ./src'
-    //     ),
-    // });
 
     const onCancel = () => {
         formik.resetForm({
             values: {
                 name: clonedProject.name,
                 pathFolderToAnalyse: clonedProject.pathFolderToAnalyse,
+                pathReports: clonedProject.pathReports,
                 pathRoot: clonedProject.pathRoot,
             },
         });

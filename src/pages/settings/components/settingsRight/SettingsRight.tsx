@@ -1,9 +1,10 @@
 import React from 'react';
 import './SettingsRight.scss';
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import { useSettingsRight } from './SettingsRight.hook';
 import { Project } from '../../../../shared/interfaces/project.interface';
 import { Delete } from '@mui/icons-material';
+import { SettingsRightTextField } from './components/SettingsRightTextField';
 
 export interface SettingsRightProps {
     handleCreateProject: (newProject: Project) => any;
@@ -28,72 +29,31 @@ export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
                     </div>
                 </div>
                 <form onSubmit={h.formik.handleSubmit}>
-                    <div className="formRow">
-                        <TextField
-                            sx={{ flex: 4 }}
-                            id="name"
-                            name="name"
-                            label="Name"
-                            size="small"
-                            required
-                            value={h.formik.values.name}
-                            error={
-                                h.formik.touched.name &&
-                                Boolean(h.formik.errors.name)
-                            }
-                            placeholder="The name of the project"
-                            helperText={
-                                h.formik.touched.name && h.formik.errors.name
-                            }
-                            onChange={h.formik.handleChange('name')}
-                            onBlur={h.formik.handleBlur('name')}
-                        />
-                        <div className="flex7" />
-                    </div>
-                    <div className="formRow">
-                        <TextField
-                            sx={{ flex: 10 }}
-                            required
-                            name="pathRoot"
-                            label="Path of the root of the project"
-                            size="small"
-                            value={h.formik.values.pathRoot}
-                            error={
-                                h.formik.touched.pathRoot &&
-                                Boolean(h.formik.errors.pathRoot)
-                            }
-                            placeholder="The path of the root of the project"
-                            helperText={
-                                h.formik.touched.pathRoot &&
-                                h.formik.errors.pathRoot
-                            }
-                            onChange={h.formik.handleChange('pathRoot')}
-                            onBlur={h.formik.handleBlur('pathRoot')}
-                        />
-                    </div>
-                    <div className="formRow">
-                        <TextField
-                            sx={{ flex: 10 }}
-                            required
-                            name="pathFolderToAnalyse"
-                            label="Path of the folder to analyse (relative to the root of the project)"
-                            size="small"
-                            value={h.formik.values.pathFolderToAnalyse}
-                            error={
-                                h.formik.touched.pathFolderToAnalyse &&
-                                Boolean(h.formik.errors.pathFolderToAnalyse)
-                            }
-                            placeholder="./src"
-                            helperText={
-                                h.formik.touched.pathFolderToAnalyse &&
-                                h.formik.errors.pathFolderToAnalyse
-                            }
-                            onChange={h.formik.handleChange(
-                                'pathFolderToAnalyse'
-                            )}
-                            onBlur={h.formik.handleBlur('pathFolderToAnalyse')}
-                        />
-                    </div>
+                    <SettingsRightTextField
+                        formik={h.formik}
+                        label="name"
+                        fieldName="name"
+                        placeholder="The name of the project"
+                        flex={0.6}
+                    />
+                    <SettingsRightTextField
+                        formik={h.formik}
+                        label="Path of the root of the project"
+                        fieldName="pathRoot"
+                        placeholder="The path of the root of the project"
+                    />
+                    <SettingsRightTextField
+                        formik={h.formik}
+                        label="Path of the folder to analyse (path relative to the root of the project)"
+                        fieldName="pathFolderToAnalyse"
+                        placeholder="./src"
+                    />
+                    <SettingsRightTextField
+                        formik={h.formik}
+                        label="Path of the folder containing the reports (path relative to the root of the project)"
+                        fieldName="pathReports"
+                        placeholder="./reports"
+                    />
                     <div className="divSubmit">
                         <Button
                             disabled={!h.formik.isValid}

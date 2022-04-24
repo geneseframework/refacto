@@ -1,0 +1,19 @@
+@import "../../../../../renderer/App";
+
+.settings {
+
+    .rightContainer {
+
+        .formRow {
+            display: flex;
+            flex-direction: row;
+            flex: 10;
+            padding-bottom: 20px;
+        }
+
+        .flexRightDiv {
+            flex: 1;
+        }
+    }
+}
+
