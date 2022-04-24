@@ -18,7 +18,7 @@ export const Settings: React.FC = () => {
                 />
                 <SettingsRight
                     handleCreateProject={h.handleCreateProject}
-                    handleUpdateProjects={h.handleUpdateProjects}
+                    handleUpdateProject={h.handleUpdateProject}
                     isNewProject={h.isNewProject}
                     onDelete={h.handleOnDelete}
                     projectFormValues={h.projectFormValues}

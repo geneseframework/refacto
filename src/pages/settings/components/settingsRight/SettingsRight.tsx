@@ -7,10 +7,7 @@ import { Delete } from '@mui/icons-material';
 
 export interface SettingsRightProps {
     handleCreateProject: (newProject: Project) => any;
-    handleUpdateProjects: (
-        updatedCurrentProject: Project,
-        updatedProjects: Project[]
-    ) => void;
+    handleUpdateProject: (updatedProject: Project) => void;
     isNewProject: boolean;
     onDelete: () => void;
     projectFormValues: Project;

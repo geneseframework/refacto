@@ -3,7 +3,10 @@ import { RoutesEnum } from '../../shared/enums/route.enum';
 import { useState } from 'react';
 import { Project } from '../../shared/interfaces/project.interface';
 import { API } from '../../shared/enums/api.enum';
-import { projectAlreadyExists } from '../../shared/utils/projects.util';
+import {
+    projectAlreadyExists,
+    updateProjectInProjects,
+} from '../../shared/utils/projects.util';
 import { EMPTY_PROJECT } from '../../shared/constants/emptyProject.const';
 import {
     addProject,
@@ -48,14 +51,14 @@ export const useSettings = () => {
         setProjectFormValues(EMPTY_PROJECT);
     };
 
-    const handleUpdateProjects = (
-        updatedCurrentProject: Project,
-        updatedProjects: Project[]
-    ): void => {
-        updateCurrentProject(updatedCurrentProject);
+    const handleUpdateProject = (updatedProject: Project): void => {
+        updateCurrentProject(updatedProject);
+        const updatedProjects: Project[] = updateProjectInProjects(
+            updatedProject,
+            projects
+        );
         saveProjects(updatedProjects);
         setProjects(updatedProjects);
-        setProjectFormValues(updatedCurrentProject);
     };
 
     const handleOnDelete = () => {
@@ -76,7 +79,7 @@ export const useSettings = () => {
         changeProjectFormValues,
         handleCreateProject,
         handleOnDelete,
-        handleUpdateProjects,
+        handleUpdateProject,
         isNewProject,
         openNewProjectForm,
         projectFormValues,

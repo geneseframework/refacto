@@ -11,11 +11,12 @@ export const projectAlreadyExists = (project: Project): boolean => {
 export const updateProjectInProjects = (
     project: Project,
     projects: Project[]
-): void => {
+): Project[] => {
     const previousProjectIndex: number = projects.findIndex(
         (p) => p.name === project?.name
     );
     if (previousProjectIndex > -1) {
         projects[previousProjectIndex] = project;
     }
+    return [...projects];
 };

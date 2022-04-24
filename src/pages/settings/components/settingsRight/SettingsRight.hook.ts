@@ -5,8 +5,13 @@ import { SettingsRightProps } from './SettingsRight';
 import { Project } from '../../../../shared/interfaces/project.interface';
 
 export const useSettingsRight = (props: SettingsRightProps) => {
-    const { onDelete, projectFormValues, isNewProject, handleCreateProject } =
-        props;
+    const {
+        onDelete,
+        projectFormValues,
+        isNewProject,
+        handleCreateProject,
+        handleUpdateProject,
+    } = props;
     // console.log('RENDER RIGHT projectFormValues', projectFormValues);
     const [initialValues, setInitialValues] =
         useState<Project>(projectFormValues);
@@ -21,9 +26,7 @@ export const useSettingsRight = (props: SettingsRightProps) => {
         });
     }, [setInitialValues, projectFormValues]);
 
-    useEffect(() => {
-        console.log('NEWWWW');
-    }, [isNewProject]);
+    useEffect(() => {}, [isNewProject]);
 
     const clonedProject: Project = { ...projectFormValues };
     const submitButtonText: string = isNewProject ? 'ADD' : 'UPDATE';
@@ -42,7 +45,11 @@ export const useSettingsRight = (props: SettingsRightProps) => {
     };
 
     const onSubmit = () => {
-        handleCreateProject(formik.values);
+        if (isNewProject) {
+            handleCreateProject(formik.values);
+        } else {
+            handleUpdateProject(formik.values);
+        }
     };
 
     const handleClickOnDelete = () => {
