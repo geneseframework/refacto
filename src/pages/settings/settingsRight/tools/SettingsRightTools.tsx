@@ -17,7 +17,13 @@ export const SettingsRightTools: React.FC<SettingsRightToolsProps> = (
             <div className="subTitle">Tools</div>
             <>
                 {h.tools.map((t, index) => {
-                    return <SettingsRightToolsItem tool={t} />;
+                    return (
+                        <SettingsRightToolsItem
+                            key={`tool-${index}`}
+                            tool={t}
+                            formik={h.formik}
+                        />
+                    );
                 })}
             </>
         </div>
