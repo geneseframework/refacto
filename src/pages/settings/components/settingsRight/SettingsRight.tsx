@@ -35,11 +35,13 @@ export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
                             name="name"
                             label="Name"
                             size="small"
+                            required
                             value={h.formik.values.name}
                             error={
                                 h.formik.touched.name &&
                                 Boolean(h.formik.errors.name)
                             }
+                            placeholder="The name of the project"
                             helperText={
                                 h.formik.touched.name && h.formik.errors.name
                             }
@@ -51,19 +53,21 @@ export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
                     <div className="formRow">
                         <TextField
                             sx={{ flex: 10 }}
-                            name="path"
+                            required
+                            name="pathRoot"
                             label="Path"
                             size="small"
-                            value={h.formik.values.path}
+                            value={h.formik.values.pathRoot}
                             error={
-                                h.formik.touched.path &&
-                                Boolean(h.formik.errors.path)
+                                h.formik.touched.pathRoot &&
+                                Boolean(h.formik.errors.pathRoot)
                             }
                             helperText={
-                                h.formik.touched.path && h.formik.errors.path
+                                h.formik.touched.pathRoot &&
+                                h.formik.errors.pathRoot
                             }
-                            onChange={h.formik.handleChange('path')}
-                            onBlur={h.formik.handleBlur('path')}
+                            onChange={h.formik.handleChange('pathRoot')}
+                            onBlur={h.formik.handleBlur('pathRoot')}
                         />
                     </div>
                     <div className="divSubmit">

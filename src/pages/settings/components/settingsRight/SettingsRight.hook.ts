@@ -1,8 +1,9 @@
-import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import { SettingsRightProps } from './SettingsRight';
 import { Project } from '../../../../shared/interfaces/project.interface';
+import { settingsSchema } from '../../Settings.schema';
+import { EMPTY_PROJECT } from '../../../../shared/constants/emptyProject.const';
 
 export const useSettingsRight = (props: SettingsRightProps) => {
     const {
@@ -19,7 +20,8 @@ export const useSettingsRight = (props: SettingsRightProps) => {
         formik.resetForm({
             values: {
                 name: projectFormValues.name,
-                path: projectFormValues.path,
+                pathFolderToAnalyse: projectFormValues.pathFolderToAnalyse,
+                pathRoot: projectFormValues.pathRoot,
             },
         });
     }, [setInitialValues, projectFormValues]);
@@ -28,16 +30,23 @@ export const useSettingsRight = (props: SettingsRightProps) => {
 
     const clonedProject: Project = { ...projectFormValues };
     const submitButtonText: string = isNewProject ? 'ADD' : 'UPDATE';
-    const validationSchema = Yup.object({
-        name: Yup.string().required('The name of the project is required'),
-        path: Yup.string().required(
-            'The path of the folder to analyze is required'
-        ),
-    });
+    // const validationSchema = Yup.object({
+    //     name: Yup.string().required('The name of the project is required'),
+    //     pathRoot: Yup.string().required(
+    //         'The path of the root of the project is required'
+    //     ),
+    //     pathFolderToAnalyse: Yup.string().required(
+    //         'The path of the folder to analyze is required (relative to the root of the project). Ex: ./src'
+    //     ),
+    // });
 
     const onCancel = () => {
         formik.resetForm({
-            values: { name: clonedProject.name, path: clonedProject.path },
+            values: {
+                name: clonedProject.name,
+                pathFolderToAnalyse: clonedProject.pathFolderToAnalyse,
+                pathRoot: clonedProject.pathRoot,
+            },
         });
     };
 
@@ -50,13 +59,13 @@ export const useSettingsRight = (props: SettingsRightProps) => {
     };
 
     const handleClickOnDelete = () => {
-        formik.setValues({ name: '', path: '' });
+        formik.setValues(EMPTY_PROJECT);
         onDelete();
     };
 
     const formik = useFormik({
         initialValues,
-        validationSchema,
+        validationSchema: settingsSchema,
         onSubmit,
         validateOnMount: true,
     });
