@@ -55,19 +55,43 @@ export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
                             sx={{ flex: 10 }}
                             required
                             name="pathRoot"
-                            label="Path"
+                            label="Path of the root of the project"
                             size="small"
                             value={h.formik.values.pathRoot}
                             error={
                                 h.formik.touched.pathRoot &&
                                 Boolean(h.formik.errors.pathRoot)
                             }
+                            placeholder="The path of the root of the project"
                             helperText={
                                 h.formik.touched.pathRoot &&
                                 h.formik.errors.pathRoot
                             }
                             onChange={h.formik.handleChange('pathRoot')}
                             onBlur={h.formik.handleBlur('pathRoot')}
+                        />
+                    </div>
+                    <div className="formRow">
+                        <TextField
+                            sx={{ flex: 10 }}
+                            required
+                            name="pathFolderToAnalyse"
+                            label="Path of the folder to analyse (relative to the root of the project)"
+                            size="small"
+                            value={h.formik.values.pathFolderToAnalyse}
+                            error={
+                                h.formik.touched.pathFolderToAnalyse &&
+                                Boolean(h.formik.errors.pathFolderToAnalyse)
+                            }
+                            placeholder="./src"
+                            helperText={
+                                h.formik.touched.pathFolderToAnalyse &&
+                                h.formik.errors.pathFolderToAnalyse
+                            }
+                            onChange={h.formik.handleChange(
+                                'pathFolderToAnalyse'
+                            )}
+                            onBlur={h.formik.handleBlur('pathFolderToAnalyse')}
                         />
                     </div>
                     <div className="divSubmit">
