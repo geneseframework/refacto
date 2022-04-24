@@ -5,6 +5,7 @@ import { useSettingsRight } from './SettingsRight.hook';
 import { Project } from '../../../../shared/interfaces/project.interface';
 import { Delete } from '@mui/icons-material';
 import { SettingsRightTextField } from './components/SettingsRightTextField';
+import { SettingsRightTools } from './components/SettingsRightTools';
 
 export interface SettingsRightProps {
     handleCreateProject: (newProject: Project) => any;
@@ -54,6 +55,8 @@ export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
                         fieldName="pathReports"
                         placeholder="./reports"
                     />
+                    <div className="separator" />
+                    <SettingsRightTools formik={h.formik} />
                     <div className="divSubmit">
                         <Button
                             disabled={!h.formik.isValid}

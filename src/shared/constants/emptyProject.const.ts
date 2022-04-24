@@ -5,4 +5,6 @@ export const EMPTY_PROJECT: Project = {
     pathFolderToAnalyse: './src',
     pathReports: './reports',
     pathRoot: '',
+    projectTools: [],
+    stats: {},
 };
