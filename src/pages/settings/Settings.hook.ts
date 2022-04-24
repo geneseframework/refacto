@@ -12,7 +12,7 @@ export const useSettings = () => {
     );
     const [isNewProject, setIsNewProject] = useState<boolean>(!!currentProject);
     const [projectFormValues, setProjectFormValues] = useState<Project>(
-        store.get('project')
+        store.get('project') ?? {}
     );
 
     console.log('PROJECTS', projects);
@@ -47,7 +47,7 @@ export const useSettings = () => {
             updatedProjectsList.splice(indexOfProjectToRemove, 1);
         }
         console.log('DEL project projectsToUpdate', updatedProjectsList);
-        store.set(API.PROJECT, undefined);
+        store.set(API.PROJECT, null);
         store.set(API.PROJECTS, updatedProjectsList);
         setProjects(updatedProjectsList);
     };

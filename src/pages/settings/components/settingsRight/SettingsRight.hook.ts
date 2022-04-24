@@ -9,7 +9,7 @@ export const useSettingsRight = (props: SettingsRightProps) => {
     const [initialValues, setInitialValues] =
         useState<Project>(projectFormValues);
     const clonedProject = { ...projectFormValues };
-    console.log('RENDER RIGHT', isNewProject);
+    console.log('RENDER RIGHT', initialValues);
     const validationSchema = Yup.object({
         name: Yup.string().required('The name is required'),
         path: Yup.string().required(
