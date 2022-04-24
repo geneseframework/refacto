@@ -15,7 +15,7 @@ export const DashboardJscpd: React.FC<DashboardJscpdProps> = (props) => {
         <div className="mainDashboardJscpdContainer">
             <div className="title">
                 <div className="titleName">Duplicated code</div>
-                <div className="titleIcon">
+                <div className="icon">
                     <Refresh />
                 </div>
             </div>

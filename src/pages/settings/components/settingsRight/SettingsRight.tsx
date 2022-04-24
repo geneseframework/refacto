@@ -21,7 +21,7 @@ export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
             <>
                 <div className="header">
                     <div className="title">{h.formik.values.name}</div>
-                    <div className="deleteIcon">
+                    <div className="icon">
                         {!h.isNewProject && (
                             <Delete onClick={h.handleClickOnDelete} />
                         )}
