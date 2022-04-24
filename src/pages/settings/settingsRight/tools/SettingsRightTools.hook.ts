@@ -1,6 +1,6 @@
 import { SettingsRightToolsProps } from './SettingsRightTools';
-import { getTools } from '../../../../../shared/store/tools.store';
-import { Tool } from '../../../../../shared/interfaces/tool.interface';
+import { getTools } from '../../../../shared/store/tools.store';
+import { Tool } from '../../../../shared/interfaces/tool.interface';
 
 export const useSettingsRightTools = (props: SettingsRightToolsProps) => {
     const {} = props;

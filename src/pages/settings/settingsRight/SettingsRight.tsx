@@ -2,9 +2,9 @@ import React from 'react';
 import './SettingsRight.scss';
 import { Button } from '@mui/material';
 import { useSettingsRight } from './SettingsRight.hook';
-import { Project } from '../../../../shared/interfaces/project.interface';
+import { Project } from '../../../shared/interfaces/project.interface';
 import { Delete } from '@mui/icons-material';
-import { SettingsRightTextField } from './components/SettingsRightTextField';
+import { SettingsRightTextField } from './textField/SettingsRightTextField';
 import { SettingsRightTools } from './tools/SettingsRightTools';
 
 export interface SettingsRightProps {

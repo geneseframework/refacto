@@ -1,9 +1,9 @@
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import { SettingsRightProps } from './SettingsRight';
-import { Project } from '../../../../shared/interfaces/project.interface';
-import { settingsSchema } from '../../Settings.schema';
-import { EMPTY_PROJECT } from '../../../../shared/constants/emptyProject.const';
+import { Project } from '../../../shared/interfaces/project.interface';
+import { settingsSchema } from '../Settings.schema';
+import { EMPTY_PROJECT } from '../../../shared/constants/emptyProject.const';
 
 export const useSettingsRight = (props: SettingsRightProps) => {
     const {

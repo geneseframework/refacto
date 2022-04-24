@@ -1,8 +1,8 @@
 import React from 'react';
 import './Settings.scss';
 import { NavBar } from '../../shared/components/NavBar/NavBar';
-import { SettingsLeft } from './components/settingsLeft/SettingsLeft';
-import { SettingsRight } from './components/settingsRight/SettingsRight';
+import { SettingsLeft } from './settingsLeft/SettingsLeft';
+import { SettingsRight } from './settingsRight/SettingsRight';
 import { useSettings } from './Settings.hook';
 
 export const Settings: React.FC = () => {

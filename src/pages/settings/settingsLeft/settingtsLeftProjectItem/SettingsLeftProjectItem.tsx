@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSettingsLeftProjectItem } from './SettingsLeftProjectItem.hook';
 import { MenuItem } from '@mui/material';
-import { Project } from '../../../../../shared/interfaces/project.interface';
+import { Project } from '../../../../shared/interfaces/project.interface';
 
 export interface SettingsLeftProjectItemProps {
     changeProjectFormValues: (project: Project) => void;

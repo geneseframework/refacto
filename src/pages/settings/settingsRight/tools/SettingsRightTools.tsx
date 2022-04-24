@@ -1,6 +1,7 @@
 import React from 'react';
 import './SettingsRightTools.scss';
 import { useSettingsRightTools } from './SettingsRightTools.hook';
+import { SettingsRightToolsItem } from './item/SettingsRightToolsItem';
 
 export interface SettingsRightToolsProps {
     formik: any;
@@ -16,7 +17,7 @@ export const SettingsRightTools: React.FC<SettingsRightToolsProps> = (
             <div className="subTitle">Tools</div>
             <>
                 {h.tools.map((t, index) => {
-                    return <div>{t.name}</div>;
+                    return <SettingsRightToolsItem tool={t} />;
                 })}
             </>
         </div>
