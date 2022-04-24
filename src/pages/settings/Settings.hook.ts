@@ -29,7 +29,6 @@ export const useSettings = () => {
     );
 
     const handleCreateProject = (newProject: Project) => {
-        console.log('newProject', newProject);
         if (projectAlreadyExists(newProject)) {
             console.log('A project already exists with this name');
         } else {

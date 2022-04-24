@@ -14,7 +14,6 @@ function isCurrentRoute(route: RoutesEnum): boolean {
 function tabsColors(): NavBarTabStyles {
     const navBarTabColors: NavBarTabStyles = {};
     for (const route in ROUTES_OBJECT) {
-        // const isCurrentRoute: boolean = route === store.get('route');
         navBarTabColors[route] = {
             color: isCurrentRoute(ROUTES_OBJECT[route])
                 ? appStyle.lightColor
@@ -26,9 +25,6 @@ function tabsColors(): NavBarTabStyles {
 
 export const useNavBar = () => {
     const [tabsColor, setTabsColor] = useState<NavBarTabStyles>(tabsColors());
-    const [settingsIconColor, setSettingsIconColor] = useState<string>(
-        tabsColors()
-    );
     const navigate = useNavigate();
 
     const navigateTo = (route: string): void => {
