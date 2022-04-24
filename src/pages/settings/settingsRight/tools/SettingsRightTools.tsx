@@ -15,17 +15,33 @@ export const SettingsRightTools: React.FC<SettingsRightToolsProps> = (
     return (
         <div className="toolsContainer">
             <div className="subTitle">Tools</div>
-            <>
-                {h.tools.map((t, index) => {
-                    return (
-                        <SettingsRightToolsItem
-                            key={`tool-${index}`}
-                            tool={t}
-                            formik={h.formik}
-                        />
-                    );
-                })}
-            </>
+            {h.tools.map((t, index) => {
+                return (
+                    <SettingsRightToolsItem
+                        key={`tool-${index}`}
+                        tool={t}
+                        formik={h.formik}
+                    />
+                );
+            })}
+            {/*<FieldArray*/}
+            {/*    name="tools"*/}
+            {/*    render={(arrayHelpers) => {*/}
+            {/*        return (*/}
+            {/*            <div>*/}
+            {/*                {h.tools.map((t, index) => {*/}
+            {/*                    return (*/}
+            {/*                        <SettingsRightToolsItem*/}
+            {/*                            key={`tool-${index}`}*/}
+            {/*                            tool={t}*/}
+            {/*                            formik={h.formik}*/}
+            {/*                        />*/}
+            {/*                    );*/}
+            {/*                })}*/}
+            {/*            </div>*/}
+            {/*        );*/}
+            {/*    }}*/}
+            {/*/>*/}
         </div>
     );
 };

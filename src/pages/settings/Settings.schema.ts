@@ -11,4 +11,5 @@ export const settingsSchema = Yup.object({
     pathRoot: Yup.string().required(
         'The path of the root of the project is required'
     ),
+    tools: Yup.array().of(Yup.object({ command: Yup.string() })),
 });
