@@ -15,6 +15,7 @@ export const useSettings = () => {
         store.get('project')
     );
 
+    console.log('PROJECTS', projects);
     const handleCreateProject = () => {
         setIsNewProject(true);
         setProjectFormValues({ name: '', path: '' });
@@ -37,16 +38,18 @@ export const useSettings = () => {
 
     const handleOnDelete = () => {
         setIsNewProject(true);
-        let projectsToUpdate: Project[] = [...projects];
-        const indexOfProjectToRemove: number = projectsToUpdate.findIndex(
-            (p) => p.name === currentProject.name
+        let updatedProjectsList: Project[] = [...projects];
+        console.log('DEL project projectsToUpdate 0', updatedProjectsList);
+        const indexOfProjectToRemove: number = updatedProjectsList.findIndex(
+            (p) => p.name === projectFormValues.name
         );
         if (indexOfProjectToRemove > -1) {
-            projectsToUpdate.splice(indexOfProjectToRemove, 1);
+            updatedProjectsList.splice(indexOfProjectToRemove, 1);
         }
-        console.log('DEL project');
+        console.log('DEL project projectsToUpdate', updatedProjectsList);
         store.set(API.PROJECT, undefined);
-        store.set(API.PROJECTS, projectsToUpdate);
+        store.set(API.PROJECTS, updatedProjectsList);
+        setProjects(updatedProjectsList);
     };
 
     return {
