@@ -7,7 +7,7 @@ import { Add } from '@mui/icons-material';
 import { Project } from '../../../../shared/interfaces/project.interface';
 
 export interface SettingsLeftProps {
-    addProject: () => void;
+    openNewProjectForm: () => void;
     changeProjectFormValues: (project: Project) => void;
     projects: Project[];
 }
