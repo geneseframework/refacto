@@ -1,7 +1,11 @@
 import { Stats } from './stats.interface';
+import { Tool } from './tool.interface';
 
 export interface Project {
     name: string;
-    path: string;
-    stats?: Stats;
+    pathFolderToAnalyse: string;
+    pathReports: string;
+    pathRoot: string;
+    stats: Stats;
+    tools: Tool[];
 }

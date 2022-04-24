@@ -2,9 +2,9 @@ import React from 'react';
 import './SettingsLeft.scss';
 import { FormControl, Select } from '@mui/material';
 import { useSettingsLeft } from './SettingsLeft.hook';
-import { SettingsLeftProjectItem } from './components/SettingsLeftProjectItem';
+import { SettingsLeftProjectItem } from './settingtsLeftProjectItem/SettingsLeftProjectItem';
 import { Add } from '@mui/icons-material';
-import { Project } from '../../../../shared/interfaces/project.interface';
+import { Project } from '../../../shared/interfaces/project.interface';
 
 export interface SettingsLeftProps {
     openNewProjectForm: () => void;

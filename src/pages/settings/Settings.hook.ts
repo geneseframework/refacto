@@ -29,7 +29,6 @@ export const useSettings = () => {
     );
 
     const handleCreateProject = (newProject: Project) => {
-        console.log('newProject', newProject);
         if (projectAlreadyExists(newProject)) {
             console.log('A project already exists with this name');
         } else {
@@ -41,9 +40,12 @@ export const useSettings = () => {
         }
     };
 
-    const changeProjectFormValues = (otherProject: Project) => {
+    const changeProjectFormValuesAndUpdateCurrentProject = (
+        otherProject: Project
+    ) => {
         setIsNewProject(false);
         setProjectFormValues({ ...otherProject });
+        updateCurrentProject(otherProject);
     };
 
     const openNewProjectForm = () => {
@@ -76,7 +78,7 @@ export const useSettings = () => {
     };
 
     return {
-        changeProjectFormValues,
+        changeProjectFormValues: changeProjectFormValuesAndUpdateCurrentProject,
         handleCreateProject,
         handleOnDelete,
         handleUpdateProject,

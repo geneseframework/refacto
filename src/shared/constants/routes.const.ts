@@ -1,7 +1,13 @@
-export const ROUTES_OBJECT = {
-    complexity: 'complexity',
-    coverage: 'coverage',
-    dashboard: 'dashboard',
-    duplication: 'duplication',
-    settings: 'settings',
-}
+import { RoutesEnum } from '../enums/route.enum';
+
+type RoutesObject = {
+    [key: string]: RoutesEnum;
+};
+
+export const ROUTES_OBJECT: RoutesObject = {
+    complexity: RoutesEnum.complexity,
+    coverage: RoutesEnum.coverage,
+    dashboard: RoutesEnum.dashboard,
+    duplication: RoutesEnum.duplication,
+    settings: RoutesEnum.settings,
+};

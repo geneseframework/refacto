@@ -2,6 +2,7 @@ import React from 'react';
 import { useDashboardJscpd } from './DashboardJscpd.hook';
 import './DashboardJscpd.scss';
 import { DuplicationStats } from '../../../shared/interfaces/duplication-stats.interface';
+import { Refresh } from '@mui/icons-material';
 
 export interface DashboardJscpdProps {
     duplicationStats: DuplicationStats | undefined;
@@ -12,8 +13,11 @@ export const DashboardJscpd: React.FC<DashboardJscpdProps> = (props) => {
 
     return (
         <div className="mainDashboardJscpdContainer">
-            <div>
-                <h2>Duplicated code</h2>
+            <div className="title">
+                <div className="titleName">Duplicated code</div>
+                <div className="icon">
+                    <Refresh />
+                </div>
             </div>
             <div className="totalContainer">{h.duplicatedLines}</div>
             <div className="arrayContainer">

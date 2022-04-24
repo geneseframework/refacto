@@ -1,3 +1,10 @@
 import { Project } from '../interfaces/project.interface';
 
-export const EMPTY_PROJECT: Project = { name: '', path: '' };
+export const EMPTY_PROJECT: Project = {
+    name: '',
+    pathFolderToAnalyse: './src',
+    pathReports: './reports',
+    pathRoot: '',
+    tools: [],
+    stats: {},
+};

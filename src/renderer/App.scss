@@ -10,9 +10,11 @@ $secondaryColor: #97e1ff;
 $lightGrey: #e0e0e0;
 $grey: #616060;
 
+$bigFontSize: 20px;
+
 body {
     position: relative;
-    color: $primaryColor;
+    color: $grey;
     height: 1366px;
     margin: 0;
     background-color: white;
@@ -79,4 +81,12 @@ a:hover {
     .mainContainer > div {
         padding: 20px;
     }
+}
+
+.icon {
+    color: $grey;
+}
+
+.icon:hover {
+    cursor: pointer;
 }

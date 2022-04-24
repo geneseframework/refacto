@@ -1,4 +1,4 @@
-@import "../../../../renderer/App";
+@import "../../../renderer/App";
 
 .settings {
 
@@ -17,31 +17,21 @@
             .title {
                 font-size: 20px;
                 font-weight: bold;
-                color: $primaryColor;
-            }
-
-            .deleteIcon {
                 color: $grey;
             }
-
-            .deleteIcon:hover {
-                cursor: pointer;
-            }
         }
 
-        .formRow {
-            display: flex;
-            flex-direction: row;
-            flex: 10;
+        .separator {
+            width: 100%;
+            border-bottom: 1px solid;
+            padding-bottom: 10px;
+        }
+
+        .subTitle {
+            font-weight: bold;
+            color: $grey;
             padding-bottom: 20px;
-        }
-
-        .flex7 {
-            flex: 6;
-        }
-
-        .divSubmit {
-            //padding-left: 10px;
+            padding-top: 10px;
         }
     }
 }
