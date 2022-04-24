@@ -5,7 +5,7 @@ import { useSettingsRight } from './SettingsRight.hook';
 import { Project } from '../../../../shared/interfaces/project.interface';
 import { Delete } from '@mui/icons-material';
 import { SettingsRightTextField } from './components/SettingsRightTextField';
-import { SettingsRightTools } from './components/SettingsRightTools';
+import { SettingsRightTools } from './tools/SettingsRightTools';
 
 export interface SettingsRightProps {
     handleCreateProject: (newProject: Project) => any;

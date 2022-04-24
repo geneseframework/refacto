@@ -1,5 +1,5 @@
-import { SettingsLeftProps } from './SettingsLeft';
-import { Project } from '../../../../shared/interfaces/project.interface';
+import { SettingsLeftProps } from '../components/settingsLeft/SettingsLeft';
+import { Project } from '../../../shared/interfaces/project.interface';
 
 export const useSettingsLeft = (props: SettingsLeftProps) => {
     const { changeProjectFormValues, openNewProjectForm } = props;

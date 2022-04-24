@@ -1,4 +1,5 @@
 import React from 'react';
+import './SettingsRightTools.scss';
 import { useSettingsRightTools } from './SettingsRightTools.hook';
 
 export interface SettingsRightToolsProps {
@@ -13,6 +14,11 @@ export const SettingsRightTools: React.FC<SettingsRightToolsProps> = (
     return (
         <div className="toolsContainer">
             <div className="subTitle">Tools</div>
+            <>
+                {h.tools.map((t, index) => {
+                    return <div>{t.name}</div>;
+                })}
+            </>
         </div>
     );
 };

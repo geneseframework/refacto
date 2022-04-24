@@ -1,7 +1,7 @@
 import React from 'react';
 import './SettingsLeft.scss';
 import { FormControl, Select } from '@mui/material';
-import { useSettingsLeft } from './SettingsLeft.hook';
+import { useSettingsLeft } from '../../settingsLeft/SettingsLeft.hook';
 import { SettingsLeftProjectItem } from './components/SettingsLeftProjectItem';
 import { Add } from '@mui/icons-material';
 import { Project } from '../../../../shared/interfaces/project.interface';
