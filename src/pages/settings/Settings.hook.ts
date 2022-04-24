@@ -26,8 +26,8 @@ export const useSettings = () => {
             saveProject(newProject);
             const newListOfProjects: Project[] = addProject(newProject);
             setProjects(newListOfProjects);
-            setIsNewProject(true);
-            setProjectFormValues(EMPTY_PROJECT);
+            setIsNewProject(false);
+            setProjectFormValues(newProject);
         }
     };
 
