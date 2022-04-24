@@ -2,8 +2,12 @@ import { Project } from '../interfaces/project.interface';
 import { store } from '../../renderer/App';
 import { API } from '../enums/api.enum';
 
-export const saveProject = (project: Project): void => {
-    store.set(API.PROJECT, project);
+export const getProjects = (): Project[] => {
+    return store.get(API.PROJECTS);
+};
+
+export const saveProjects = (projects: Project[]): void => {
+    store.set(API.PROJECTS, projects);
 };
 
 export const addProject = (project: Project): Project[] => {
