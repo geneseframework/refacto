@@ -1,30 +1,54 @@
+@import "../../../renderer/App";
+
 .mainDashboardJscpdContainer {
-}
 
-.totalContainer {
-    padding: 20px;
-}
-
-.arrayContainer {
-    padding: 20px;
-    .arrayHeader {
+    .title {
         display: flex;
-        font-weight: bold;
         flex-direction: row;
+        height: 30px;
+        padding-top: 10px;
+
+        .titleName {
+            flex: 9;
+            font-size: $bigFontSize;
+            font-weight: bold;
+        }
+
+        .titleIcon {
+            display: flex;
+            flex: 1;
+            justify-content: right;
+        }
+    }
+
+    .totalContainer {
+        padding: 20px;
+    }
+
+    .arrayContainer {
+        padding: 20px;
+
+
+        .arrayHeader {
+            display: flex;
+            font-weight: bold;
+            flex-direction: row;
 
             padding-bottom: 10px;
-    }
-    .content {
-        padding-bottom: 10px;
-        display: flex;
-        flex-direction: column;
-    }
+        }
 
-    .fileFormat {
-        width: 100px;
-    }
+        .content {
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .stats {
-        flex: 3;
+        .fileFormat {
+            width: 100px;
+        }
+
+        .stats {
+            flex: 3;
+        }
     }
 }
