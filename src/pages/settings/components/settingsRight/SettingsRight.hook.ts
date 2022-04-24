@@ -7,10 +7,12 @@ import { Project } from '../../../../shared/interfaces/project.interface';
 export const useSettingsRight = (props: SettingsRightProps) => {
     const { onDelete, projectFormValues, isNewProject, handleCreateProject } =
         props;
+    console.log('RENDER RIGHT projectFormValues', projectFormValues);
     const [initialValues, setInitialValues] =
         useState<Project>(projectFormValues);
 
     useEffect(() => {
+        console.log('RENDER RIGHT formik.values', formik.values);
         formik.resetForm({
             values: {
                 name: projectFormValues.name,
@@ -21,7 +23,7 @@ export const useSettingsRight = (props: SettingsRightProps) => {
 
     const clonedProject: Project = { ...projectFormValues };
     const submitButtonText: string = isNewProject ? 'ADD' : 'UPDATE';
-    // console.log('RENDER RIGHT', initialValues);
+    console.log('RENDER RIGHT initialValues', initialValues);
     const validationSchema = Yup.object({
         name: Yup.string().required('The name of the project is required'),
         path: Yup.string().required(

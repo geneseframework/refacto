@@ -15,12 +15,8 @@ export const useSettings = () => {
     );
     const [isNewProject, setIsNewProject] = useState<boolean>(!currentProject);
     const [projectFormValues, setProjectFormValues] = useState<Project>(
-        store.get('project') ?? {}
+        store.get('project') ?? EMPTY_PROJECT
     );
-
-    console.log('PROJECT', currentProject);
-    console.log('isNewProject', isNewProject);
-    console.log('PROJECTS', projects);
 
     const handleCreateProject = (newProject: Project) => {
         console.log('newProject', newProject);
@@ -58,7 +54,7 @@ export const useSettings = () => {
     const handleOnDelete = () => {
         setIsNewProject(true);
         let updatedProjectsList: Project[] = [...projects];
-        console.log('DEL project projectsToUpdate 0', updatedProjectsList);
+        // console.log('DEL project projectsToUpdate 0', updatedProjectsList);
         const indexOfProjectToRemove: number = updatedProjectsList.findIndex(
             (p) => p?.name === projectFormValues?.name
         );
@@ -67,7 +63,7 @@ export const useSettings = () => {
             store.set(API.PROJECTS, updatedProjectsList);
             setProjects(updatedProjectsList);
         }
-        console.log('DEL project projectsToUpdate', updatedProjectsList);
+        // console.log('DEL project projectsToUpdate', updatedProjectsList);
         store.set(API.PROJECT, null);
     };
 

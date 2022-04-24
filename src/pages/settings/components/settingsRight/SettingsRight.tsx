@@ -43,9 +43,7 @@ export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
                                 h.formik.touched.name &&
                                 Boolean(h.formik.errors.name)
                             }
-                            helperText={
-                                h.formik.touched.name && h.formik.errors.name
-                            }
+                            helperText={h.formik.touched.name}
                             onChange={h.formik.handleChange('name')}
                             onBlur={h.formik.handleBlur('name')}
                         />
