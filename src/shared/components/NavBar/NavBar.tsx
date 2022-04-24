@@ -52,10 +52,13 @@ export const NavBar: React.FC = () => {
             </div>
             <div className="right">
                 <div className="tab">
-                    <Settings
-                        className={h.tabsColor[RoutesEnum.settings]}
+                    <Link
                         onClick={() => h.navigateTo(RoutesEnum.settings)}
-                    />
+                        to={`/${RoutesEnum.settings}`}
+                        style={h.tabsColor[RoutesEnum.settings]}
+                    >
+                        <Settings />
+                    </Link>
                 </div>
             </div>
         </div>

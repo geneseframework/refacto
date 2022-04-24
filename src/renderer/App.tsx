@@ -31,11 +31,26 @@ export default function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Settings />} />
-                <Route path={`/${RoutesEnum.dashboard}`} element={<Dashboard />} />
-                <Route path={`/${RoutesEnum.complexity}`} element={<Complexity />} />
-                <Route path={`/${RoutesEnum.coverage}`} element={<Coverage />} />
-                <Route path={`/${RoutesEnum.duplication}`} element={<Duplication />} />
-                <Route path={`/${RoutesEnum.settings}`} element={<Settings />} />
+                <Route
+                    path={`/${RoutesEnum.dashboard}`}
+                    element={<Dashboard />}
+                />
+                <Route
+                    path={`/${RoutesEnum.complexity}`}
+                    element={<Complexity />}
+                />
+                <Route
+                    path={`/${RoutesEnum.coverage}`}
+                    element={<Coverage />}
+                />
+                <Route
+                    path={`/${RoutesEnum.duplication}`}
+                    element={<Duplication />}
+                />
+                <Route
+                    path={`/${RoutesEnum.settings}`}
+                    element={<Settings />}
+                />
             </Routes>
         </Router>
     );
