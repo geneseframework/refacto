@@ -4,6 +4,11 @@ import { useState } from 'react';
 import { NavBarTabStyles } from './NavBarTab.interface';
 import { ROUTES_OBJECT } from '../../constants/routes.const';
 import { useNavigate } from 'react-router-dom';
+import { RoutesEnum } from '../../enums/route.enum';
+
+function isCurrentRoute(route: RoutesEnum): boolean {
+    return route ===
+}
 
 function tabsColors(): NavBarTabStyles {
     const navBarTabColors: NavBarTabStyles = {};
@@ -16,6 +21,7 @@ function tabsColors(): NavBarTabStyles {
 
 export const useNavBar = () => {
     const [tabsColor, setTabsColor] = useState<NavBarTabStyles>(tabsColors());
+    const [settingsIconColor, setSettingsIconColor] = useState<string>(tabsColors());
     const navigate = useNavigate();
 
     const navigateTo = (route: string): void => {
