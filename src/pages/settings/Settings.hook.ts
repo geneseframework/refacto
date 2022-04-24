@@ -3,6 +3,9 @@ import { RoutesEnum } from '../../shared/enums/route.enum';
 import { useState } from 'react';
 import { Project } from '../../shared/interfaces/project.interface';
 import { API } from '../../shared/enums/api.enum';
+import { projectAlreadyExists } from '../../shared/utils/projects.util';
+import { EMPTY_PROJECT } from '../../shared/constants/emptyProject.const';
+import { addProject, saveProject } from '../../shared/store/projects.store';
 
 export const useSettings = () => {
     store.set(API.ROUTE, RoutesEnum.settings);
@@ -10,15 +13,26 @@ export const useSettings = () => {
     const [projects, setProjects] = useState<Project[]>(
         store.get(API.PROJECTS)
     );
-    const [isNewProject, setIsNewProject] = useState<boolean>(!!currentProject);
+    const [isNewProject, setIsNewProject] = useState<boolean>(!currentProject);
     const [projectFormValues, setProjectFormValues] = useState<Project>(
         store.get('project') ?? {}
     );
 
+    console.log('PROJECT', currentProject);
+    console.log('isNewProject', isNewProject);
     console.log('PROJECTS', projects);
-    const handleCreateProject = () => {
-        setIsNewProject(true);
-        setProjectFormValues({ name: '', path: '' });
+
+    const handleCreateProject = (newProject: Project) => {
+        console.log('newProject', newProject);
+        if (projectAlreadyExists(newProject)) {
+            console.log('A project already exists with this name');
+        } else {
+            saveProject(newProject);
+            const newListOfProjects: Project[] = addProject(newProject);
+            setProjects(newListOfProjects);
+            setIsNewProject(true);
+            setProjectFormValues(EMPTY_PROJECT);
+        }
     };
 
     const changeProjectFormValues = (otherProject: Project) => {
@@ -26,7 +40,12 @@ export const useSettings = () => {
         setProjectFormValues({ ...otherProject });
     };
 
-    const handleUpdateProjects = (
+    const openNewProjectForm = () => {
+        setIsNewProject(true);
+        setProjectFormValues(EMPTY_PROJECT);
+    };
+
+    const saveProjects = (
         updatedCurrentProject: Project,
         updatedProjects: Project[]
     ): void => {
@@ -41,23 +60,24 @@ export const useSettings = () => {
         let updatedProjectsList: Project[] = [...projects];
         console.log('DEL project projectsToUpdate 0', updatedProjectsList);
         const indexOfProjectToRemove: number = updatedProjectsList.findIndex(
-            (p) => p.name === projectFormValues.name
+            (p) => p?.name === projectFormValues?.name
         );
         if (indexOfProjectToRemove > -1) {
             updatedProjectsList.splice(indexOfProjectToRemove, 1);
+            store.set(API.PROJECTS, updatedProjectsList);
+            setProjects(updatedProjectsList);
         }
         console.log('DEL project projectsToUpdate', updatedProjectsList);
         store.set(API.PROJECT, null);
-        store.set(API.PROJECTS, updatedProjectsList);
-        setProjects(updatedProjectsList);
     };
 
     return {
         changeProjectFormValues,
         handleCreateProject,
         handleOnDelete,
-        handleUpdateProjects,
+        handleUpdateProjects: saveProjects,
         isNewProject,
+        openNewProjectForm,
         projectFormValues,
         projects,
     };

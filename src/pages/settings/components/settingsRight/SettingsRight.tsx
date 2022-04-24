@@ -6,6 +6,7 @@ import { Project } from '../../../../shared/interfaces/project.interface';
 import { Delete } from '@mui/icons-material';
 
 export interface SettingsRightProps {
+    handleCreateProject: (newProject: Project) => any;
     handleUpdateProjects: (
         updatedCurrentProject: Project,
         updatedProjects: Project[]
@@ -75,7 +76,7 @@ export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
                             type="submit"
                             sx={{ marginRight: 5 }}
                         >
-                            Submit
+                            {h.submitButtonText}
                         </Button>
                         <Button
                             disabled={!(h.formik.dirty || h.isNewProject)}
