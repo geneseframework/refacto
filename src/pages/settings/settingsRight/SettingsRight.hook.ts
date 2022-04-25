@@ -19,6 +19,9 @@ export const useSettingsRight = (props: SettingsRightProps) => {
     useEffect(() => {
         formik.resetForm({
             values: {
+                geneseCommand: projectFormValues.geneseCommand,
+                jestCommand: projectFormValues.jestCommand,
+                jscpdCommand: projectFormValues.jscpdCommand,
                 name: projectFormValues.name,
                 pathFolderToAnalyse: projectFormValues.pathFolderToAnalyse,
                 pathReports: projectFormValues.pathReports,
@@ -35,6 +38,9 @@ export const useSettingsRight = (props: SettingsRightProps) => {
     const onCancel = () => {
         formik.resetForm({
             values: {
+                geneseCommand: clonedProject.geneseCommand,
+                jestCommand: clonedProject.jestCommand,
+                jscpdCommand: clonedProject.jscpdCommand,
                 name: clonedProject.name,
                 pathFolderToAnalyse: clonedProject.pathFolderToAnalyse,
                 pathReports: clonedProject.pathReports,

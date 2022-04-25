@@ -1,7 +1,7 @@
 import React from 'react';
 import './SettingsRightTools.scss';
 import { useSettingsRightTools } from './SettingsRightTools.hook';
-import { SettingsRightToolsItem } from './item/SettingsRightToolsItem';
+import { SettingsRightTextField } from '../textField/SettingsRightTextField';
 
 export interface SettingsRightToolsProps {
     formik: any;
@@ -17,31 +17,18 @@ export const SettingsRightTools: React.FC<SettingsRightToolsProps> = (
             <div className="subTitle">Tools</div>
             {h.tools.map((t, index) => {
                 return (
-                    <SettingsRightToolsItem
-                        key={`tool-${index}`}
-                        tool={t}
-                        formik={h.formik}
-                    />
+                    <>
+                        <div className="toolName">{t.name}</div>
+                        <SettingsRightTextField
+                            key={`tool-${index}`}
+                            formik={h.formik}
+                            label={`Command line for ${t.name}`}
+                            fieldName={`${t.name}Command`}
+                            placeholder="./reports"
+                        />
+                    </>
                 );
             })}
-            {/*<FieldArray*/}
-            {/*    name="tools"*/}
-            {/*    render={(arrayHelpers) => {*/}
-            {/*        return (*/}
-            {/*            <div>*/}
-            {/*                {h.tools.map((t, index) => {*/}
-            {/*                    return (*/}
-            {/*                        <SettingsRightToolsItem*/}
-            {/*                            key={`tool-${index}`}*/}
-            {/*                            tool={t}*/}
-            {/*                            formik={h.formik}*/}
-            {/*                        />*/}
-            {/*                    );*/}
-            {/*                })}*/}
-            {/*            </div>*/}
-            {/*        );*/}
-            {/*    }}*/}
-            {/*/>*/}
         </div>
     );
 };
