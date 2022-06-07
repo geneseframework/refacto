@@ -4,6 +4,8 @@ import { SettingsRightProps } from './SettingsRight';
 import { Project } from '../../../shared/interfaces/project.interface';
 import { settingsSchema } from '../Settings.schema';
 import { EMPTY_PROJECT } from '../../../shared/constants/emptyProject.const';
+import { Tool } from '../../../shared/interfaces/tool.interface';
+import { getTools } from '../../../shared/store/tools.store';
 
 export const useSettingsRight = (props: SettingsRightProps) => {
     const {
@@ -15,6 +17,7 @@ export const useSettingsRight = (props: SettingsRightProps) => {
     } = props;
     const [initialValues, setInitialValues] =
         useState<Project>(projectFormValues);
+    const tools: Tool[] = getTools();
 
     useEffect(() => {
         formik.resetForm({
@@ -76,5 +79,6 @@ export const useSettingsRight = (props: SettingsRightProps) => {
         initialValues,
         onCancel,
         submitButtonText,
+        tools,
     };
 };

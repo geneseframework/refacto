@@ -16,15 +16,18 @@ export const SettingsRightTools: React.FC<SettingsRightToolsProps> = (
         <div className="toolsContainer">
             <div className="subTitle">Tools</div>
             {h.tools.map((t, index) => {
+                // console.log('TOOL : ', t);
+                console.log('h.formik.values : ', h.formik.values);
+                // console.log('fieldName : ', `${t.label}Command`);
                 return (
                     <>
                         <div className="toolName">{t.name}</div>
                         <SettingsRightTextField
                             key={`tool-${index}`}
                             formik={h.formik}
-                            label={`Command line for ${t.name}`}
-                            fieldName={`${t.name}Command`}
-                            placeholder="./reports"
+                            placeholder={t.command}
+                            fieldName={`${t.label}Command`}
+                            label={`${t.name} command`}
                         />
                     </>
                 );

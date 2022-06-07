@@ -5,7 +5,6 @@ import { useSettingsRight } from './SettingsRight.hook';
 import { Project } from '../../../shared/interfaces/project.interface';
 import { Delete } from '@mui/icons-material';
 import { SettingsRightTextField } from './textField/SettingsRightTextField';
-import { SettingsRightTools } from './tools/SettingsRightTools';
 
 export interface SettingsRightProps {
     handleCreateProject: (newProject: Project) => any;
@@ -56,7 +55,26 @@ export const SettingsRight: React.FC<SettingsRightProps> = (props) => {
                         placeholder="./reports"
                     />
                     <div className="separator" />
-                    <SettingsRightTools formik={h.formik} />
+                    <div className="toolsContainer">
+                        <div className="subTitle">Tools</div>
+                        {h.tools.map((t, index) => {
+                            // console.log('TOOL : ', t);
+                            // console.log('fieldName : ', `${t.label}Command`);
+                            return (
+                                <>
+                                    {/*<div className="toolName">{t.name}</div>*/}
+                                    <SettingsRightTextField
+                                        // key={`tool-${index}`}
+                                        formik={h.formik}
+                                        placeholder={t.command}
+                                        fieldName={`${t.label}Command`}
+                                        label={`${t.name} command`}
+                                    />
+                                </>
+                            );
+                        })}
+                    </div>
+                    {/*<SettingsRightTools formik={h.formik} />*/}
                     <div className="divSubmit">
                         <Button
                             disabled={!h.formik.isValid}
