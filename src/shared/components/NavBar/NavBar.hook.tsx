@@ -28,7 +28,6 @@ export const useNavBar = () => {
     const navigate = useNavigate();
 
     const navigateTo = (route: string): void => {
-        console.log('to route', route);
         store.set('route', route);
         setTabsColor(tabsColors());
         navigate(route);

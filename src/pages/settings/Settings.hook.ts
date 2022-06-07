@@ -20,6 +20,7 @@ import {
 import { saveRoute } from '../../shared/store/route.store';
 
 export const useSettings = () => {
+    store.setBrowserView(RoutesEnum.settings);
     saveRoute(RoutesEnum.settings);
     const currentProject: Project = getCurrentProject();
     const [projects, setProjects] = useState<Project[]>(getProjects());
