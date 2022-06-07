@@ -7,8 +7,8 @@ export const Complexity: React.FC = () => {
     window.electron.store.setBrowserView(RoutesEnum.complexity);
 
     return (
-        <div className='mainComplexityContainer'>
+        <div className="mainComplexityContainer">
             <NavBar />
         </div>
     );
-}
+};

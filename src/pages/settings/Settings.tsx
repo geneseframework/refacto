@@ -7,10 +7,11 @@ import { useSettings } from './Settings.hook';
 
 export const Settings: React.FC = () => {
     const h = useSettings();
+
     return (
-        <div className="bodyContainer settings">
+        <div className="bodyContainer">
             <NavBar />
-            <div className="mainContainer">
+            <div className="mainContainer settings">
                 <SettingsLeft
                     openNewProjectForm={h.openNewProjectForm}
                     projects={h.projects}

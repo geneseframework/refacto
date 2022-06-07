@@ -212,6 +212,7 @@ ipcMain.on('setBrowserView', async (event, route: RoutesEnum) => {
             currentView = complexityView;
             break;
         case RoutesEnum.dashboard:
+        case RoutesEnum.settings:
             currentView = undefined;
             break;
     }
