@@ -4,7 +4,15 @@ import { Project } from '../../../shared/interfaces/project.interface';
 export const useSettingsLeft = (props: SettingsLeftProps) => {
     const { changeProjectFormValues, openNewProjectForm } = props;
     const clickOnPlus = () => {
-        changeProjectFormValues({ name: '', path: '' });
+        changeProjectFormValues({
+            name: '',
+            pathFolderToAnalyse: '',
+            pathRoot: '',
+            jscpdCommand: '',
+            jestCommand: '',
+            geneseCommand: '',
+            pathReports: '',
+        });
         openNewProjectForm();
     };
 

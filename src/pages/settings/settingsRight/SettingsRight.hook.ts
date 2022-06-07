@@ -4,6 +4,8 @@ import { SettingsRightProps } from './SettingsRight';
 import { Project } from '../../../shared/interfaces/project.interface';
 import { settingsSchema } from '../Settings.schema';
 import { EMPTY_PROJECT } from '../../../shared/constants/emptyProject.const';
+import { Tool } from '../../../shared/interfaces/tool.interface';
+import { getTools } from '../../../shared/store/tools.store';
 
 export const useSettingsRight = (props: SettingsRightProps) => {
     const {
@@ -15,10 +17,14 @@ export const useSettingsRight = (props: SettingsRightProps) => {
     } = props;
     const [initialValues, setInitialValues] =
         useState<Project>(projectFormValues);
+    const tools: Tool[] = getTools();
 
     useEffect(() => {
         formik.resetForm({
             values: {
+                geneseCommand: projectFormValues.geneseCommand,
+                jestCommand: projectFormValues.jestCommand,
+                jscpdCommand: projectFormValues.jscpdCommand,
                 name: projectFormValues.name,
                 pathFolderToAnalyse: projectFormValues.pathFolderToAnalyse,
                 pathReports: projectFormValues.pathReports,
@@ -35,6 +41,9 @@ export const useSettingsRight = (props: SettingsRightProps) => {
     const onCancel = () => {
         formik.resetForm({
             values: {
+                geneseCommand: clonedProject.geneseCommand,
+                jestCommand: clonedProject.jestCommand,
+                jscpdCommand: clonedProject.jscpdCommand,
                 name: clonedProject.name,
                 pathFolderToAnalyse: clonedProject.pathFolderToAnalyse,
                 pathReports: clonedProject.pathReports,
@@ -70,5 +79,6 @@ export const useSettingsRight = (props: SettingsRightProps) => {
         initialValues,
         onCancel,
         submitButtonText,
+        tools,
     };
 };

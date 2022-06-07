@@ -1,13 +1,14 @@
 import { contextBridge, ipcRenderer } from 'electron';
 import { execSync } from 'child_process';
 import * as fs from 'fs';
+
 const blPath = '/Users/utilisateur/Documents/projects/bleu-libellule';
-const testPath = '/Users/utilisateur/Documents/perso-gilles-fabre/front-end-assessment-v1/src';
+const testPath =
+    '/Users/utilisateur/Documents/perso-gilles-fabre/front-end-assessment-v1/src';
 export const PATHS_PRELOAD_PROCESS = {
     folderToAnalyze: testPath,
     root: '/Users/utilisateur/Documents/perso-gilles-fabre/refacto',
-}
-
+};
 
 contextBridge.exposeInMainWorld('electron', {
     store: {
@@ -18,13 +19,17 @@ contextBridge.exposeInMainWorld('electron', {
             return ipcRenderer.sendSync('get', property);
         },
         jscpd() {
-            const jscpdJson = fs.readFileSync('/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json', 'utf8');
-            console.log('JSCPD report', JSON.parse(jscpdJson))
+            const jscpdJson = fs.readFileSync(
+                '/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json',
+                'utf8'
+            );
+            console.log('JSCPD report', JSON.parse(jscpdJson));
             return JSON.parse(jscpdJson);
         },
         getJscpdReport() {
             let jscpdReport = undefined;
-            const pathReport = '/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json';
+            const pathReport =
+                '/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json';
             if (fs.existsSync(pathReport)) {
                 jscpdReport = JSON.parse(fs.readFileSync(pathReport, 'utf8'));
             }
@@ -35,7 +40,7 @@ contextBridge.exposeInMainWorld('electron', {
         },
         runJscpd() {
             const cmd = `npm run jscpd ${PATHS_PRELOAD_PROCESS.folderToAnalyze} -o reports/jscpd`;
-            console.log('cmd', cmd)
+            console.log('cmd', cmd);
             execSync(cmd);
         },
         run(script: string) {
