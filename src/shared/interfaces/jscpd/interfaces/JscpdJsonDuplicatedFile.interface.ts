@@ -1,6 +1,6 @@
 import { JscpdDuplicatedFileLoc } from './JscpdDuplicatedFileLoc.interface';
 
-export interface JscpdDuplicatedFile {
+export interface JscpdJsonDuplicatedFile {
     end: number;
     endLoc: JscpdDuplicatedFileLoc;
     name: string;

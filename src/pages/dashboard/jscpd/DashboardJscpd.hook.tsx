@@ -1,4 +1,4 @@
-import { JscpdReport } from '../../../features/jscpd/interfaces/JscpdReport.interface';
+import { JscpdReport } from '../../../shared/interfaces/jscpd/interfaces/JscpdReport.interface';
 import { DashboardJscpdRow } from './components/DashboardJscpdRow';
 import { useEffect, useState } from 'react';
 import { DashboardJscpdProps } from './DashboardJscpd';
@@ -18,6 +18,7 @@ export const useDashboardJscpd = (props: DashboardJscpdProps) => {
             window.electron.store.runJscpd();
             const jscpdReport: JscpdReport | undefined =
                 window.electron.store.getJscpdReport();
+            console.log('jscpdReport', jscpdReport);
             if (jscpdReport) {
                 // stats.init(jscpdReport);
                 const project: Project =
