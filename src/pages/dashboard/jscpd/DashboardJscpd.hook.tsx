@@ -1,4 +1,4 @@
-import { JscpdReport } from '../../../shared/interfaces/jscpd/interfaces/JscpdReport.interface';
+import { JscpdReport } from '../../../shared/interfaces/JscpdReport.interface';
 import { DashboardJscpdRow } from './components/DashboardJscpdRow';
 import { useEffect, useState } from 'react';
 import { DashboardJscpdProps } from './DashboardJscpd';

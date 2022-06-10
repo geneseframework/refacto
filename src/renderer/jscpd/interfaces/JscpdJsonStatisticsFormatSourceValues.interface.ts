@@ -1,4 +1,4 @@
-export interface JscpdStatsValues {
+export interface JscpdJsonStatisticsFormatSourceValues {
     clones: number;
     duplicatedLines: number;
     duplicatedTokens: number;

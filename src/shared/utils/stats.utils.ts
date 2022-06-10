@@ -1,5 +1,5 @@
 // import { JscpdReport } from '../interfaces/jscpd/interfaces/JscpdReport.interface';
-// import { JscpdStats } from '../interfaces/jscpd/interfaces/JscpdStats.interface';
+// import { JscpdJsonStatistics } from '../interfaces/jscpd/interfaces/JscpdJsonStatistics.interface';
 // import { DuplicationStats } from '../interfaces/duplication-stats.interface';
 // import { DuplicationStatsItem } from '../interfaces/duplication-stats-item.interface';
 //
@@ -8,7 +8,7 @@
 //         header: { name: '' },
 //         types: [],
 //     };
-//     const jscpdStats: JscpdStats = jscpdReport.statistics ?? {};
+//     const jscpdStats: JscpdJsonStatistics = jscpdReport.statistics ?? {};
 //     duplicationStats.header.total = jscpdStats.total.lines;
 //     duplicationStats.header.duplicates = jscpdStats.total.duplicatedLines;
 //     for (let key in jscpdStats.formats) {

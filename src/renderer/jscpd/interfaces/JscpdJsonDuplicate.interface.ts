@@ -1,9 +1,9 @@
-import { JsOrTsFileExtension } from '../types/JsOrTsFileExtension.type';
 import { JscpdJsonDuplicatedFile } from './JscpdJsonDuplicatedFile.interface';
+import { JscpdJsonFileFormat } from '../types/JscpdJsonFileFormat.type';
 
 export interface JscpdJsonDuplicates {
     firstFile: JscpdJsonDuplicatedFile;
-    format: JsOrTsFileExtension;
+    format: JscpdJsonFileFormat;
     fragment: string;
     lines: number;
     secondFile: JscpdJsonDuplicatedFile;

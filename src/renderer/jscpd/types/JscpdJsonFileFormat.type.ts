@@ -1,4 +1,4 @@
-export type FileFormat =
+export type JscpdJsonFileFormat =
     | 'css'
     | 'javascript'
     | 'jsx'
