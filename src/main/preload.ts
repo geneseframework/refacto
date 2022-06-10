@@ -1,7 +1,7 @@
 import { contextBridge, ipcRenderer } from 'electron';
 import { execSync } from 'child_process';
 import * as fs from 'fs';
-import { getJscpdReport } from '../backend/jscpd/GetJscpdReport';
+import { getJscpdReport } from '../backend/jscpd/functions/GetJscpdReport';
 
 const blPath = '/Users/utilisateur/Documents/projects/bleu-libellule';
 const testPath =
