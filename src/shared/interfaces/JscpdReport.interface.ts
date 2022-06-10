@@ -1,4 +1,4 @@
-import { JscpdReportItem } from '../../renderer/jscpd/interfaces/JscpdReportItem.interface';
+import { JscpdReportItem } from '../../backend/jscpd/interfaces/JscpdReportItem.interface';
 
 export interface JscpdReport {
     items: JscpdReportItem[];

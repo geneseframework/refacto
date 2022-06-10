@@ -1,5 +1,5 @@
-import { store } from '../../../renderer/App';
-import { appStyle } from '../../../renderer/App.style';
+import { store } from '../../../backend/App/App';
+import { appStyle } from '../../../backend/App/App.style';
 import { useState } from 'react';
 import { NavBarTabStyles } from './NavBarTab.interface';
 import { ROUTES_OBJECT } from '../../constants/routes.const';

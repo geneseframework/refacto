@@ -1,4 +1,4 @@
-import { store } from '../../renderer/App';
+import { store } from '../../backend/App/App';
 import { RoutesEnum } from '../../shared/enums/route.enum';
 import { useState } from 'react';
 import { Project } from '../../shared/interfaces/project.interface';
