@@ -1,14 +1,14 @@
 import { JscpdReport } from '../../../../shared/interfaces/JscpdReport.interface';
-import { DashboardJscpdRow } from './components/DashboardJscpdRow';
+import { DashboardJscpdRow } from './row/DashboardJscpdRow';
 import { useEffect, useState } from 'react';
 import { DashboardJscpdProps } from './DashboardJscpd';
-import { DuplicationStatsItem } from '../../../../shared/interfaces/duplication-stats-item.interface';
 import { Project } from '../../../../shared/interfaces/project.interface';
+import { JscpdReportItem } from '../../../jscpd/interfaces/JscpdReportItem.interface';
 
 export const useDashboardJscpd = (props: DashboardJscpdProps) => {
     const { duplicationStats } = props;
     const [duplicatedLines, setDuplicatedLines] = useState<string>('');
-    const [rows, setRows] = useState<DuplicationStatsItem[]>([]);
+    const [items, setItems] = useState<JscpdReportItem[]>([]);
     const [duplicatedLinesPercentage, setDuplicatedLinesPercentage] =
         useState<string>('');
 
@@ -18,9 +18,10 @@ export const useDashboardJscpd = (props: DashboardJscpdProps) => {
             window.electron.store.runJscpd();
             const jscpdReport: JscpdReport | undefined =
                 window.electron.store.getJscpdReport();
-            console.log('jscpdReport', jscpdReport);
+            console.log('Dashboard jscpdReport', jscpdReport);
             if (jscpdReport) {
                 // stats.init(jscpdReport);
+                setItems(jscpdReport.items);
                 const project: Project =
                     window.electron.store.get('project') ?? {};
                 // project.stats.duplication = new DuplicationStats(
@@ -38,7 +39,7 @@ export const useDashboardJscpd = (props: DashboardJscpdProps) => {
         //     stats.header.total
         // );
         // setDuplicatedLinesPercentage(percents ? percents.toString() : '');
-        // setRows(stats.types);
+        // setItems(stats.types);
         // let duplicatedLinesText = `Duplicated lines : ${stats.header.duplicates} / ${stats.header.total}`;
         // if (percents) {
         //     duplicatedLinesText = `${duplicatedLinesText} (${percents} %)`;
@@ -46,14 +47,14 @@ export const useDashboardJscpd = (props: DashboardJscpdProps) => {
         // setDuplicatedLines(duplicatedLinesText);
     }, [duplicationStats]);
 
-    const mapDuplicates = (row: DuplicationStatsItem, index: number) => {
-        return <DashboardJscpdRow row={row} key={index} />;
+    const mapDuplicates = (item: JscpdReportItem, index: number) => {
+        return <DashboardJscpdRow item={item} key={index} />;
     };
 
     return {
         duplicatedLines,
         duplicatedLinesPercentage,
+        items,
         mapDuplicates,
-        rows,
     };
 };

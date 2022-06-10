@@ -1,7 +1,7 @@
 export interface JscpdReportItem {
     clones: number;
     duplicatedLines: number;
-    fileType: string;
+    fileFormat: string;
     files: number;
     lines: number;
 }

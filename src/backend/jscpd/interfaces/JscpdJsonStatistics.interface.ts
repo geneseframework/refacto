@@ -1,8 +1,8 @@
 import { JscpdJsonStatisticsFormats } from './JscpdJsonStatisticsFormats.interface';
-import { JscpdJsonStatisticsFormatSourceValues } from './JscpdJsonStatisticsFormatSourceValues.interface';
+import { JscpdJsonStatisticsFormatTotal } from './JscpdJsonStatisticsFormatTotal.interface';
 
 export interface JscpdJsonStatistics {
     detectionDate: string;
     formats: JscpdJsonStatisticsFormats;
-    total: JscpdJsonStatisticsFormatSourceValues;
+    total: JscpdJsonStatisticsFormatTotal;
 }

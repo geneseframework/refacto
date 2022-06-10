@@ -25,7 +25,7 @@ export const DashboardJscpd: React.FC<DashboardJscpdProps> = (props) => {
                     <div className="fileFormat">Type</div>
                     <div className="stats">Duplicated lines</div>
                 </div>
-                <div className="content">{h.rows.map(h.mapDuplicates)}</div>
+                <div className="content">{h.items.map(h.mapDuplicates)}</div>
             </div>
         </div>
     );

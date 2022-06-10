@@ -1,7 +1,7 @@
 import { JscpdJsonStatisticsFormatSources } from './JscpdJsonStatisticsFormatSources.interface';
-import { JscpdJsonStatisticsFormatSourceValues } from './JscpdJsonStatisticsFormatSourceValues.interface';
+import { JscpdJsonStatisticsFormatTotal } from './JscpdJsonStatisticsFormatTotal.interface';
 
 export interface JscpdJsonStatisticsFormat {
     sources: JscpdJsonStatisticsFormatSources;
-    total: JscpdJsonStatisticsFormatSourceValues;
+    total: JscpdJsonStatisticsFormatTotal;
 }

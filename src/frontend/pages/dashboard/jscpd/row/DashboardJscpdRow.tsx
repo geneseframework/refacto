@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDashboardJscpdRow } from './DashboardJscpdRow.hook';
 import './DashboardJscpdRow.scss';
-import { DuplicationStatsItem } from '../../../../../shared/interfaces/duplication-stats-item.interface';
+import { JscpdReportItem } from '../../../../jscpd/interfaces/JscpdReportItem.interface';
 
 export interface DashboardJscpdRowProps {
-    row: DuplicationStatsItem;
+    item: JscpdReportItem;
 }
 
 export const DashboardJscpdRow: React.FC<DashboardJscpdRowProps> = (props) => {

@@ -200,7 +200,6 @@ ipcMain.on('set', async (event, key, val) => {
 });
 
 ipcMain.on('setBrowserView', async (event, route: RoutesEnum) => {
-    console.log('route', route);
     switch (route) {
         case RoutesEnum.coverage:
             currentView = codeCoverageView;

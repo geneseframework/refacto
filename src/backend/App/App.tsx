@@ -32,7 +32,7 @@ export default function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Settings />} />
+                <Route path="/" element={<Dashboard />} />
                 <Route
                     path={`/${RoutesEnum.dashboard}`}
                     element={<Dashboard />}

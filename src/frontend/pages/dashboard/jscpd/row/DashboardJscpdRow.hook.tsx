@@ -2,10 +2,13 @@ import { percentage } from '../../../../../shared/utils/numbers.utils';
 import { DashboardJscpdRowProps } from './DashboardJscpdRow';
 
 export const useDashboardJscpdRow = (props: DashboardJscpdRowProps) => {
-    const { row } = props;
-    const duplicatedLinesPercentage = percentage(row.duplicates, row.total);
-    const percentageText: string = `${row.duplicates} / ${row.total} (${duplicatedLinesPercentage} %)`;
-    const fileFormat: string = row.name;
+    const { item } = props;
+    const duplicatedLinesPercentage = percentage(
+        item.duplicatedLines,
+        item.lines
+    );
+    const percentageText: string = `${item.duplicatedLines} / ${item.lines} (${duplicatedLinesPercentage} %)`;
+    const fileFormat: string = item.fileFormat;
 
     return {
         ...props,
