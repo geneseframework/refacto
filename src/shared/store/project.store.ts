@@ -1,5 +1,5 @@
 import { Project } from '../interfaces/project.interface';
-import { store } from '../../renderer/App';
+import { store } from '../../backend/App/App';
 import { API } from '../enums/api.enum';
 
 export const getCurrentProject = (): Project => {

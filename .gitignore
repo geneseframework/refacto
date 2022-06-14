@@ -1,4 +1,3 @@
-
 .erb
 
 # Logs
@@ -28,6 +27,7 @@ release
 release/app/dist
 release/build
 .erb/dll
+src/node_modules
 
 .idea
 npm-debug.log.*

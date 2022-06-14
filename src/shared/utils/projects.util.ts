@@ -1,4 +1,4 @@
-import { store } from '../../renderer/App';
+import { store } from '../../backend/App/App';
 import { Project } from '../interfaces/project.interface';
 
 export const projectAlreadyExists = (project: Project): boolean => {

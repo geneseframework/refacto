@@ -1,4 +1,4 @@
-import { store } from '../../renderer/App';
+import { store } from '../../backend/App/App';
 import { API } from '../enums/api.enum';
 import { Tool } from '../interfaces/tool.interface';
 
