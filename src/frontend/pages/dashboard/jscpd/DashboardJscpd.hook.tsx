@@ -25,7 +25,6 @@ export const useDashboardJscpd = (props: DashboardJscpdProps) => {
                 setTotalPercentage(totalPercentage);
                 const project: Project =
                     window.electron.store.get('project') ?? {};
-                console.log('project ?', project);
                 project.stats = project.stats || {};
                 project.stats.duplication = newJscpdReport;
                 window.electron.store.set('project', project);

@@ -52,6 +52,7 @@ export function clearAll(store: ElectronStore) {
             geneseCommand: 'genese cpx ./src',
             jestCommand: 'jest --coverage',
             jscpdCommand: 'jscpd src -o reports/jscpd -r html',
+            stats: {},
         };
         projects.push(project);
         store.set('project', project);
