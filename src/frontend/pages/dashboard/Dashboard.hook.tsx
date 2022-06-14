@@ -14,7 +14,6 @@ export const useDashboard = () => {
     useEffect(() => {
         if (!project) {
             const project: Project = window.electron.store.get('project');
-            console.log('project Dashboard', project);
             setProject(project);
         }
     }, [project, setProject]);

@@ -8,12 +8,12 @@ import { Project } from '../../../../shared/interfaces/Project.interface';
 
 export const useDashboardJscpd = (props: DashboardJscpdProps) => {
     const { jscpdReport } = props;
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [items, setItems] = useState<JscpdReportItem[]>([]);
     const [total, setTotal] = useState<string>('');
     const [totalPercentage, setTotalPercentage] = useState<string>('');
 
     useEffect(() => {
-        console.log('props jscpdReport', jscpdReport);
         if (!jscpdReport) {
             window.electron.store.runJscpd();
             const newJscpdReport: JscpdReport | undefined =
@@ -37,6 +37,7 @@ export const useDashboardJscpd = (props: DashboardJscpdProps) => {
             setTotal(total);
             setTotalPercentage(totalPercentage);
         }
+        setIsLoading(false);
     }, [jscpdReport]);
 
     const getTexts = (report: JscpdReport) => {
@@ -57,6 +58,7 @@ export const useDashboardJscpd = (props: DashboardJscpdProps) => {
     };
 
     return {
+        isLoading,
         items,
         total,
         totalPercentage,
