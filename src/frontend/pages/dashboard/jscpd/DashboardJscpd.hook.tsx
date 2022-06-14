@@ -15,22 +15,7 @@ export const useDashboardJscpd = (props: DashboardJscpdProps) => {
 
     useEffect(() => {
         if (!jscpdReport) {
-            window.electron.store.runJscpd();
-            const newJscpdReport: JscpdReport | undefined =
-                window.electron.store.getJscpdReport();
-            if (newJscpdReport) {
-                setItems(newJscpdReport.items);
-                const { total, totalPercentage } = getTexts(newJscpdReport);
-                setTotal(total);
-                setTotalPercentage(totalPercentage);
-                const project: Project =
-                    window.electron.store.get('project') ?? {};
-                project.stats = project.stats || {};
-                project.stats.duplication = newJscpdReport;
-                window.electron.store.set('project', project);
-            } else {
-                console.log('No duplication report');
-            }
+            calcNewStats();
         } else {
             setItems(jscpdReport.items);
             const { total, totalPercentage } = getTexts(jscpdReport);
@@ -39,6 +24,26 @@ export const useDashboardJscpd = (props: DashboardJscpdProps) => {
         }
         setIsLoading(false);
     }, [jscpdReport]);
+
+    const calcNewStats = () => {
+        window.electron.store.runJscpd();
+        const newJscpdReport: JscpdReport | undefined =
+            window.electron.store.getJscpdReport();
+        console.log('newJscpdReport', newJscpdReport);
+        if (newJscpdReport) {
+            setItems(newJscpdReport.items);
+            const { total, totalPercentage } = getTexts(newJscpdReport);
+            console.log('total', total);
+            setTotal(total);
+            setTotalPercentage(totalPercentage);
+            const project: Project = window.electron.store.get('project') ?? {};
+            project.stats = project.stats || {};
+            project.stats.duplication = newJscpdReport;
+            window.electron.store.set('project', project);
+        } else {
+            console.log('No duplication report');
+        }
+    };
 
     const getTexts = (report: JscpdReport) => {
         const totalDuplicatedLines = add(
@@ -57,9 +62,17 @@ export const useDashboardJscpd = (props: DashboardJscpdProps) => {
         };
     };
 
+    const refresh = () => {
+        setIsLoading(true);
+        setItems([items[2]]);
+        calcNewStats();
+        setIsLoading(false);
+    };
+
     return {
         isLoading,
         items,
+        refresh,
         total,
         totalPercentage,
     };
