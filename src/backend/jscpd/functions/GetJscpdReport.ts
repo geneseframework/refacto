@@ -20,7 +20,7 @@ export function getJscpdReport(): JscpdReport | undefined {
 }
 
 function jsonReportMapper(jsonReport: JscpdJson): JscpdReport {
-    console.log('jsonReport', jsonReport);
+    // console.log('jsonReport', jsonReport);
     const formats: JscpdJsonStatisticsFormats = jsonReport.statistics.formats;
     const jscpdReport: JscpdReport = {
         items: [],

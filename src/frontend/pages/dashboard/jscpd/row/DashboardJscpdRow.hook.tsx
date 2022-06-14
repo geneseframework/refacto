@@ -7,12 +7,14 @@ export const useDashboardJscpdRow = (props: DashboardJscpdRowProps) => {
         item.duplicatedLines,
         item.lines
     );
-    const percentageText: string = `${item.duplicatedLines} / ${item.lines} (${duplicatedLinesPercentage} %)`;
+    const ratioText: string = `${item.duplicatedLines} / ${item.lines}`;
+    const percentageText: string = `(${duplicatedLinesPercentage} %)`;
     const fileFormat: string = item.fileFormat;
 
     return {
         ...props,
         fileFormat,
         percentageText,
+        ratioText,
     };
 };
