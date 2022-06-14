@@ -27,7 +27,6 @@ function jsonReportMapper(jsonReport: JscpdJson): JscpdReport {
     };
     const fileFormats: string[] = Object.keys(formats).sort();
     for (const fileFormat of fileFormats) {
-        console.log('fileFormat', fileFormat);
         const sources: JscpdJsonStatisticsFormatSources =
             formats[fileFormat].sources;
         const total: JscpdJsonStatisticsFormatTotal = formats[fileFormat].total;

@@ -9,12 +9,14 @@ export const useDashboard = () => {
     const currentProject: Project = getCurrentProject();
     const projectName: string = currentProject.name;
     const [project, setProject] = useState<Project | undefined>();
+
     useEffect(() => {
         if (!project) {
             const project: Project = window.electron.store.get('project');
             setProject(project);
         }
     }, [project, setProject]);
+
     return {
         project,
         projectName,
