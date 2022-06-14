@@ -1,5 +1,5 @@
-import { DuplicationStats } from './duplication-stats.interface';
+import { JscpdReport } from './JscpdReport.interface';
 
 export interface Stats {
-    duplication?: DuplicationStats;
+    duplication?: JscpdReport;
 }

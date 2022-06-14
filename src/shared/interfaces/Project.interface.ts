@@ -9,6 +9,6 @@ export interface Project {
     pathFolderToAnalyse: string;
     pathReports: string;
     pathRoot: string;
-    stats?: Stats;
+    stats: Stats;
     tools?: Tool[];
 }

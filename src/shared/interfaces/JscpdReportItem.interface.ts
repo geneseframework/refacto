@@ -1,4 +1,4 @@
-export interface JscpdDashboardReportItem {
+export interface JscpdReportItem {
     clones: number;
     duplicatedLines: number;
     fileFormat: string;
