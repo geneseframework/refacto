@@ -1,4 +1,4 @@
-import { Tool } from '../interfaces/tool.interface';
+import { Tool } from '../interfaces/Tool.interface';
 
 export const GENESE_TOOL: Tool = {
     command: 'genese cpx ./src',

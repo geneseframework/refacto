@@ -1,5 +1,5 @@
-import { Stats } from './stats.interface';
-import { Tool } from './tool.interface';
+import { Stats } from './Stats.interface';
+import { Tool } from './Tool.interface';
 
 export interface Project {
     geneseCommand: string;

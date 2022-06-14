@@ -1,13 +1,13 @@
 import fs from 'fs';
-import { JscpdReport } from '../../../shared/interfaces/JscpdReport.interface';
+import { JscpdDashboardReport } from '../../../shared/interfaces/JscpdDashboardReport.interface';
 import { JscpdJson } from '../interfaces/JscpdJson.interface';
 import { JscpdJsonStatisticsFormats } from '../interfaces/JscpdJsonStatisticsFormats.interface';
-import { JscpdReportItem } from '../../../frontend/jscpd/interfaces/JscpdReportItem.interface';
 import { JscpdJsonStatisticsFormatTotal } from '../interfaces/JscpdJsonStatisticsFormatTotal.interface';
 import { JscpdJsonStatisticsFormatSources } from '../interfaces/JscpdJsonStatisticsFormatSources.interface';
+import { JscpdDashboardReportItem } from '../../../shared/interfaces/JscpdDashboardReportItem.interface';
 
-export function getJscpdReport(): JscpdReport | undefined {
-    let jscpdReport: JscpdReport | undefined = undefined;
+export function getJscpdReport(): JscpdDashboardReport | undefined {
+    let jscpdReport: JscpdDashboardReport | undefined = undefined;
     const pathReport =
         '/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json';
     if (fs.existsSync(pathReport)) {
@@ -19,10 +19,10 @@ export function getJscpdReport(): JscpdReport | undefined {
     return jscpdReport;
 }
 
-function jsonReportMapper(jsonReport: JscpdJson): JscpdReport {
+function jsonReportMapper(jsonReport: JscpdJson): JscpdDashboardReport {
     // console.log('jsonReport', jsonReport);
     const formats: JscpdJsonStatisticsFormats = jsonReport.statistics.formats;
-    const jscpdReport: JscpdReport = {
+    const jscpdReport: JscpdDashboardReport = {
         items: [],
     };
     const fileFormats: string[] = Object.keys(formats).sort();
@@ -30,7 +30,7 @@ function jsonReportMapper(jsonReport: JscpdJson): JscpdReport {
         const sources: JscpdJsonStatisticsFormatSources =
             formats[fileFormat].sources;
         const total: JscpdJsonStatisticsFormatTotal = formats[fileFormat].total;
-        const jscpdReportItem: JscpdReportItem = {
+        const jscpdReportItem: JscpdDashboardReportItem = {
             clones: total.clones,
             duplicatedLines: total.duplicatedLines,
             files: Object.keys(sources).length,

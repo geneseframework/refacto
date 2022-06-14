@@ -1,4 +1,4 @@
-import { Project } from '../interfaces/project.interface';
+import { Project } from '../interfaces/Project.interface';
 import { store } from '../../backend/App/App';
 import { API } from '../enums/api.enum';
 

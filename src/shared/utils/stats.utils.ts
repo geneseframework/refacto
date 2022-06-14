@@ -1,9 +1,9 @@
-// import { JscpdReport } from '../interfaces/jscpd/interfaces/JscpdReport.interface';
+// import { JscpdDashboardReport } from '../interfaces/jscpd/interfaces/JscpdDashboardReport.interface';
 // import { JscpdJsonStatistics } from '../interfaces/jscpd/interfaces/JscpdJsonStatistics.interface';
 // import { DuplicationStats } from '../interfaces/duplication-stats.interface';
 // import { DuplicationStatsItem } from '../interfaces/duplication-stats-item.interface';
 //
-// export function initStats(jscpdReport: JscpdReport): DuplicationStats {
+// export function initStats(jscpdReport: JscpdDashboardReport): DuplicationStats {
 //     const duplicationStats: DuplicationStats = {
 //         header: { name: '' },
 //         types: [],

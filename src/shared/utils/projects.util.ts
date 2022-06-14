@@ -1,5 +1,5 @@
 import { store } from '../../backend/App/App';
-import { Project } from '../interfaces/project.interface';
+import { Project } from '../interfaces/Project.interface';
 
 export const projectAlreadyExists = (project: Project): boolean => {
     const searchedProject: Project | undefined = store

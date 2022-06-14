@@ -4,18 +4,17 @@ import { Dashboard } from '../../frontend/pages/dashboard/Dashboard';
 import { Coverage } from '../../frontend/pages/codeCoverage/Coverage';
 import { Duplication } from '../../frontend/pages/duplication/Duplication';
 import { Complexity } from '../../frontend/pages/complexity/Complexity';
-import { JscpdReport } from '../../shared/interfaces/JscpdReport.interface';
+import { JscpdDashboardReport } from '../../shared/interfaces/JscpdDashboardReport.interface';
 import { Settings } from '../../frontend/pages/settings/Settings';
 import { RoutesEnum } from '../../shared/enums/route.enum';
 import { init } from './App.utils';
-// import { Settings } from '../pages/settings/Settings';
 
 declare global {
     interface Window {
         electron: {
             store: {
                 get: (key: string) => any;
-                getJscpdReport: () => JscpdReport | undefined;
+                getJscpdReport: () => JscpdDashboardReport | undefined;
                 setBrowserView: (route: string) => any;
                 removeBrowserViews: () => any;
                 runJscpd: () => any;

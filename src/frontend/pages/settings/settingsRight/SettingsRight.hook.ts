@@ -1,10 +1,10 @@
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import { SettingsRightProps } from './SettingsRight';
-import { Project } from '../../../../shared/interfaces/project.interface';
+import { Project } from '../../../../shared/interfaces/Project.interface';
 import { settingsSchema } from '../Settings.schema';
 import { EMPTY_PROJECT } from '../../../../shared/constants/emptyProject.const';
-import { Tool } from '../../../../shared/interfaces/tool.interface';
+import { Tool } from '../../../../shared/interfaces/Tool.interface';
 import { getTools } from '../../../../shared/store/tools.store';
 
 export const useSettingsRight = (props: SettingsRightProps) => {

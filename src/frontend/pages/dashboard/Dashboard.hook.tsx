@@ -1,7 +1,7 @@
 import { RoutesEnum } from '../../../shared/enums/route.enum';
 import { useEffect, useState } from 'react';
 import { store } from '../../../backend/App/App';
-import { Project } from '../../../shared/interfaces/project.interface';
+import { Project } from '../../../shared/interfaces/Project.interface';
 import { getCurrentProject } from '../../../shared/store/project.store';
 
 export const useDashboard = () => {

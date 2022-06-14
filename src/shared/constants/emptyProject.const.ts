@@ -1,4 +1,4 @@
-import { Project } from '../interfaces/project.interface';
+import { Project } from '../interfaces/Project.interface';
 
 export const EMPTY_PROJECT: Project = {
     geneseCommand: 'genese cpx ./src',

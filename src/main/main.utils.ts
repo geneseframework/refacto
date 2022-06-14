@@ -1,7 +1,7 @@
 import { URL } from 'url';
 import path from 'path';
 import { BrowserView, BrowserWindow } from 'electron';
-import { Project } from '../shared/interfaces/project.interface';
+import { Project } from '../shared/interfaces/Project.interface';
 import { isEmpty } from '../shared/utils/arrays.utils';
 import { PATHS_MAIN_PROCESS } from './main';
 import ElectronStore from 'electron-store';

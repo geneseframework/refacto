@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import './SettingsRight.scss';
 import { Button } from '@mui/material';
 import { useSettingsRight } from './SettingsRight.hook';
-import { Project } from '../../../../shared/interfaces/project.interface';
+import { Project } from '../../../../shared/interfaces/Project.interface';
 import { Delete } from '@mui/icons-material';
 import { SettingsRightTextField } from './textField/SettingsRightTextField';
 
