@@ -1,5 +1,5 @@
 import { getTools, saveTools } from '../../shared/store/tools.store';
-import { Tool } from '../../shared/interfaces/tool.interface';
+import { Tool } from '../../shared/interfaces/Tool.interface';
 import { JSCPD_TOOL } from '../../shared/constants/jscpdTool.const';
 import { GENESE_TOOL } from '../../shared/constants/geneseTool.const';
 import { JEST_TOOL } from '../../shared/constants/jestTool.const';

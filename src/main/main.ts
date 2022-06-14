@@ -21,14 +21,13 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import {
+    clearAll,
     createBrowserView,
     removeBrowserViews,
     resolveHtmlPath,
 } from './main.utils';
 import Store from 'electron-store';
 import { RoutesEnum } from '../shared/enums/route.enum';
-import { isEmpty } from '../shared/utils/arrays.utils';
-import { Project } from '../shared/interfaces/project.interface';
 
 export const CONFIG = {
     headerHeight: 40,
@@ -43,17 +42,7 @@ export const PATHS_MAIN_PROCESS = {
     root: '/Users/utilisateur/Documents/perso-gilles-fabre/refacto',
 };
 const store = new Store();
-// store.delete('projects');
-const projects: Project[] = (store.get('projects') as Project[]) ?? [];
-if (isEmpty(projects)) {
-    const project = {
-        name: 'Bleu Libellule',
-        path: PATHS_MAIN_PROCESS.folderToAnalyze,
-    };
-    projects.push(project);
-    store.set('project', project);
-    store.set('projects', projects);
-}
+clearAll(store); // DEBUG
 
 export default class AppUpdater {
     constructor() {

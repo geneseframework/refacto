@@ -4,17 +4,17 @@
 // import { DuplicationStatsItem } from '../interfaces/duplication-stats-item.interface';
 //
 // export function initStats(jscpdReport: JscpdReport): DuplicationStats {
-//     const duplicationStats: DuplicationStats = {
+//     const jscpdReport: DuplicationStats = {
 //         header: { name: '' },
 //         types: [],
 //     };
 //     const jscpdStats: JscpdJsonStatistics = jscpdReport.statistics ?? {};
-//     duplicationStats.header.total = jscpdStats.total.lines;
-//     duplicationStats.header.duplicates = jscpdStats.total.duplicatedLines;
+//     jscpdReport.header.total = jscpdStats.total.lines;
+//     jscpdReport.header.duplicates = jscpdStats.total.duplicatedLines;
 //     for (let key in jscpdStats.formats) {
 //         const duplicationStatsItem: DuplicationStatsItem = { name: key };
-//         duplicationStats.types.push(duplicationStatsItem);
-//         // duplicationStats.types.push(
+//         jscpdReport.types.push(duplicationStatsItem);
+//         // jscpdReport.types.push(
 //         //     new DuplicationStatsItem(
 //         //         key,
 //         //         jscpdStats.formats[key as JsOrTsFileExtension].total.duplicatedLines,
@@ -22,5 +22,5 @@
 //         //     )
 //         // );
 //     }
-//     return duplicationStats;
+//     return jscpdReport;
 // }

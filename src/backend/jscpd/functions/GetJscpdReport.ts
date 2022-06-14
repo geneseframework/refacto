@@ -2,9 +2,9 @@ import fs from 'fs';
 import { JscpdReport } from '../../../shared/interfaces/JscpdReport.interface';
 import { JscpdJson } from '../interfaces/JscpdJson.interface';
 import { JscpdJsonStatisticsFormats } from '../interfaces/JscpdJsonStatisticsFormats.interface';
-import { JscpdReportItem } from '../../../frontend/jscpd/interfaces/JscpdReportItem.interface';
 import { JscpdJsonStatisticsFormatTotal } from '../interfaces/JscpdJsonStatisticsFormatTotal.interface';
 import { JscpdJsonStatisticsFormatSources } from '../interfaces/JscpdJsonStatisticsFormatSources.interface';
+import { JscpdReportItem } from '../../../shared/interfaces/JscpdReportItem.interface';
 
 export function getJscpdReport(): JscpdReport | undefined {
     let jscpdReport: JscpdReport | undefined = undefined;
@@ -27,7 +27,6 @@ function jsonReportMapper(jsonReport: JscpdJson): JscpdReport {
     };
     const fileFormats: string[] = Object.keys(formats).sort();
     for (const fileFormat of fileFormats) {
-        console.log('fileFormat', fileFormat);
         const sources: JscpdJsonStatisticsFormatSources =
             formats[fileFormat].sources;
         const total: JscpdJsonStatisticsFormatTotal = formats[fileFormat].total;

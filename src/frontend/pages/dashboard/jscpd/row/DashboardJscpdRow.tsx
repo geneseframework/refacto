@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDashboardJscpdRow } from './DashboardJscpdRow.hook';
 import './DashboardJscpdRow.scss';
-import { JscpdReportItem } from '../../../../jscpd/interfaces/JscpdReportItem.interface';
+import { JscpdReportItem } from '../../../../../shared/interfaces/JscpdReportItem.interface';
 
 export interface DashboardJscpdRowProps {
     item: JscpdReportItem;

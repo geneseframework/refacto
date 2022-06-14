@@ -1,7 +1,7 @@
 import { store } from '../../../backend/App/App';
 import { RoutesEnum } from '../../../shared/enums/route.enum';
 import { useState } from 'react';
-import { Project } from '../../../shared/interfaces/project.interface';
+import { Project } from '../../../shared/interfaces/Project.interface';
 import { API } from '../../../shared/enums/api.enum';
 import {
     projectAlreadyExists,

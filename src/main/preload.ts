@@ -24,7 +24,6 @@ contextBridge.exposeInMainWorld('electron', {
                 '/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json',
                 'utf8'
             );
-            // console.log('JSCPD report', JSON.parse(jscpdJson));
             return JSON.parse(jscpdJson);
         },
         getJscpdReport() {

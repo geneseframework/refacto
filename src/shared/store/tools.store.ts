@@ -1,6 +1,6 @@
 import { store } from '../../backend/App/App';
 import { API } from '../enums/api.enum';
-import { Tool } from '../interfaces/tool.interface';
+import { Tool } from '../interfaces/Tool.interface';
 
 export const getTools = (): Tool[] => {
     return store.get(API.TOOLS);

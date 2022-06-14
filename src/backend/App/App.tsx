@@ -8,7 +8,6 @@ import { JscpdReport } from '../../shared/interfaces/JscpdReport.interface';
 import { Settings } from '../../frontend/pages/settings/Settings';
 import { RoutesEnum } from '../../shared/enums/route.enum';
 import { init } from './App.utils';
-// import { Settings } from '../pages/settings/Settings';
 
 declare global {
     interface Window {
