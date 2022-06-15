@@ -21,13 +21,8 @@ export const Dashboard: React.FC = () => {
                         <>
                             <div>
                                 <DashboardCoverage
-                                    coverageReport={
-                                        h.project.stats?.duplication
-                                    }
+                                    coverageReport={h.project.stats?.coverage}
                                 />
-                            </div>
-                            <div>
-                                <h2>Code smells</h2>
                             </div>
                             <div>
                                 <DashboardJscpd
