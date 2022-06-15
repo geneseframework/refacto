@@ -3,7 +3,7 @@ import './Dashboard.scss';
 import { NavBar } from '../../../shared/components/NavBar/NavBar';
 import { useDashboard } from './Dashboard.hook';
 import { DashboardJscpd } from './jscpd/DashboardJscpd';
-import { DashboardCoverage } from './coverage/DashboardCoverage';
+import { DashboardCoverage } from './cover/DashboardCoverage';
 
 export const Dashboard: React.FC = () => {
     const h = useDashboard();
