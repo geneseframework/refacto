@@ -2,6 +2,7 @@ import { contextBridge, ipcRenderer } from 'electron';
 import { execSync } from 'child_process';
 import * as fs from 'fs';
 import { getJscpdReport } from '../backend/jscpd/functions/GetJscpdReport';
+import { getCoverageReport } from '../backend/jest/functions/GetJestReport';
 
 const blPath = '/Users/utilisateur/Documents/projects/bleu-libellule';
 const testPath =
@@ -26,11 +27,18 @@ contextBridge.exposeInMainWorld('electron', {
             );
             return JSON.parse(jscpdJson);
         },
+        getJestReport() {
+            return getCoverageReport();
+        },
         getJscpdReport() {
             return getJscpdReport();
         },
         removeBrowserViews() {
             ipcRenderer.send('removeBrowserViews');
+        },
+        runJest() {
+            // TODO: implement
+            const cmd = `npm run jest`;
         },
         runJscpd() {
             const cmd = `npm run jscpd ${PATHS_PRELOAD_PROCESS.folderToAnalyze} -o reports/jscpd`;

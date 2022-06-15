@@ -1,0 +1,48 @@
+@import "../../../../backend/App/App";
+
+.rightToolContainer {
+
+    .title {
+        display: flex;
+        flex-direction: row;
+        height: 30px;
+        padding-top: 10px;
+
+        .titleName {
+            flex: 9;
+            font-size: $bigFontSize;
+            font-weight: bold;
+        }
+
+        .titleIcon {
+            display: flex;
+            flex: 1;
+            justify-content: right;
+        }
+    }
+
+    .arrayContainer {
+        padding: 20px;
+
+        .header {
+            display: flex;
+            font-weight: bold;
+            flex-direction: row;
+            padding-bottom: 10px;
+        }
+
+        .content {
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .leftColumn {
+            width: 100px;
+        }
+
+        .rightColumn {
+            flex: 3;
+        }
+    }
+}
