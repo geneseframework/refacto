@@ -4,6 +4,7 @@ import { NavBar } from '../../../shared/components/NavBar/NavBar';
 import { useDashboard } from './Dashboard.hook';
 import { DashboardJscpd } from './jscpd/DashboardJscpd';
 import { DashboardCoverage } from './cover/DashboardCoverage';
+import { DashboardGenese } from './geneseCpx/DashboardGenese';
 
 export const Dashboard: React.FC = () => {
     const h = useDashboard();
@@ -14,7 +15,9 @@ export const Dashboard: React.FC = () => {
             <div className="mainContainer dashboard">
                 <div className="leftContainer">
                     <p>{`Project : ${h.projectName}`}</p>
-                    <h2>Cognitive complexity</h2>
+                    <DashboardGenese
+                        geneseReport={h.project?.stats?.complexity}
+                    />
                 </div>
                 <div className="rightContainer">
                     {h.project && (
