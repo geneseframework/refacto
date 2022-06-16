@@ -21,18 +21,18 @@ export const DashboardGenese: React.FC<DashboardGeneseProps> = (props) => {
             </div>
             {!h.isLoading && (
                 <>
-                    <div className="header">
+                    <div className="chart">zzz</div>
+                    <div className="scores">
                         <div className="low">
                             <div className="level">Low</div>
+                            <div className="level">{h.lowRatio}</div>
+                            <div className="level">{h.lowPercentage}</div>
                         </div>
                         <div className="medium">
                             <div className="level">Medium</div>
-                            <div className="high">
-                                <div className="level">High</div>
-                            </div>
-                            <div className="arrayContainer">
-                                <div className="content"></div>
-                            </div>
+                        </div>
+                        <div className="high">
+                            <div className="level">High</div>
                         </div>
                     </div>
                 </>

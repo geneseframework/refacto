@@ -28,33 +28,9 @@ export const useDashboardGenese = (props: DashboardGeneseProps) => {
         //     console.log('No coverage report');
         // }
     };
-    //
-    // const mapCoverageReport = (
-    //     coverageReport: CoverageReport
-    // ): DashboardCoverageRowProps[] => {
-    //     return [
-    //         {
-    //             name: 'branches',
-    //             toCover: coverageReport.branches,
-    //             covered: coverageReport.coveredBranches,
-    //         },
-    //         {
-    //             name: 'functions',
-    //             toCover: coverageReport.functions,
-    //             covered: coverageReport.coveredFunctions,
-    //         },
-    //         {
-    //             name: 'lines',
-    //             toCover: coverageReport.lines,
-    //             covered: coverageReport.coveredLines,
-    //         },
-    //         {
-    //             name: 'statements',
-    //             toCover: coverageReport.statements,
-    //             covered: coverageReport.coveredStatements,
-    //         },
-    //     ];
-    // };
+
+    const lowRatio = 'aaa';
+    const lowPercentage = 'ppp';
 
     const refresh = () => {
         setIsLoading(true);
@@ -64,6 +40,8 @@ export const useDashboardGenese = (props: DashboardGeneseProps) => {
 
     return {
         isLoading,
+        lowPercentage,
+        lowRatio,
         refresh,
     };
 };
