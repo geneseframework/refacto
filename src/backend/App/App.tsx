@@ -9,12 +9,15 @@ import { Settings } from '../../frontend/pages/settings/Settings';
 import { RoutesEnum } from '../../shared/enums/route.enum';
 import { init } from './App.utils';
 import { CoverageReport } from '../../shared/interfaces/CoverageReport.interface';
+import { GeneseReport } from '../../shared/interfaces/GeneseReport.interface';
+import { Project } from '../../shared/interfaces/Project.interface';
 
 declare global {
     interface Window {
         electron: {
             store: {
                 get: (key: string) => any;
+                getGeneseReport: (project: Project) => GeneseReport | undefined;
                 getJestReport: () => CoverageReport | undefined;
                 getJscpdReport: () => JscpdReport | undefined;
                 setBrowserView: (route: string) => any;
