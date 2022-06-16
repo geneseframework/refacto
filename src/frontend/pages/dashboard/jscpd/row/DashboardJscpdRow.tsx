@@ -11,9 +11,9 @@ export const DashboardJscpdRow: React.FC<DashboardJscpdRowProps> = (props) => {
     const h = useDashboardJscpdRow(props);
     return (
         <div className="row">
-            <div className="fileFormat">{h.fileFormat}</div>
-            <div className="duplicatedLines">{h.ratioText}</div>
-            <div className="duplicatedLines">{h.percentageText}</div>
+            <div className="leftColumn">{h.fileFormat}</div>
+            <div className="rightColumn">{h.ratioText}</div>
+            <div className="rightColumn">{h.percentageText}</div>
         </div>
     );
 };

@@ -1,8 +1,8 @@
 import { contextBridge, ipcRenderer } from 'electron';
 import { execSync } from 'child_process';
-import * as fs from 'fs';
 import { getJscpdReport } from '../backend/jscpd/functions/GetJscpdReport';
 import { getCoverageReport } from '../backend/jest/functions/GetJestReport';
+import { getGeneseReport } from '../backend/genese/functions/GetGeneseReport';
 
 const blPath = '/Users/utilisateur/Documents/projects/bleu-libellule';
 const testPath =
@@ -20,15 +20,18 @@ contextBridge.exposeInMainWorld('electron', {
         get(property: string) {
             return ipcRenderer.sendSync('get', property);
         },
-        jscpd() {
-            const jscpdJson = fs.readFileSync(
-                '/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json',
-                'utf8'
-            );
-            return JSON.parse(jscpdJson);
-        },
+        // jscpd() {
+        //     const jscpdJson = fs.readFileSync(
+        //         '/Users/utilisateur/Documents/perso-gilles-fabre/refacto/reports/jscpd/html/jscpd-report.json',
+        //         'utf8'
+        //     );
+        //     return JSON.parse(jscpdJson);
+        // },
         getJestReport() {
             return getCoverageReport();
+        },
+        getGeneseReport() {
+            return getGeneseReport();
         },
         getJscpdReport() {
             return getJscpdReport();

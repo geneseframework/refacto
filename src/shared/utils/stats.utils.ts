@@ -3,18 +3,18 @@
 // import { DuplicationStats } from '../interfaces/duplication-stats.interface';
 // import { DuplicationStatsItem } from '../interfaces/duplication-stats-item.interface';
 //
-// export function initStats(coverageReport: JscpdReport): DuplicationStats {
-//     const coverageReport: DuplicationStats = {
+// export function initStats(geneseReport: JscpdReport): DuplicationStats {
+//     const geneseReport: DuplicationStats = {
 //         header: { name: '' },
 //         types: [],
 //     };
-//     const jscpdStats: JscpdJsonStatistics = coverageReport.statistics ?? {};
-//     coverageReport.header.total = jscpdStats.total.lines;
-//     coverageReport.header.duplicates = jscpdStats.total.duplicatedLines;
+//     const jscpdStats: JscpdJsonStatistics = geneseReport.statistics ?? {};
+//     geneseReport.header.total = jscpdStats.total.lines;
+//     geneseReport.header.duplicates = jscpdStats.total.duplicatedLines;
 //     for (let key in jscpdStats.formats) {
 //         const duplicationStatsItem: DuplicationStatsItem = { name: key };
-//         coverageReport.types.push(duplicationStatsItem);
-//         // coverageReport.types.push(
+//         geneseReport.types.push(duplicationStatsItem);
+//         // geneseReport.types.push(
 //         //     new DuplicationStatsItem(
 //         //         key,
 //         //         jscpdStats.formats[key as JsOrTsFileExtension].total.duplicatedLines,
@@ -22,5 +22,5 @@
 //         //     )
 //         // );
 //     }
-//     return coverageReport;
+//     return geneseReport;
 // }

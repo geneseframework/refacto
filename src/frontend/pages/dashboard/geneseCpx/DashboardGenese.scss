@@ -1,0 +1,13 @@
+@import "../../../../backend/App/App";
+
+.geneseContainer {
+    .chart {
+        height: 300px;
+        background-color: darkgrey;
+    }
+
+    .scores {
+        display: flex;
+        flex-direction: column;
+    }
+}
