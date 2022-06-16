@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDashboardJscpdRow } from './DashboardJscpdRow.hook';
+import '../../shared/DashboardStyle.scss';
 import './DashboardJscpdRow.scss';
 import { JscpdReportItem } from '../../../../../shared/interfaces/JscpdReportItem.interface';
 
@@ -11,9 +12,9 @@ export const DashboardJscpdRow: React.FC<DashboardJscpdRowProps> = (props) => {
     const h = useDashboardJscpdRow(props);
     return (
         <div className="row">
-            <div className="fileFormat">{h.fileFormat}</div>
-            <div className="duplicatedLines">{h.ratioText}</div>
-            <div className="duplicatedLines">{h.percentageText}</div>
+            <div className="leftColumn">{h.fileFormat}</div>
+            <div className="rightColumn">{h.ratioText}</div>
+            <div className="rightColumn">{h.percentageText}</div>
         </div>
     );
 };
