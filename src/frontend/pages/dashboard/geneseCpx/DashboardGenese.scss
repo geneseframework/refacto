@@ -1,0 +1,21 @@
+@import "../../../../backend/App/App";
+
+.geneseContainer {
+
+    .chart {
+        padding: 20px;
+        height: 300px;
+    }
+
+    .scores {
+        width: 50%;
+
+        .score {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding-inline: 10px;
+            flex: 1
+        }
+    }
+}
