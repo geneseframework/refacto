@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDashboardGenese } from './DashboardGenese.hook';
 import '../shared/DashboardStyle.scss';
+import './DashboardGenese.scss';
 import { Refresh } from '@mui/icons-material';
 import { GeneseReport } from '../../../../shared/interfaces/GeneseReport.interface';
 
@@ -20,22 +21,26 @@ export const DashboardGenese: React.FC<DashboardGeneseProps> = (props) => {
                 </div>
             </div>
             {!h.isLoading && (
-                <>
-                    <div className="chart">zzz</div>
+                <div className="content">
+                    <div className="chart">Chart</div>
                     <div className="scores">
-                        <div className="low">
-                            <div className="level">Low</div>
-                            <div className="level">{h.lowRatio}</div>
-                            <div className="level">{h.lowPercentage}</div>
+                        <div className="row">
+                            <div className="leftColumn">Low</div>
+                            <div className="rightColumn">{h.lowRatio}</div>
+                            <div className="rightColumn">{h.lowPercentage}</div>
                         </div>
-                        <div className="medium">
-                            <div className="level">Medium</div>
+                        <div className="row">
+                            <div className="leftColumn">Medium</div>
+                            <div className="rightColumn">{h.lowRatio}</div>
+                            <div className="rightColumn">{h.lowPercentage}</div>
                         </div>
-                        <div className="high">
-                            <div className="level">High</div>
+                        <div className="row">
+                            <div className="leftColumn">High</div>
+                            <div className="rightColumn">{h.lowRatio}</div>
+                            <div className="rightColumn">{h.lowPercentage}</div>
                         </div>
                     </div>
-                </>
+                </div>
             )}
         </div>
     );
